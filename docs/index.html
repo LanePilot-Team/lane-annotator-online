@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LanePilot Annotator</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <h1>LanePilot 標註工具</h1>
+        <p>OSM 當底，人工只補台灣機車待轉、待轉格、以及 OSM 機車限制的確認。</p>
+      </div>
+      <div class="top-actions">
+        <a class="readme-link" href="https://github.com/LanePilot-Team/LanePilot/blob/main/04_osm_dataset_pipeline/annotation_tools/lane-annotator/README.md" target="_blank" rel="noreferrer">README / 標註教學</a>
+        <div class="meta" id="meta">Loading dataset...</div>
+      </div>
+    </header>
+    <div id="dataWarning" class="data-warning" hidden></div>
+
+    <main class="layout">
+      <aside class="sidebar">
+        <section class="panel">
+          <h2>篩選候選</h2>
+          <label>
+            縣市
+            <div class="combo">
+              <input id="cityComboInput" autocomplete="off" placeholder="請選擇縣市" />
+              <input id="cityFilter" type="hidden" />
+              <div id="cityComboList" class="combo-list" hidden></div>
+            </div>
+          </label>
+          <label>
+            行政區
+            <div class="combo">
+              <input id="districtComboInput" autocomplete="off" placeholder="請先選縣市" />
+              <input id="districtFilter" type="hidden" />
+              <div id="districtComboList" class="combo-list" hidden></div>
+            </div>
+          </label>
+          <label>
+            路名 / OSM ID
+            <input id="searchInput" type="search" placeholder="例如 大學南路、way/24275091" />
+          </label>
+          <label>
+            路段顯示
+            <select id="segmentScopeFilter">
+              <option value="suggested">只看高優先候選</option>
+              <option value="">所有可標註路段</option>
+              <option value="normal">只看一般路段</option>
+            </select>
+          </label>
+          <label>
+            高優先原因
+            <select id="targetFilter">
+              <option value="">全部</option>
+              <option value="check_motorcycle_turn_rule">機車轉向/待轉</option>
+              <option value="check_two_stage_turn_sign">二段式標誌</option>
+              <option value="check_waiting_zone">待轉區</option>
+              <option value="check_motorcycle_access">機車通行限制</option>
+              <option value="check_motorcycle_lane_access">機車車道限制</option>
+              <option value="fill_lane_movement">OSM 缺 turn:lanes</option>
+            </select>
+          </label>
+          <label>
+            標註狀態
+            <select id="statusFilter">
+              <option value="">全部</option>
+              <option value="unannotated">未標註</option>
+              <option value="annotated">已標註</option>
+            </select>
+          </label>
+          <p class="hint">請先從 combobox 選定縣市與行政區；工具只會載入該行政區完整資料。預設凸顯高優先候選，需要補漏時切到「所有可標註路段」。</p>
+          <p class="hint">路名 / OSM ID 輸入後會自動搜尋，搜尋期間清單會顯示載入狀態。</p>
+        </section>
+
+        <section class="panel list-panel">
+          <div class="list-title">
+            <h2>路段清單</h2>
+            <span id="resultCount">0</span>
+          </div>
+          <div id="segmentList" class="segment-list"><p class="list-message">請先選擇縣市與行政區。</p></div>
+        </section>
+
+      </aside>
+
+      <section class="workspace">
+        <section class="panel guide">
+          <h2>這版標註原則</h2>
+          <div class="legend-row">
+            <span><i class="legend-line unannotated"></i>棕色：未標註高優先候選</span>
+            <span><i class="legend-line ordinary"></i>灰色：一般可標註路段</span>
+            <span><i class="legend-line annotated"></i>綠色：已標註</span>
+            <span><i class="legend-line selected"></i>紅色：目前選取</span>
+            <span><i class="legend-line target"></i>藍色：目標路段</span>
+            <span><i class="legend-dot"></i>紅點：目前路段附近路口</span>
+          </div>
+          <ol>
+            <li>OSM 有的車道數、turn:lanes、motorcycle tag 先當底，不重標。</li>
+            <li>人工主要補：二段式左轉牌、待轉區、待轉區位置，以及 OSM 機車限制是否代表二段式。</li>
+            <li>forward 是 OSM way 起點到終點；下方會顯示起點/終點與大概往哪個方位。</li>
+          </ol>
+        </section>
+
+        <section class="panel map-panel">
+          <div class="detail-header">
+            <div>
+              <h2>地圖</h2>
+              <p>點地圖路段或左側候選清單載入資料。選取路段後，地圖會標出起點與終點。</p>
+            </div>
+          </div>
+          <div id="map"></div>
+        </section>
+
+        <section class="panel detail">
+          <div class="detail-header">
+            <div>
+              <h2 id="detailTitle">尚未選擇路段</h2>
+              <p id="detailSubtitle">請從左側候選路段或地圖選一段路。</p>
+            </div>
+            <div class="links" id="mapLinks"></div>
+          </div>
+
+          <div class="segment-reference-grid">
+            <div class="segment-preview-col">
+              <h3>方向預覽</h3>
+              <svg id="geometryPreview" viewBox="0 0 320 180" role="img" aria-label="路段方向預覽"></svg>
+              <div id="directionInfo" class="direction-info">選擇路段後會顯示 OSM way 起點、終點與 forward 方位。</div>
+            </div>
+            <div class="segment-osm-col">
+              <h3>OSM</h3>
+              <div id="osmSummary" class="summary-grid"></div>
+              <h3 class="section-gap">OSM 參考 tags</h3>
+              <div id="tagChips" class="tag-chips"></div>
+            </div>
+          </div>
+
+          <section class="subpanel">
+            <h3>此路段附近路口</h3>
+            <p class="hint">只標目前選定 A 路段進入此路口時看到的待轉牌/待轉格。若牌子屬於另一條 B 路段，請切換到 B 路段再標。</p>
+            <div id="nearbyIntersections" class="nearby-list"></div>
+          </section>
+
+        </section>
+
+        <section class="panel form-panel">
+          <form id="annotationForm">
+            <input type="hidden" id="navSegmentKey" />
+
+            <div id="movementRuleHeading" class="form-section">
+              <h3>台灣機車待轉/轉向例外</h3>
+              <p class="hint">這裡是標「目前 A 路段沿某個 OSM 方向進入此路口」的規則。另一條路或對向入口請切換到那條路段再標。</p>
+              <p id="contextStatus" class="context-status empty">未選路口時標註整段道路方向；選定路口後標註該入口。</p>
+              <p id="dirtyStatus" class="dirty-status" hidden>尚未正式儲存，草稿已保存在此瀏覽器。</p>
+            </div>
+            <section id="intersectionRuleOverview" class="intersection-rule-overview" hidden>
+              <h4>此入口全部規則</h4>
+              <p class="hint">同時顯示正向、反向與舊版方向未指定資料；選擇方向後才進入該方向的編輯。</p>
+              <div id="intersectionRuleOverviewList" class="rules-list"></div>
+            </section>
+            <div id="movementRuleFields" class="form-grid">
+              <label>
+                目前選定道路
+                <input id="selectedRoad" readonly placeholder="先選附近路口" />
+                <select id="appliesToIntersection" hidden>
+                  <option value=""></option>
+                </select>
+              </label>
+              <label>
+                人工確認的 OSM 方向
+                <select id="approachDirection">
+                  <option value="unknown">不確定 (unknown)</option>
+                  <option value="forward">OSM 正向 (forward)</option>
+                  <option value="backward">OSM 反向 (backward)</option>
+                </select>
+                <span class="field-hint">forward 是 OSM way 起點到終點；backward 是終點到起點。</span>
+              </label>
+              <label>
+                轉向
+                <select id="movementType">
+                  <option value="left">左轉 (left)</option>
+                  <option value="through">直行 (through)</option>
+                  <option value="right">右轉 (right)</option>
+                  <option value="uturn">迴轉 (uturn)</option>
+                </select>
+              </label>
+              <label>
+                目標道路
+                <input id="targetRoad" placeholder="選取路口後自動填入；無法判斷時可人工確認" />
+                <div id="targetSegmentAssist" hidden>
+                  <span class="field-hint target-segment-label">目標 OSM way（人工確認）</span>
+                  <select id="targetSegmentKey" class="target-segment-select" hidden>
+                    <option value="">請先選擇路口</option>
+                  </select>
+                </div>
+                <span id="targetRoadHint" class="field-hint"></span>
+              </label>
+              <label>
+                一般車輛規則
+                <select id="vehicleMovementRule">
+                  <option value="normal">正常可通行 (normal)</option>
+                  <option value="prohibited">禁止 (prohibited)</option>
+                  <option value="conditional">有條件 (conditional)</option>
+                  <option value="unknown">不確定 (unknown)</option>
+                </select>
+              </label>
+              <label>
+                機車轉向規則
+                <select id="motorcycleTurnRule">
+                  <option value="unknown">不確定 (unknown)</option>
+                  <option value="not_applicable">不適用 (not_applicable)</option>
+                  <option value="direct_allowed">可直接轉向 (direct_allowed)</option>
+                  <option value="two_stage_required">必須二段式 (two_stage_required)</option>
+                  <option value="two_stage_optional">二段式/直接皆可 (two_stage_optional)</option>
+                  <option value="prohibited">禁止轉向 (prohibited)</option>
+                </select>
+              </label>
+              <label>
+                二段式標誌
+                <select id="twoStageSignExists">
+                  <option value="unknown">不確定 (unknown)</option>
+                  <option value="yes">有 (yes)</option>
+                  <option value="no">沒有 (no)</option>
+                </select>
+              </label>
+              <label>
+                待轉區/待轉格
+                <select id="waitingZoneExists">
+                  <option value="unknown">不確定 (unknown)</option>
+                  <option value="yes">有 (yes)</option>
+                  <option value="no">沒有 (no)</option>
+                </select>
+              </label>
+              <label>
+                待轉區位置
+                <select id="waitingZonePosition">
+                  <option value="unknown">不確定 (unknown)</option>
+                  <option value="front_right">右前方 (front_right)</option>
+                  <option value="front_left">左前方 (front_left)</option>
+                  <option value="across_intersection">路口對側 (across_intersection)</option>
+                  <option value="other">其他 (other)</option>
+                </select>
+              </label>
+            </div>
+            <div id="movementRuleActions" class="actions">
+              <button id="addMovementRule" type="button">新增例外規則</button>
+              <span id="movementRuleStatus" class="inline-status" role="status"></span>
+            </div>
+            <div id="movementRulesList" class="rules-list"></div>
+
+            <div class="form-section">
+              <h3>車道配置</h3>
+              <p class="hint">用於未來繪製車道。有明確車道/禁行機車資訊時才填；沒有專用車道或現場看不出車道配置時可留空。</p>
+            </div>
+            <div id="laneOsmReference" class="osm-lane-reference"></div>
+            <div id="laneInheritanceStatus" class="inheritance-status"></div>
+            <div class="form-grid">
+              <p class="hint">適用方向與上方「人工確認的 OSM 方向」相同。</p>
+              <label>
+                車道轉向：| 分隔車道，; 分隔同車道多個方向
+                <input id="laneMovements" placeholder="例如 left;through|through|right" />
+                <span class="field-hint">例如 left;through 表示同一車道可左轉或直行；left;through|through|right 表示三車道。left=左轉、through=直行、right=右轉、slight_left=微左、slight_right=微右、merge_to_left=向左併入、merge_to_right=向右併入、reverse=迴轉/折返、unknown=不確定。若只有機車通行限制，可留空。</span>
+              </label>
+              <label>
+                機車可行性，需與車道數相同
+                <input id="laneMotorcycleAccess" placeholder="例如 no|no|yes|yes" />
+                <span class="field-hint">yes=機車可行、no=禁行機車、designated=機車專用/指定車道、unknown=不確定。若只知道禁行機車車道，可單獨填這欄；沒有明確禁行/專用資訊可留空。</span>
+              </label>
+            </div>
+            <div class="actions">
+              <button id="addLaneProfile" type="button">新增車道配置</button>
+            </div>
+            <div id="laneProfilesList" class="rules-list"></div>
+
+            <details class="fold-section">
+              <summary>OSM 資訊審核</summary>
+              <p class="hint">通常只需要確認是否可信。只有 OSM 缺漏或明顯錯誤時才寫備註。</p>
+              <div class="form-grid">
+                <label>
+                  OSM 車道數
+                  <select id="osmLaneStatus">
+                    <option value="not_checked">未檢查 (not_checked)</option>
+                    <option value="accepted">可採用 (accepted)</option>
+                    <option value="missing">缺資料 (missing)</option>
+                    <option value="needs_correction">疑似錯誤 (needs_correction)</option>
+                    <option value="not_relevant">不適用 (not_relevant)</option>
+                  </select>
+                </label>
+                <label>
+                  OSM 車道轉向
+                  <select id="osmTurnLaneStatus">
+                    <option value="not_checked">未檢查 (not_checked)</option>
+                    <option value="accepted">可採用 (accepted)</option>
+                    <option value="missing">缺資料 (missing)</option>
+                    <option value="needs_correction">疑似錯誤 (needs_correction)</option>
+                    <option value="not_relevant">不適用 (not_relevant)</option>
+                  </select>
+                </label>
+                <label>
+                  OSM 機車限制
+                  <select id="osmMotorcycleStatus">
+                    <option value="not_checked">未檢查 (not_checked)</option>
+                    <option value="accepted">可採用 (accepted)</option>
+                    <option value="missing">缺資料 (missing)</option>
+                    <option value="needs_correction">疑似錯誤 (needs_correction)</option>
+                    <option value="not_relevant">不適用 (not_relevant)</option>
+                  </select>
+                </label>
+              </div>
+              <label>
+                OSM 修正/缺漏備註
+                <textarea id="osmReviewNote" rows="3" placeholder="例如：OSM 有 restriction:motorcycle=no_left_turn，但現場是二段式左轉，不是完全禁止。"></textarea>
+              </label>
+            </details>
+
+            <div class="form-section">
+              <h3>標註紀錄</h3>
+            </div>
+            <div class="form-grid">
+              <label>
+                標註者
+                <input id="verifiedBy" placeholder="member_01" />
+              </label>
+            </div>
+            <details class="fold-section">
+              <summary>其他標註紀錄</summary>
+              <div class="form-grid">
+              <label>
+                可信度
+                <select id="confidence">
+                  <option value="high">高：實地調查或 2 年內街景 (high)</option>
+                  <option value="medium">中：3-5 年內街景 (medium)</option>
+                  <option value="low">低：5 年以上、日期不明、只看 OSM (low)</option>
+                </select>
+              </label>
+              <label>
+                證據來源
+                <select id="evidenceType">
+                  <option value="streetview">街景 (streetview)</option>
+                  <option value="osm">OSM (osm)</option>
+                  <option value="open_data">開放資料 (open_data)</option>
+                  <option value="field_survey">實地調查 (field_survey)</option>
+                  <option value="photo">照片 (photo)</option>
+                  <option value="unknown">不確定 (unknown)</option>
+                </select>
+              </label>
+              </div>
+              <label>
+                備註
+                <textarea id="note" rows="4" placeholder="例如：街景看到兩段式左轉牌與右前方待轉格。"></textarea>
+              </label>
+            </details>
+            <div class="actions">
+              <button type="submit">儲存標註</button>
+              <span id="saveStatus"></span>
+            </div>
+          </form>
+        </section>
+      </section>
+    </main>
+
+    <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+    <script src="./annotation_model.js"></script>
+    <!-- web-adapter 必須在 app.js 之前載入：攔截 /api/* fetch，讀靜態 shard、寫 GitHub -->
+    <script src="./web-config.js"></script>
+    <script src="./web-adapter.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>

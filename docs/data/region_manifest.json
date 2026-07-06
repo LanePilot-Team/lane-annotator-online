@@ -1,0 +1,66 @@
+{
+  "format": "lane_nav_district_shards_v1",
+  "dataset_version": "taiwan-260531-lane-nav-v3-noderefs",
+  "region_count": 2,
+  "regions": [
+    {
+      "area_id": "area/4212599",
+      "shard_id": "area_4212599",
+      "name": "楠梓區",
+      "name_en": "Nanzi District",
+      "admin_level": "7",
+      "bbox": {
+        "min_lng": 120.2547642,
+        "min_lat": 22.6948806,
+        "max_lng": 120.3408064,
+        "max_lat": 22.7562015
+      },
+      "files": {
+        "segments.jsonl": {
+          "path": "regions/area_4212599/segments.jsonl",
+          "count": 3184,
+          "size_bytes": 3782731,
+          "sha256": "7d9b595fe9158071d131fd9ced8abdeb72a95bc2c8c4194178758b90d61a868a"
+        },
+        "intersections.jsonl": {
+          "path": "regions/area_4212599/intersections.jsonl",
+          "count": 2687,
+          "size_bytes": 2495687,
+          "sha256": "f86d511fa1e3d7f3d24a54219d6a8f3dc367cb11def73aed7b5dc7157c6ad85a"
+        }
+      }
+    },
+    {
+      "area_id": "area/4212683",
+      "shard_id": "area_4212683",
+      "name": "橋頭區",
+      "name_en": "Qiaotou District",
+      "admin_level": "7",
+      "bbox": {
+        "min_lng": 120.2637336,
+        "min_lat": 22.7283339,
+        "max_lng": 120.3376611,
+        "max_lat": 22.7777415
+      },
+      "files": {
+        "segments.jsonl": {
+          "path": "regions/area_4212683/segments.jsonl",
+          "count": 1304,
+          "size_bytes": 1606632,
+          "sha256": "69cc9399bf916e74cc8f9f91dce24113444c6325c071377da72179db1febfbc7"
+        },
+        "intersections.jsonl": {
+          "path": "regions/area_4212683/intersections.jsonl",
+          "count": 956,
+          "size_bytes": 878221,
+          "sha256": "846c94e1a24bfc8a3084ffaee52077a297009a0b87e4b22c5ce0a05a8dc197b2"
+        }
+      }
+    }
+  ],
+  "unassigned": {
+    "segments.jsonl": 642,
+    "intersections.jsonl": 299
+  },
+  "note": "docs/ 網頁版子集 manifest：只包含目前開放線上標註的行政區。新增行政區時，把該區 shard 放進 docs/data/regions/ 並把完整 manifest 的對應 region 條目加進 regions 陣列。"
+}
