@@ -43,6 +43,37 @@
     return null;
   }
 
+  function wayKeyForId(osmWayId) {
+    return osmWayId === undefined || osmWayId === null || osmWayId === "" ? null : `way/${osmWayId}`;
+  }
+
+  function targetRoadNameForWay(way) {
+    const name = String(way?.name || "").trim();
+    if (name) return name;
+    const key = wayKeyForId(way?.osm_way_id);
+    return key ? `未命名道路 (${key})` : "未命名道路";
+  }
+
+  function baseWayIdFromSegmentKey(key) {
+    return String(key || "").replace(/^way\//, "").split("#")[0];
+  }
+
+  function connectedTargetWayForSegment({ intersection, currentSegmentKey, clickedSegmentKey }) {
+    const clickedWayId = baseWayIdFromSegmentKey(clickedSegmentKey);
+    const currentWayId = baseWayIdFromSegmentKey(currentSegmentKey);
+    if (!clickedWayId) return { ok: false, reason: "missing_clicked_way" };
+    if (clickedWayId === currentWayId) return { ok: false, reason: "same_as_current" };
+    const connectedWay = (intersection?.connected_ways || []).find(
+      (way) => String(way.osm_way_id ?? "") === clickedWayId
+    );
+    if (!connectedWay) return { ok: false, reason: "not_connected" };
+    return {
+      ok: true,
+      way: connectedWay,
+      targetSegmentKey: wayKeyForId(clickedWayId),
+    };
+  }
+
   function draftComparable(formData, transientFieldIds = []) {
     const transient = new Set(transientFieldIds);
     const fields = Object.fromEntries(
@@ -108,19 +139,22 @@
       .replace(/^way\//, "")
       .split("#")[0];
     const ways = Array.isArray(intersection?.connected_ways) ? intersection.connected_ways : [];
+    const currentWay = ways.find((way) => String(way.osm_way_id ?? "") === currentWayId);
+    const currentLabel = currentName || (currentWay ? targetRoadNameForWay(currentWay) : normalize(currentSegmentKey));
     const crossingWays = ways.filter((way) => {
       const wayId = String(way.osm_way_id ?? "");
       const wayName = normalize(way.name);
-      return wayId !== currentWayId && wayName && wayName !== currentName;
+      return wayId && wayId !== currentWayId && (!currentName || !wayName || wayName !== currentName);
     });
-    const targetNames = [...new Set(crossingWays.map((way) => normalize(way.name)))];
-    if (currentName && targetNames.length === 1) {
-      const targetRoad = targetNames[0];
-      const matches = crossingWays.filter((way) => normalize(way.name) === targetRoad);
+    const targetKeys = [...new Set(crossingWays.map((way) => wayKeyForId(way.osm_way_id)).filter(Boolean))];
+    if (currentLabel && targetKeys.length === 1) {
+      const targetKey = targetKeys[0];
+      const matches = crossingWays.filter((way) => wayKeyForId(way.osm_way_id) === targetKey);
+      const targetRoad = targetRoadNameForWay(matches[0]);
       return {
-        displayName: `${currentName} / ${targetRoad}`,
+        displayName: `${currentLabel} / ${targetRoad}`,
         targetRoad,
-        targetSegmentKey: matches.length === 1 ? `way/${matches[0].osm_way_id}` : null,
+        targetSegmentKey: matches.length === 1 ? targetKey : null,
         ambiguous: matches.length !== 1,
       };
     }
@@ -187,6 +221,7 @@
 
   return {
     annotationHasEffectiveContent,
+    connectedTargetWayForSegment,
     contextKey,
     deriveTwoStageRule,
     deriveIntersectionPresentation,
@@ -199,5 +234,6 @@
     movementIdentity,
     resolveLaneProfile,
     stableStringify,
+    targetRoadNameForWay,
   };
 });
