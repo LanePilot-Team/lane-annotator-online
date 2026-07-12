@@ -74,6 +74,50 @@
     };
   }
 
+  function resolveTargetWaySelection({ intersection, currentSegmentKey, clickedSegmentKey, clickedRoadName }) {
+    const connected = connectedTargetWayForSegment({ intersection, currentSegmentKey, clickedSegmentKey });
+    if (connected.ok) return { ...connected, kind: "connected", targetRoad: targetRoadNameForWay(connected.way) };
+    if (connected.reason !== "not_connected") return { ...connected, kind: null };
+    const targetSegmentKey = wayKeyForId(baseWayIdFromSegmentKey(clickedSegmentKey));
+    const targetRoad = String(clickedRoadName || "").trim();
+    if (!targetSegmentKey || !targetRoad) return { ok: false, reason: "missing_target_details", kind: null };
+    return { ok: true, kind: "offset_candidate", targetSegmentKey, targetRoad, way: null };
+  }
+
+  function normalizeTargetRelation(value) {
+    if (value?.kind !== "offset_intersection") return null;
+    const reason = value.reason;
+    if (!new Set(["staggered_cross_intersection", "osm_geometry_missing", "other"]).has(reason)) return null;
+    const note = String(value.note || "").trim() || null;
+    if (reason === "other" && !note) return null;
+    return { kind: "offset_intersection", reason, note };
+  }
+
+  function favouriteIntersectionKey(segmentKey, intersectionKey) {
+    return segmentKey && intersectionKey ? `${segmentKey}@${intersectionKey}` : null;
+  }
+
+  function segmentTriageTags({ segmentKey, annotations = [], favouriteIntersectionKeys = new Set(), candidatePriority = 0, manualTargets = [] }) {
+    const tags = new Set();
+    if (Number(candidatePriority) >= 70 || manualTargets.length) tags.add("priority");
+    for (const annotation of annotations) {
+      const rules = annotation?.lane_nav_tags?.taiwan_motorcycle_tags?.movement_rules || [];
+      const reviewNote = annotation?.lane_nav_tags?.osm_review_tags?.osm_review_note;
+      if (String(annotation?.annotation_metadata?.note || "").trim() || String(reviewNote || "").trim()) tags.add("has_notes");
+      if (rules.some((rule) => normalizeTargetRelation(rule.target_relation))) tags.add("offset_intersection");
+      const identity = annotation?.object_identity || {};
+      if (favouriteIntersectionKeys.has(favouriteIntersectionKey(segmentKey || identity.nav_segment_key, identity.applies_to_intersection_key))) tags.add("favourite");
+    }
+    return tags;
+  }
+
+  function matchesTagFilter(tags, selectedTags, mode = "and") {
+    if (!selectedTags?.size) return true;
+    return mode === "or"
+      ? [...selectedTags].some((tag) => tags.has(tag))
+      : [...selectedTags].every((tag) => tags.has(tag));
+  }
+
   function draftComparable(formData, transientFieldIds = []) {
     const transient = new Set(transientFieldIds);
     const fields = Object.fromEntries(
@@ -107,6 +151,7 @@
       for (const rule of rules) {
         rows.push({
           ...structuredClone(rule),
+          target_relation: normalizeTargetRelation(rule.target_relation),
           approach_direction: identity.approach_direction || rule.approach_direction || "unknown",
           data_origin: "context_v2",
           source_context_key: identity.nav_context_key || null,
@@ -119,6 +164,7 @@
       if (exactDirections.has(rule.approach_direction)) continue;
       rows.push({
         ...structuredClone(rule),
+        target_relation: normalizeTargetRelation(rule.target_relation),
         approach_direction: rule.approach_direction || "unknown",
         data_origin: "legacy",
         legacy_verified_at: legacyAnnotation?.annotation_metadata?.verified_at || null,
@@ -232,7 +278,12 @@
     intersectionReviewKey,
     movementKey,
     movementIdentity,
+    favouriteIntersectionKey,
+    matchesTagFilter,
+    normalizeTargetRelation,
+    resolveTargetWaySelection,
     resolveLaneProfile,
+    segmentTriageTags,
     stableStringify,
     targetRoadNameForWay,
   };

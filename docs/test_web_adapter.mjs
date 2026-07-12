@@ -77,6 +77,11 @@ let firstKey;
   assert(data.items.every((i) => Array.isArray(i.annotation_statuses)), "清單項目含 annotation_statuses 徽章陣列（上游 20d9e3c）");
   firstKey = data.items[0].nav_segment_key;
 }
+{
+  const { data } = await api(`/api/segments?district_area_id=${encodeURIComponent(NANZI)}&limit=120&offset=0&candidate_scope=&q=&target=&status=&triage_tags=favourite&triage_mode=and&favourite_segment_keys=${encodeURIComponent(firstKey)}`);
+  assert(data.total === 1 && data.items[0].nav_segment_key === firstKey, "favourite triage filter runs before pagination");
+  assert(data.items[0].triage_tags.includes("favourite"), "segment item exposes triage tags");
+}
 // /api/segments：搜尋大學南路
 {
   const { data } = await api(`/api/segments?district_area_id=${encodeURIComponent(NANZI)}&limit=120&offset=0&candidate_scope=&q=${encodeURIComponent("大學南路")}&target=&status=`);
