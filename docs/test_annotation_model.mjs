@@ -126,7 +126,8 @@ const assert = (cond, msg) => {
       annotation_metadata: { note: "needs revisit" },
       lane_nav_tags: {
         osm_review_tags: { osm_review_note: "geometry gap" },
-        taiwan_motorcycle_tags: { movement_rules: [{ target_relation: { kind: "offset_intersection", reason: "staggered_cross_intersection", note: null } }] },
+        offset_relations: [{ to_segment_key: "way/300", kind: "offset_intersection", reason: "staggered_cross_intersection", note: null }],
+        taiwan_motorcycle_tags: { movement_rules: [] },
       },
       object_identity: { nav_segment_key: "way/100", applies_to_intersection_key: "node/200" },
     }],

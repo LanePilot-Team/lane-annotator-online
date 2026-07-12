@@ -102,9 +102,10 @@
     if (Number(candidatePriority) >= 70 || manualTargets.length) tags.add("priority");
     for (const annotation of annotations) {
       const rules = annotation?.lane_nav_tags?.taiwan_motorcycle_tags?.movement_rules || [];
+      const offsetRelations = annotation?.lane_nav_tags?.offset_relations || [];
       const reviewNote = annotation?.lane_nav_tags?.osm_review_tags?.osm_review_note;
       if (String(annotation?.annotation_metadata?.note || "").trim() || String(reviewNote || "").trim()) tags.add("has_notes");
-      if (rules.some((rule) => normalizeTargetRelation(rule.target_relation))) tags.add("offset_intersection");
+      if (rules.some((rule) => normalizeTargetRelation(rule.target_relation)) || offsetRelations.some(normalizeTargetRelation)) tags.add("offset_intersection");
       const identity = annotation?.object_identity || {};
       if (favouriteIntersectionKeys.has(favouriteIntersectionKey(segmentKey || identity.nav_segment_key, identity.applies_to_intersection_key))) tags.add("favourite");
     }

@@ -8,6 +8,7 @@ const state = {
   selectedIntersectionKey: null,
   intersectionReviews: new Map(),
   movementRules: [],
+  offsetRelations: [],
   laneProfiles: [],
   areas: { cities: [], districts: [] },
   map: null,
@@ -592,7 +593,7 @@ function syncOffsetReasonNote() {
   $("offsetReasonNoteLabel").hidden = offsetReasonValue() !== "other";
 }
 
-function confirmOffsetTarget() {
+async function confirmOffsetTarget() {
   const pending = state.pendingOffsetTarget;
   const reason = offsetReasonValue();
   const relation = normalizeTargetRelation({
@@ -605,6 +606,10 @@ function confirmOffsetTarget() {
     return;
   }
   state.pendingTargetRelation = relation;
+  const offsetRelation = { to_segment_key: pending.targetSegmentKey, target_road: pending.targetRoad, ...relation };
+  const existing = state.offsetRelations.findIndex((item) => item.to_segment_key === offsetRelation.to_segment_key);
+  if (existing >= 0) state.offsetRelations[existing] = offsetRelation;
+  else state.offsetRelations.push(offsetRelation);
   $("targetSegmentKey").value = pending.targetSegmentKey;
   if ($("targetSegmentKey").value !== pending.targetSegmentKey) {
     const option = document.createElement("option");
@@ -619,6 +624,12 @@ function confirmOffsetTarget() {
   $("offsetTargetDialog").close();
   refreshSegmentMapStyles();
   markFormDirty();
+  try {
+    await persistAnnotation({ preserveTargetSelection: true });
+    showToast("錯落路口關聯已儲存，可稍後再新增規則。");
+  } catch (error) {
+    showToast(`錯落路口關聯儲存失敗：${error.message}`, { error: true });
+  }
 }
 
 async function fetchJson(url, options) {
@@ -1264,6 +1275,10 @@ function renderNearbyIntersections(rows) {
   for (const item of rows) {
     const presentation = intersectionPresentation(item);
     const status = intersectionDisplayStatus(item.nav_intersection_key);
+    const hasOffsetRelation = state.contextAnnotations.some((row) =>
+      row.object_identity?.applies_to_intersection_key === item.nav_intersection_key &&
+      (row.lane_nav_tags?.offset_relations || []).length > 0
+    );
     const option = document.createElement("option");
     option.value = item.nav_intersection_key;
     option.textContent = `${presentation.displayName} (${item.nav_intersection_key}, ${item.distance_m}m)`;
@@ -1281,6 +1296,7 @@ function renderNearbyIntersections(rows) {
       <div class="intersection-heading">
         <strong>${presentation.displayName}</strong>
         ${statusControl}
+        ${hasOffsetRelation ? '<span class="intersection-status annotated">錯落路口</span>' : ''}
       </div>
       ${item.nav_intersection_key} · ${item.distance_m}m · ${targetText(item.manual_targets)}${link ? `<br><a href="${link}" target="_blank" rel="noreferrer">Open Map</a>` : ""}
     `;
@@ -1419,6 +1435,7 @@ function contextLaneData(annotation) {
   const laneTags = latestLaneTags(annotation);
   return {
     movementRules: laneTags.taiwan_motorcycle_tags?.movement_rules || [],
+    offsetRelations: laneTags.offset_relations || [],
     laneProfiles: laneTags.lane_detail_tags?.lane_profiles || [],
   };
 }
@@ -1457,6 +1474,7 @@ function setFormFromSegment(segment, annotation, laneData = null) {
     laneProfiles: laneDetail.lane_profiles,
   };
   state.movementRules = Array.isArray(selectedData.movementRules) ? structuredClone(selectedData.movementRules) : [];
+  state.offsetRelations = Array.isArray(laneTags.offset_relations) ? structuredClone(laneTags.offset_relations) : [];
   state.laneProfiles = Array.isArray(selectedData.laneProfiles) ? structuredClone(selectedData.laneProfiles) : [];
   renderMovementRules();
   renderLaneProfiles();
@@ -1904,6 +1922,7 @@ function buildAnnotationPayload() {
       taiwan_motorcycle_tags: {
         movement_rules: scope === "intersection_approach" ? state.movementRules : [],
       },
+      offset_relations: scope === "intersection_approach" ? state.offsetRelations : [],
       lane_detail_tags: {
         lane_profiles: state.laneProfiles,
       },

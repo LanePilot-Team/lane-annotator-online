@@ -431,7 +431,8 @@
       const reviewNote = annotation.lane_nav_tags?.osm_review_tags?.osm_review_note;
       if (String(annotation.annotation_metadata?.note || "").trim() || String(reviewNote || "").trim()) tags.add("has_notes");
       const rules = annotation.lane_nav_tags?.taiwan_motorcycle_tags?.movement_rules || [];
-      if (rules.some((rule) => rule.target_relation?.kind === "offset_intersection")) tags.add("offset_intersection");
+      const offsetRelations = annotation.lane_nav_tags?.offset_relations || [];
+      if (rules.some((rule) => rule.target_relation?.kind === "offset_intersection") || offsetRelations.some((relation) => relation?.kind === "offset_intersection")) tags.add("offset_intersection");
     }
     return tags;
   }
