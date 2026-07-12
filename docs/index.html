@@ -380,11 +380,11 @@
       <form method="dialog">
         <h2>建立錯落路口關聯</h2>
         <p id="offsetTargetSummary"></p>
-        <label><input type="radio" name="offsetReason" value="staggered_cross_intersection" checked /> 錯落十字路口</label>
-        <label><input type="radio" name="offsetReason" value="osm_geometry_missing" /> OSM 幾何缺漏</label>
-        <label><input type="radio" name="offsetReason" value="other" /> 其他</label>
-        <label id="offsetReasonNoteLabel" hidden>說明<textarea id="offsetReasonNote" rows="3"></textarea></label>
-        <div class="actions"><button id="cancelOffsetTarget" class="secondary-button" value="cancel">取消</button><button id="confirmOffsetTarget" value="confirm">確認建立</button></div>
+        <label class="offset-reason"><input type="radio" name="offsetReason" value="staggered_cross_intersection" checked /><span>錯落十字路口</span></label>
+        <label class="offset-reason"><input type="radio" name="offsetReason" value="osm_geometry_missing" /><span>OSM 幾何缺漏</span></label>
+        <label class="offset-reason"><input type="radio" name="offsetReason" value="other" /><span>其他</span></label>
+        <label id="offsetReasonNoteLabel" class="offset-reason-note" hidden>說明<textarea id="offsetReasonNote" rows="3"></textarea></label>
+        <div class="actions offset-dialog-actions"><button id="cancelOffsetTarget" class="secondary-button" value="cancel">取消</button><button id="confirmOffsetTarget" value="confirm">確認建立</button></div>
       </form>
     </dialog>
     <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
