@@ -32,6 +32,7 @@ const state = {
 const $ = (id) => document.getElementById(id);
 const {
   annotationHasEffectiveContent,
+  connectedTargetWayForSegment,
   contextKey: modelContextKey,
   deriveTwoStageRule,
   deriveIntersectionPresentation,
@@ -44,6 +45,7 @@ const {
   movementIdentity,
   resolveLaneProfile,
   stableStringify,
+  targetRoadNameForWay,
 } = LaneAnnotationModel;
 
 function setDataWarning(key, message = "") {
@@ -126,6 +128,14 @@ function currentRoadName() {
   return (tags.road_name || osm.name || "").trim();
 }
 
+function currentRoadLabel() {
+  const name = currentRoadName();
+  if (name) return name;
+  const segment = state.selectedSegment || {};
+  const osmWayId = segment.object_identity?.source_osm?.osm_id;
+  return targetRoadNameForWay({ osm_way_id: osmWayId });
+}
+
 let toastTimer = null;
 
 function showToast(message, options = {}) {
@@ -177,8 +187,8 @@ function populateTargetSegmentOptions(connectedWays, selectedKey = null) {
       seen.add(key);
       const option = document.createElement("option");
       option.value = key;
-      option.dataset.roadName = way.name || "";
-      option.textContent = `${way.name || "未命名道路"} — ${key}`;
+      option.dataset.roadName = targetRoadNameForWay(way);
+      option.textContent = `${targetRoadNameForWay(way)} — ${key}`;
       targetSelect.appendChild(option);
     }
   }
@@ -197,7 +207,7 @@ function setSelectedRoadFields(intersection) {
     currentRoadName: currentRoadName(),
     intersection,
   });
-  $("selectedRoad").value = currentRoadName();
+  $("selectedRoad").value = currentRoadLabel();
   $("targetRoad").value = presentation.targetRoad || "";
   const candidateCount = populateTargetSegmentOptions(
     intersection?.connected_ways || [],
@@ -483,6 +493,50 @@ function refreshSegmentMapStyles() {
     weight: feature.properties.nav_segment_key === state.selectedKey ? 8 : 5,
     opacity: 0.9,
   }));
+}
+
+function selectedIntersection() {
+  if (!state.selectedIntersectionKey) return null;
+  return state.selectedNearbyIntersections.find(
+    (item) => item.nav_intersection_key === state.selectedIntersectionKey
+  ) || null;
+}
+
+function selectTargetSegmentFromMap(navSegmentKey) {
+  const intersection = selectedIntersection();
+  if (!intersection) {
+    showToast("請先選擇路口，再用 Ctrl+點擊選擇目標道路。", { error: true });
+    return false;
+  }
+
+  const target = connectedTargetWayForSegment({
+    intersection,
+    currentSegmentKey: state.selectedKey,
+    clickedSegmentKey: navSegmentKey,
+  });
+  if (target.reason === "same_as_current") {
+    showToast("目標道路不能是目前選定道路。", { error: true });
+    return false;
+  }
+  if (!target.ok) {
+    showToast("這條路不在目前路口的 connected ways 裡。", { error: true });
+    return false;
+  }
+
+  const targetKey = target.targetSegmentKey;
+  const targetSelect = $("targetSegmentKey");
+  targetSelect.value = targetKey;
+  if (targetSelect.value !== targetKey) {
+    populateTargetSegmentOptions(intersection.connected_ways || [], targetKey);
+    targetSelect.value = targetKey;
+  }
+  $("targetRoad").value = targetRoadNameForWay(target.way);
+  $("targetRoadHint").textContent = "已用地圖 Ctrl+點擊選擇目標 OSM way；仍受目前路口 connected ways 限制。";
+  targetSelect.hidden = false;
+  $("targetSegmentAssist").hidden = false;
+  refreshSegmentMapStyles();
+  markFormDirty();
+  return true;
 }
 
 async function fetchJson(url, options) {
@@ -915,7 +969,13 @@ function initMap() {
     }),
     onEachFeature: (feature, layer) => {
       layer.bindTooltip(feature.properties.label);
-      layer.on("click", () => requestSegmentChange(feature.properties.nav_segment_key, { focusMap: true }));
+      layer.on("click", (event) => {
+        if (event.originalEvent?.ctrlKey) {
+          selectTargetSegmentFromMap(feature.properties.nav_segment_key);
+          return;
+        }
+        requestSegmentChange(feature.properties.nav_segment_key, { focusMap: true });
+      });
     },
   }).addTo(state.map);
   state.intersectionLayer = L.geoJSON([], {
@@ -951,7 +1011,7 @@ function renderMapSegments(items) {
         nav_segment_key: item.nav_segment_key,
         annotated: item.annotated,
         suggested: Boolean(item.manual_targets?.length || item.candidate_priority >= 70),
-        label: `${item.road_name} · ${item.nav_segment_key}`,
+        label: `${item.road_name || `未命名道路 (${item.nav_segment_key})`} · ${item.nav_segment_key}`,
       },
       geometry: normalizeGeometry(item.geometry),
     }));
@@ -1309,7 +1369,7 @@ function resetTransientEditors() {
   $("waitingZonePosition").value = "unknown";
   $("laneMovements").value = "";
   $("laneMotorcycleAccess").value = "";
-  $("selectedRoad").value = currentRoadName();
+  $("selectedRoad").value = currentRoadLabel();
   $("targetSegmentKey").hidden = true;
   $("targetSegmentAssist").hidden = true;
   $("targetRoadHint").textContent = "未選路口時，車道配置屬於目前路段方向。";
