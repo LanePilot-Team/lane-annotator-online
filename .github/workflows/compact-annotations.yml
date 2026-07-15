@@ -1,0 +1,38 @@
+name: 合併公開標註佇列
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "annotations/**"
+      - "intersection-reviews/**"
+  workflow_dispatch:
+
+concurrency:
+  group: compact-public-annotations
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  compact:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: 合併標註與路口檢查佇列
+        run: python scripts/compact_annotations.py --delete-merged
+      - name: 提交公開正式資料
+        run: |
+          git config user.name "lanepilot-merge-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "沒有可提交的變更"
+            exit 0
+          fi
+          git commit -m "[auto] 合併公開標註佇列"
+          git pull --rebase origin main
+          git push origin HEAD:main
