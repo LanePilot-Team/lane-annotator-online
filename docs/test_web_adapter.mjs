@@ -9,6 +9,9 @@ const docsDir = path.dirname(fileURLToPath(import.meta.url));
 
 // ---- 瀏覽器環境 stub ----
 const storage = new Map();
+storage.set("lanePilotRepo", "LanePilot-Team/LanePilot");
+storage.set("lanePilotBranch", "online");
+storage.set("lanePilotToken", "existing-token");
 globalThis.localStorage = {
   getItem: (k) => (storage.has(k) ? storage.get(k) : null),
   setItem: (k, v) => storage.set(k, String(v)),
@@ -41,12 +44,16 @@ globalThis.window = {
 
 // ---- 載入 adapter（IIFE，會把 window.fetch 換成 API 路由器） ----
 await import("./web-adapter.js");
+const assert = (cond, msg) => { if (!cond) { console.error(`FAIL: ${msg}`); process.exit(1); } console.log(`ok: ${msg}`); };
+assert(storage.get("lanePilotRepo") === "LanePilot-Team/lane-annotator-online", "舊 repo 設定自動搬到 public repo");
+assert(storage.get("lanePilotBranch") === "main", "舊 online branch 設定自動搬到 public main");
+assert(storage.get("lanePilotToken") === "existing-token", "設定搬移保留既有 token");
+storage.delete("lanePilotToken");
 const api = async (url, options) => {
   const res = await window.fetch(url, options);
   return { status: res.status, data: JSON.parse(await res.text()) };
 };
 
-const assert = (cond, msg) => { if (!cond) { console.error(`FAIL: ${msg}`); process.exit(1); } console.log(`ok: ${msg}`); };
 const NANZI = "area/4212599";
 
 // /api/areas

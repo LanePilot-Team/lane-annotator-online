@@ -12,14 +12,28 @@
 // v2 重點：一個路段可有多筆標註，儲存 key = object_identity.nav_context_key
 //（例 way/A@node/J/forward）；沒有 nav_context_key 的是 legacy 整段標註（key = nav_segment_key）。
 (() => {
+  const LEGACY_REPO = "LanePilot-Team/LanePilot";
+  const PUBLIC_REPO = "LanePilot-Team/lane-annotator-online";
+
+  function migrateLegacyStorageSettings() {
+    const storedRepo = localStorage.getItem("lanePilotRepo");
+    const storedBranch = localStorage.getItem("lanePilotBranch");
+    if (storedRepo === LEGACY_REPO && (!storedBranch || storedBranch === "online")) {
+      localStorage.setItem("lanePilotRepo", PUBLIC_REPO);
+      localStorage.setItem("lanePilotBranch", "main");
+    }
+  }
+
+  migrateLegacyStorageSettings();
+
   const CONFIG = Object.assign(
     {
-      repo: "LanePilot-Team/LanePilot",
+      repo: PUBLIC_REPO,
       branch: "main",
       annotationsDir: "annotations",
       reviewsDir: "intersection-reviews",
-      mergedAnnotationsPath: "04_osm_dataset_pipeline/outputs/lane-nav/annotations.jsonl",
-      mergedReviewsPath: "04_osm_dataset_pipeline/outputs/lane-nav/intersection_reviews.jsonl",
+      mergedAnnotationsPath: "exports/annotations.jsonl",
+      mergedReviewsPath: "exports/intersection_reviews.jsonl",
       dataBase: "./data",
     },
     window.LANEPILOT_WEB_CONFIG || {}
