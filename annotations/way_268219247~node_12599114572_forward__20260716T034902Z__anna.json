@@ -1,0 +1,284 @@
+{
+  "object_identity": {
+    "schema_version": 2,
+    "object_type": "nav_context_annotation",
+    "nav_context_key": "way/268219247@node/12599114572/forward",
+    "nav_segment_key": "way/268219247",
+    "context_scope": "intersection_approach",
+    "applies_to_intersection_key": "node/12599114572",
+    "approach_direction": "forward",
+    "source_osm": {
+      "osm_type": "way",
+      "osm_id": 268219247
+    },
+    "split_index": 0
+  },
+  "osm_reference": {
+    "osm_selected_tags": {
+      "highway": "secondary",
+      "name": "鳳楠路",
+      "oneway": "yes"
+    },
+    "map_links": {
+      "openstreetmap": "https://www.openstreetmap.org/way/268219247",
+      "google_maps": "https://www.google.com/maps/@22.724145,120.3301755,19z"
+    },
+    "nearby_intersections": [
+      {
+        "nav_intersection_key": "node/12598724570",
+        "osm_id": 12598724570,
+        "intersection_name": "楠陽路 / 鳳楠路",
+        "connected_way_count": 4,
+        "connected_ways": [
+          {
+            "osm_way_id": 23787579,
+            "name": "楠陽路",
+            "highway": "tertiary"
+          },
+          {
+            "osm_way_id": 268219240,
+            "name": "楠陽路",
+            "highway": "tertiary"
+          },
+          {
+            "osm_way_id": 268219247,
+            "name": "鳳楠路",
+            "highway": "secondary"
+          },
+          {
+            "osm_way_id": 271982170,
+            "name": "鳳楠路",
+            "highway": "secondary"
+          }
+        ],
+        "road_classes": [
+          "secondary",
+          "tertiary"
+        ],
+        "candidate_priority": 140,
+        "manual_targets": [
+          "check_intersection_geometry",
+          "check_lane_movements"
+        ],
+        "coordinate": {
+          "lng": 120.3301755,
+          "lat": 22.724145
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/12598724570",
+          "google_maps": "https://www.google.com/maps/@22.724145,120.3301755,20z"
+        },
+        "distance_m": 0
+      },
+      {
+        "nav_intersection_key": "node/12599114572",
+        "osm_id": 12599114572,
+        "intersection_name": "經建路 / 鳳楠路",
+        "connected_way_count": 4,
+        "connected_ways": [
+          {
+            "osm_way_id": 131904701,
+            "name": "經建路",
+            "highway": "unclassified"
+          },
+          {
+            "osm_way_id": 268219247,
+            "name": "鳳楠路",
+            "highway": "secondary"
+          },
+          {
+            "osm_way_id": 306702027,
+            "name": "鳳楠路",
+            "highway": "secondary"
+          },
+          {
+            "osm_way_id": 362686116,
+            "name": "經建路",
+            "highway": "unclassified"
+          }
+        ],
+        "road_classes": [
+          "secondary",
+          "unclassified"
+        ],
+        "candidate_priority": 140,
+        "manual_targets": [
+          "check_intersection_geometry",
+          "check_lane_movements"
+        ],
+        "coordinate": {
+          "lng": 120.3313259,
+          "lat": 22.7223965
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/12599114572",
+          "google_maps": "https://www.google.com/maps/@22.7223965,120.3313259,20z"
+        },
+        "distance_m": 0
+      },
+      {
+        "nav_intersection_key": "node/12598724569",
+        "osm_id": 12598724569,
+        "intersection_name": "楠陽路 / 鳳楠路",
+        "connected_way_count": 2,
+        "connected_ways": [
+          {
+            "osm_way_id": 103679001,
+            "name": "楠陽路",
+            "highway": "tertiary"
+          },
+          {
+            "osm_way_id": 268219247,
+            "name": "鳳楠路",
+            "highway": "secondary"
+          }
+        ],
+        "road_classes": [
+          "secondary",
+          "tertiary"
+        ],
+        "candidate_priority": 116,
+        "manual_targets": [
+          "check_intersection_geometry"
+        ],
+        "coordinate": {
+          "lng": 120.330271,
+          "lat": 22.7240059
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/12598724569",
+          "google_maps": "https://www.google.com/maps/@22.7240059,120.330271,20z"
+        },
+        "distance_m": 0
+      },
+      {
+        "nav_intersection_key": "node/12599114576",
+        "osm_id": 12599114576,
+        "intersection_name": "鳳楠路 / 鳳楠路108巷",
+        "connected_way_count": 2,
+        "connected_ways": [
+          {
+            "osm_way_id": 217140223,
+            "name": "鳳楠路108巷",
+            "highway": "residential"
+          },
+          {
+            "osm_way_id": 268219247,
+            "name": "鳳楠路",
+            "highway": "secondary"
+          }
+        ],
+        "road_classes": [
+          "residential",
+          "secondary"
+        ],
+        "candidate_priority": 116,
+        "manual_targets": [
+          "check_intersection_geometry"
+        ],
+        "coordinate": {
+          "lng": 120.3308659,
+          "lat": 22.7231227
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/12599114576",
+          "google_maps": "https://www.google.com/maps/@22.7231227,120.3308659,20z"
+        },
+        "distance_m": 0
+      }
+    ]
+  },
+  "lane_nav_tags": {
+    "osm_review_tags": {
+      "osm_lane_status": "not_checked",
+      "osm_turn_lane_status": "not_checked",
+      "osm_motorcycle_status": "not_checked",
+      "osm_review_note": null
+    },
+    "taiwan_motorcycle_tags": {
+      "movement_rules": [
+        {
+          "movement_key": "way/268219247@node/12599114572/forward->way/131904701/left",
+          "from_context_key": "way/268219247@node/12599114572/forward",
+          "to_segment_key": "way/131904701",
+          "applies_to_intersection_key": "node/12599114572",
+          "approach_segment_key": "way/268219247",
+          "selected_road": "鳳楠路",
+          "approach_direction": "forward",
+          "movement": "left",
+          "target_road": "經建路",
+          "vehicle_rule": "normal",
+          "motorcycle_turn_rule": "two_stage_required",
+          "two_stage_sign_exists": "yes",
+          "waiting_zone_exists": "yes",
+          "waiting_zone_position": "front_right",
+          "data_origin": "context_v2"
+        }
+      ]
+    },
+    "offset_relations": [],
+    "lane_detail_tags": {
+      "lane_profiles": []
+    }
+  },
+  "geometry": {
+    "type": "LineString",
+    "coordinates": [
+      [
+        120.3301755,
+        22.724145
+      ],
+      [
+        120.330271,
+        22.7240059
+      ],
+      [
+        120.3302967,
+        22.7239701
+      ],
+      [
+        120.3303324,
+        22.7239169
+      ],
+      [
+        120.3308198,
+        22.7231914
+      ],
+      [
+        120.3308375,
+        22.7231651
+      ],
+      [
+        120.3308659,
+        22.7231227
+      ],
+      [
+        120.3309368,
+        22.7230108
+      ],
+      [
+        120.331169,
+        22.7226441
+      ],
+      [
+        120.3311911,
+        22.7226094
+      ],
+      [
+        120.3313259,
+        22.7223965
+      ]
+    ]
+  },
+  "annotation_metadata": {
+    "created_from": "manual_form",
+    "evidence_type": "streetview",
+    "manual_verified": "yes",
+    "verified_by": "anna",
+    "verified_at": "2026-07-16T11:00",
+    "verified_at_precision": "hour",
+    "verified_timezone": "Asia/Taipei",
+    "confidence": "medium",
+    "note": ""
+  }
+}
