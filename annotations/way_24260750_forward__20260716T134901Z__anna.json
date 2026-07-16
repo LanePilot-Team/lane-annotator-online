@@ -1,0 +1,153 @@
+{
+  "object_identity": {
+    "schema_version": 2,
+    "object_type": "nav_context_annotation",
+    "nav_context_key": "way/24260750/forward",
+    "nav_segment_key": "way/24260750",
+    "context_scope": "segment_direction",
+    "applies_to_intersection_key": null,
+    "approach_direction": "forward",
+    "source_osm": {
+      "osm_type": "way",
+      "osm_id": 24260750
+    },
+    "split_index": 0
+  },
+  "osm_reference": {
+    "osm_selected_tags": {
+      "highway": "tertiary",
+      "name": "甲昌路",
+      "oneway": "yes",
+      "lanes": "2",
+      "turn:lanes": "slight_left|slight_right"
+    },
+    "map_links": {
+      "openstreetmap": "https://www.openstreetmap.org/way/24260750",
+      "google_maps": "https://www.google.com/maps/@22.7347391,120.2927803,19z"
+    },
+    "nearby_intersections": [
+      {
+        "nav_intersection_key": "node/262101289",
+        "osm_id": 262101289,
+        "intersection_name": "甲昌路 / 藍昌路",
+        "connected_way_count": 2,
+        "connected_ways": [
+          {
+            "osm_way_id": 24260750,
+            "name": "甲昌路",
+            "highway": "tertiary"
+          },
+          {
+            "osm_way_id": 189158656,
+            "name": "藍昌路",
+            "highway": "tertiary"
+          }
+        ],
+        "road_classes": [
+          "tertiary"
+        ],
+        "candidate_priority": 124,
+        "manual_targets": [
+          "check_intersection_geometry",
+          "check_two_stage_turn_sign",
+          "check_waiting_zone",
+          "check_lane_movements"
+        ],
+        "coordinate": {
+          "lng": 120.2927803,
+          "lat": 22.7347391
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/262101289",
+          "google_maps": "https://www.google.com/maps/@22.7347391,120.2927803,20z"
+        },
+        "distance_m": 0
+      }
+    ]
+  },
+  "lane_nav_tags": {
+    "osm_review_tags": {
+      "osm_lane_status": "not_checked",
+      "osm_turn_lane_status": "not_checked",
+      "osm_motorcycle_status": "not_checked",
+      "osm_review_note": null
+    },
+    "taiwan_motorcycle_tags": {
+      "movement_rules": []
+    },
+    "offset_relations": [],
+    "lane_detail_tags": {
+      "lane_profiles": [
+        {
+          "direction": "forward",
+          "lane_count": 2,
+          "lane_movements": [
+            "through",
+            "through"
+          ],
+          "motorcycle_access_by_lane": [
+            "yes",
+            "yes"
+          ],
+          "source": "manual"
+        }
+      ]
+    }
+  },
+  "geometry": {
+    "type": "LineString",
+    "coordinates": [
+      [
+        120.2927803,
+        22.7347391
+      ],
+      [
+        120.2928129,
+        22.7348613
+      ],
+      [
+        120.2928807,
+        22.7350204
+      ],
+      [
+        120.2932405,
+        22.7358061
+      ],
+      [
+        120.2934605,
+        22.7362866
+      ],
+      [
+        120.2936199,
+        22.7366552
+      ],
+      [
+        120.2936322,
+        22.7366835
+      ],
+      [
+        120.2936421,
+        22.7367065
+      ],
+      [
+        120.2936751,
+        22.7367795
+      ],
+      [
+        120.2937031,
+        22.736919
+      ]
+    ]
+  },
+  "annotation_metadata": {
+    "created_from": "manual_form",
+    "evidence_type": "streetview",
+    "manual_verified": "yes",
+    "verified_by": "anna",
+    "verified_at": "2026-07-16T21:00",
+    "verified_at_precision": "hour",
+    "verified_timezone": "Asia/Taipei",
+    "confidence": "medium",
+    "note": ""
+  }
+}
