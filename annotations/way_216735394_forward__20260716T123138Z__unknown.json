@@ -1,0 +1,218 @@
+{
+  "object_identity": {
+    "schema_version": 2,
+    "object_type": "nav_context_annotation",
+    "nav_context_key": "way/216735394/forward",
+    "nav_segment_key": "way/216735394",
+    "context_scope": "segment_direction",
+    "applies_to_intersection_key": null,
+    "approach_direction": "forward",
+    "source_osm": {
+      "osm_type": "way",
+      "osm_id": 216735394
+    },
+    "split_index": 0
+  },
+  "osm_reference": {
+    "osm_selected_tags": {
+      "highway": "tertiary",
+      "name": "興楠路",
+      "oneway": "yes"
+    },
+    "map_links": {
+      "openstreetmap": "https://www.openstreetmap.org/way/216735394",
+      "google_maps": "https://www.google.com/maps/@22.7279846,120.330018,19z"
+    },
+    "nearby_intersections": [
+      {
+        "nav_intersection_key": "node/2264426765",
+        "osm_id": 2264426765,
+        "intersection_name": "楠梓東街 / 興楠橫巷 / 興楠路",
+        "connected_way_count": 4,
+        "connected_ways": [
+          {
+            "osm_way_id": 216735394,
+            "name": "興楠路",
+            "highway": "tertiary"
+          },
+          {
+            "osm_way_id": 216737090,
+            "name": "興楠橫巷",
+            "highway": "residential"
+          },
+          {
+            "osm_way_id": 230282053,
+            "name": "楠梓東街",
+            "highway": "residential"
+          },
+          {
+            "osm_way_id": 230282054,
+            "name": "興楠路",
+            "highway": "tertiary"
+          }
+        ],
+        "road_classes": [
+          "residential",
+          "tertiary"
+        ],
+        "candidate_priority": 122,
+        "manual_targets": [
+          "check_intersection_geometry"
+        ],
+        "coordinate": {
+          "lng": 120.3306098,
+          "lat": 22.7284276
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/2264426765",
+          "google_maps": "https://www.google.com/maps/@22.7284276,120.3306098,20z"
+        },
+        "distance_m": 0
+      },
+      {
+        "nav_intersection_key": "node/302211401",
+        "osm_id": 302211401,
+        "intersection_name": "楠梓路 / 興楠路",
+        "connected_way_count": 3,
+        "connected_ways": [
+          {
+            "osm_way_id": 131904674,
+            "name": "楠梓路",
+            "highway": "residential"
+          },
+          {
+            "osm_way_id": 216735394,
+            "name": "興楠路",
+            "highway": "tertiary"
+          },
+          {
+            "osm_way_id": 232002881,
+            "name": "楠梓路",
+            "highway": "tertiary"
+          }
+        ],
+        "road_classes": [
+          "residential",
+          "tertiary"
+        ],
+        "candidate_priority": 114,
+        "manual_targets": [
+          "check_intersection_geometry"
+        ],
+        "coordinate": {
+          "lng": 120.330018,
+          "lat": 22.7279846
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/302211401",
+          "google_maps": "https://www.google.com/maps/@22.7279846,120.330018,20z"
+        },
+        "distance_m": 0
+      },
+      {
+        "nav_intersection_key": "node/2261344436",
+        "osm_id": 2261344436,
+        "intersection_name": "楠梓舊街 / 興楠路",
+        "connected_way_count": 2,
+        "connected_ways": [
+          {
+            "osm_way_id": 216735394,
+            "name": "興楠路",
+            "highway": "tertiary"
+          },
+          {
+            "osm_way_id": 216735445,
+            "name": "楠梓舊街",
+            "highway": "residential"
+          }
+        ],
+        "road_classes": [
+          "residential",
+          "tertiary"
+        ],
+        "candidate_priority": 106,
+        "manual_targets": [
+          "check_intersection_geometry"
+        ],
+        "coordinate": {
+          "lng": 120.3301837,
+          "lat": 22.728112
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/2261344436",
+          "google_maps": "https://www.google.com/maps/@22.728112,120.3301837,20z"
+        },
+        "distance_m": 0
+      }
+    ]
+  },
+  "lane_nav_tags": {
+    "osm_review_tags": {
+      "osm_lane_status": "not_checked",
+      "osm_turn_lane_status": "not_checked",
+      "osm_motorcycle_status": "not_checked",
+      "osm_review_note": null
+    },
+    "taiwan_motorcycle_tags": {
+      "movement_rules": []
+    },
+    "offset_relations": [],
+    "lane_detail_tags": {
+      "lane_profiles": [
+        {
+          "direction": "forward",
+          "lane_count": 2,
+          "lane_movements": [
+            "left;through",
+            "through;right"
+          ],
+          "motorcycle_access_by_lane": [
+            "no",
+            "yes"
+          ],
+          "source": "manual"
+        }
+      ]
+    }
+  },
+  "geometry": {
+    "type": "LineString",
+    "coordinates": [
+      [
+        120.330018,
+        22.7279846
+      ],
+      [
+        120.3300857,
+        22.7280396
+      ],
+      [
+        120.3301837,
+        22.728112
+      ],
+      [
+        120.3304796,
+        22.7283415
+      ],
+      [
+        120.33054,
+        22.7283815
+      ],
+      [
+        120.3306098,
+        22.7284276
+      ]
+    ]
+  },
+  "annotation_metadata": {
+    "created_from": "manual_form",
+    "evidence_type": "streetview",
+    "manual_verified": "yes",
+    "verified_by": "unknown",
+    "verified_at": "2026-07-16T20:00",
+    "verified_at_precision": "hour",
+    "verified_timezone": "Asia/Taipei",
+    "confidence": "medium",
+    "note": ""
+  }
+}
