@@ -1,0 +1,182 @@
+{
+  "object_identity": {
+    "schema_version": 2,
+    "object_type": "nav_context_annotation",
+    "nav_context_key": "way/24206192@node/3010553465/forward",
+    "nav_segment_key": "way/24206192",
+    "context_scope": "intersection_approach",
+    "applies_to_intersection_key": "node/3010553465",
+    "approach_direction": "forward",
+    "source_osm": {
+      "osm_type": "way",
+      "osm_id": 24206192
+    },
+    "split_index": 0
+  },
+  "osm_reference": {
+    "osm_selected_tags": {
+      "highway": "tertiary",
+      "name": "甲昌路",
+      "oneway": "yes",
+      "lanes": "2"
+    },
+    "map_links": {
+      "openstreetmap": "https://www.openstreetmap.org/way/24206192",
+      "google_maps": "https://www.google.com/maps/@22.736919,120.2937031,19z"
+    },
+    "nearby_intersections": [
+      {
+        "nav_intersection_key": "node/3010553465",
+        "osm_id": 3010553465,
+        "intersection_name": "甲昌路 / 甲昌路隆昌巷",
+        "connected_way_count": 2,
+        "connected_ways": [
+          {
+            "osm_way_id": 24206192,
+            "name": "甲昌路",
+            "highway": "tertiary"
+          },
+          {
+            "osm_way_id": 1292563462,
+            "name": "甲昌路隆昌巷",
+            "highway": "residential"
+          }
+        ],
+        "road_classes": [
+          "residential",
+          "tertiary"
+        ],
+        "candidate_priority": 114,
+        "manual_targets": [
+          "check_intersection_geometry",
+          "check_lane_movements"
+        ],
+        "coordinate": {
+          "lng": 120.2927205,
+          "lat": 22.734901
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/3010553465",
+          "google_maps": "https://www.google.com/maps/@22.734901,120.2927205,20z"
+        },
+        "distance_m": 0
+      },
+      {
+        "nav_intersection_key": "node/262101274",
+        "osm_id": 262101274,
+        "intersection_name": "甲昌路 / 藍昌路",
+        "connected_way_count": 2,
+        "connected_ways": [
+          {
+            "osm_way_id": 24206192,
+            "name": "甲昌路",
+            "highway": "tertiary"
+          },
+          {
+            "osm_way_id": 24260751,
+            "name": "藍昌路",
+            "highway": "tertiary"
+          }
+        ],
+        "road_classes": [
+          "tertiary"
+        ],
+        "candidate_priority": 114,
+        "manual_targets": [
+          "check_intersection_geometry",
+          "check_lane_movements"
+        ],
+        "coordinate": {
+          "lng": 120.292683,
+          "lat": 22.734744
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/262101274",
+          "google_maps": "https://www.google.com/maps/@22.734744,120.292683,20z"
+        },
+        "distance_m": 0
+      }
+    ]
+  },
+  "lane_nav_tags": {
+    "osm_review_tags": {
+      "osm_lane_status": "not_checked",
+      "osm_turn_lane_status": "not_checked",
+      "osm_motorcycle_status": "not_checked",
+      "osm_review_note": null
+    },
+    "taiwan_motorcycle_tags": {
+      "movement_rules": []
+    },
+    "offset_relations": [],
+    "lane_detail_tags": {
+      "lane_profiles": [
+        {
+          "direction": "forward",
+          "lane_count": 2,
+          "lane_movements": [
+            "through",
+            "through;right"
+          ],
+          "motorcycle_access_by_lane": [
+            "yes",
+            "yes"
+          ],
+          "source": "manual"
+        }
+      ]
+    }
+  },
+  "geometry": {
+    "type": "LineString",
+    "coordinates": [
+      [
+        120.2937031,
+        22.736919
+      ],
+      [
+        120.2936057,
+        22.7368113
+      ],
+      [
+        120.2935733,
+        22.7367398
+      ],
+      [
+        120.2935605,
+        22.7367113
+      ],
+      [
+        120.2933833,
+        22.7363196
+      ],
+      [
+        120.2931563,
+        22.735843
+      ],
+      [
+        120.2927712,
+        22.7350345
+      ],
+      [
+        120.2927205,
+        22.734901
+      ],
+      [
+        120.292683,
+        22.734744
+      ]
+    ]
+  },
+  "annotation_metadata": {
+    "created_from": "manual_form",
+    "evidence_type": "streetview",
+    "manual_verified": "yes",
+    "verified_by": "anna",
+    "verified_at": "2026-07-16T21:00",
+    "verified_at_precision": "hour",
+    "verified_timezone": "Asia/Taipei",
+    "confidence": "medium",
+    "note": ""
+  }
+}
