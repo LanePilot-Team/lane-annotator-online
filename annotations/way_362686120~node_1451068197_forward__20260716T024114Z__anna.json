@@ -1,0 +1,255 @@
+{
+  "object_identity": {
+    "schema_version": 2,
+    "object_type": "nav_context_annotation",
+    "nav_context_key": "way/362686120@node/1451068197/forward",
+    "nav_segment_key": "way/362686120",
+    "context_scope": "intersection_approach",
+    "applies_to_intersection_key": "node/1451068197",
+    "approach_direction": "forward",
+    "source_osm": {
+      "osm_type": "way",
+      "osm_id": 362686120
+    },
+    "split_index": 0
+  },
+  "osm_reference": {
+    "osm_selected_tags": {
+      "highway": "tertiary",
+      "name": "楠興東路",
+      "oneway": "yes",
+      "lanes": "2"
+    },
+    "map_links": {
+      "openstreetmap": "https://www.openstreetmap.org/way/362686120",
+      "google_maps": "https://www.google.com/maps/@22.7248987,120.3337061,19z"
+    },
+    "nearby_intersections": [
+      {
+        "nav_intersection_key": "node/1451068485",
+        "osm_id": 1451068485,
+        "intersection_name": "楠梓交流道 / 楠興東路",
+        "connected_way_count": 3,
+        "connected_ways": [
+          {
+            "osm_way_id": 131904790,
+            "name": "楠梓交流道",
+            "highway": "motorway_link"
+          },
+          {
+            "osm_way_id": 362686120,
+            "name": "楠興東路",
+            "highway": "tertiary"
+          },
+          {
+            "osm_way_id": 1356812165,
+            "name": "楠興東路",
+            "highway": "tertiary"
+          }
+        ],
+        "road_classes": [
+          "motorway_link",
+          "tertiary"
+        ],
+        "candidate_priority": 122,
+        "manual_targets": [
+          "check_intersection_geometry",
+          "check_lane_movements"
+        ],
+        "coordinate": {
+          "lng": 120.3344438,
+          "lat": 22.729064
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/1451068485",
+          "google_maps": "https://www.google.com/maps/@22.729064,120.3344438,20z"
+        },
+        "distance_m": 0
+      },
+      {
+        "nav_intersection_key": "node/1451069408",
+        "osm_id": 1451069408,
+        "intersection_name": "楠興東路 / 楠陽路",
+        "connected_way_count": 3,
+        "connected_ways": [
+          {
+            "osm_way_id": 362686120,
+            "name": "楠興東路",
+            "highway": "tertiary"
+          },
+          {
+            "osm_way_id": 1013857474,
+            "name": "楠興東路",
+            "highway": "tertiary"
+          },
+          {
+            "osm_way_id": 1013857476,
+            "name": "楠陽路",
+            "highway": "tertiary"
+          }
+        ],
+        "road_classes": [
+          "tertiary"
+        ],
+        "candidate_priority": 122,
+        "manual_targets": [
+          "check_intersection_geometry",
+          "check_lane_movements"
+        ],
+        "coordinate": {
+          "lng": 120.3337061,
+          "lat": 22.7248987
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/1451069408",
+          "google_maps": "https://www.google.com/maps/@22.7248987,120.3337061,20z"
+        },
+        "distance_m": 0
+      },
+      {
+        "nav_intersection_key": "node/1451068197",
+        "osm_id": 1451068197,
+        "intersection_name": "楠興東路 / 楠陽路",
+        "connected_way_count": 2,
+        "connected_ways": [
+          {
+            "osm_way_id": 23787579,
+            "name": "楠陽路",
+            "highway": "tertiary"
+          },
+          {
+            "osm_way_id": 362686120,
+            "name": "楠興東路",
+            "highway": "tertiary"
+          }
+        ],
+        "road_classes": [
+          "tertiary"
+        ],
+        "candidate_priority": 114,
+        "manual_targets": [
+          "check_intersection_geometry",
+          "check_lane_movements"
+        ],
+        "coordinate": {
+          "lng": 120.3337344,
+          "lat": 22.72502
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/1451068197",
+          "google_maps": "https://www.google.com/maps/@22.72502,120.3337344,20z"
+        },
+        "distance_m": 0
+      },
+      {
+        "nav_intersection_key": "node/1451068085",
+        "osm_id": 1451068085,
+        "intersection_name": "楠興東路",
+        "connected_way_count": 2,
+        "connected_ways": [
+          {
+            "osm_way_id": 131904748,
+            "name": null,
+            "highway": "service"
+          },
+          {
+            "osm_way_id": 362686120,
+            "name": "楠興東路",
+            "highway": "tertiary"
+          }
+        ],
+        "road_classes": [
+          "service",
+          "tertiary"
+        ],
+        "candidate_priority": 96,
+        "manual_targets": [
+          "check_intersection_geometry",
+          "check_lane_movements"
+        ],
+        "coordinate": {
+          "lng": 120.3344271,
+          "lat": 22.7282315
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/1451068085",
+          "google_maps": "https://www.google.com/maps/@22.7282315,120.3344271,20z"
+        },
+        "distance_m": 0
+      }
+    ]
+  },
+  "lane_nav_tags": {
+    "osm_review_tags": {
+      "osm_lane_status": "not_checked",
+      "osm_turn_lane_status": "not_checked",
+      "osm_motorcycle_status": "not_checked",
+      "osm_review_note": null
+    },
+    "taiwan_motorcycle_tags": {
+      "movement_rules": [
+        {
+          "movement_key": "way/362686120@node/1451068197/forward->way/23787579/left",
+          "from_context_key": "way/362686120@node/1451068197/forward",
+          "to_segment_key": "way/23787579",
+          "applies_to_intersection_key": "node/1451068197",
+          "approach_segment_key": "way/362686120",
+          "selected_road": "楠興東路",
+          "approach_direction": "forward",
+          "movement": "left",
+          "target_road": "楠陽路",
+          "vehicle_rule": "normal",
+          "motorcycle_turn_rule": "two_stage_required",
+          "two_stage_sign_exists": "yes",
+          "waiting_zone_exists": "yes",
+          "waiting_zone_position": "front_right",
+          "data_origin": "context_v2"
+        }
+      ]
+    },
+    "offset_relations": [],
+    "lane_detail_tags": {
+      "lane_profiles": []
+    }
+  },
+  "geometry": {
+    "type": "LineString",
+    "coordinates": [
+      [
+        120.3337061,
+        22.7248987
+      ],
+      [
+        120.3337344,
+        22.72502
+      ],
+      [
+        120.3337432,
+        22.7250575
+      ],
+      [
+        120.3343134,
+        22.7275
+      ],
+      [
+        120.3344271,
+        22.7282315
+      ],
+      [
+        120.3344438,
+        22.729064
+      ]
+    ]
+  },
+  "annotation_metadata": {
+    "created_from": "manual_form",
+    "evidence_type": "streetview",
+    "manual_verified": "yes",
+    "verified_by": "anna",
+    "verified_at": "2026-07-16T10:00",
+    "verified_at_precision": "hour",
+    "verified_timezone": "Asia/Taipei",
+    "confidence": "medium",
+    "note": ""
+  }
+}
