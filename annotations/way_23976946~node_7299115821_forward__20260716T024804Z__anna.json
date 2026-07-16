@@ -1,0 +1,214 @@
+{
+  "object_identity": {
+    "schema_version": 2,
+    "object_type": "nav_context_annotation",
+    "nav_context_key": "way/23976946@node/7299115821/forward",
+    "nav_segment_key": "way/23976946",
+    "context_scope": "intersection_approach",
+    "applies_to_intersection_key": "node/7299115821",
+    "approach_direction": "forward",
+    "source_osm": {
+      "osm_type": "way",
+      "osm_id": 23976946
+    },
+    "split_index": 0
+  },
+  "osm_reference": {
+    "osm_selected_tags": {
+      "highway": "tertiary",
+      "name": "世運大道",
+      "oneway": "yes",
+      "lanes": "3",
+      "maxspeed": "60"
+    },
+    "map_links": {
+      "openstreetmap": "https://www.openstreetmap.org/way/23976946",
+      "google_maps": "https://www.google.com/maps/@22.7010041,120.3024334,19z"
+    },
+    "nearby_intersections": [
+      {
+        "nav_intersection_key": "node/295692590",
+        "osm_id": 295692590,
+        "intersection_name": "世運大道 / 左楠路",
+        "connected_way_count": 4,
+        "connected_ways": [
+          {
+            "osm_way_id": 23976946,
+            "name": "世運大道",
+            "highway": "tertiary"
+          },
+          {
+            "osm_way_id": 247974702,
+            "name": "左楠路",
+            "highway": "primary"
+          },
+          {
+            "osm_way_id": 269838142,
+            "name": "左楠路",
+            "highway": "primary"
+          },
+          {
+            "osm_way_id": 781783341,
+            "name": "世運大道",
+            "highway": "tertiary"
+          }
+        ],
+        "road_classes": [
+          "primary",
+          "tertiary"
+        ],
+        "candidate_priority": 150,
+        "manual_targets": [
+          "check_intersection_geometry",
+          "check_lane_movements"
+        ],
+        "coordinate": {
+          "lng": 120.3024334,
+          "lat": 22.7010041
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/295692590",
+          "google_maps": "https://www.google.com/maps/@22.7010041,120.3024334,20z"
+        },
+        "distance_m": 0
+      },
+      {
+        "nav_intersection_key": "node/7299115821",
+        "osm_id": 7299115821,
+        "intersection_name": "世運大道",
+        "connected_way_count": 2,
+        "connected_ways": [
+          {
+            "osm_way_id": 23976946,
+            "name": "世運大道",
+            "highway": "tertiary"
+          },
+          {
+            "osm_way_id": 781783342,
+            "name": null,
+            "highway": "service"
+          }
+        ],
+        "road_classes": [
+          "service",
+          "tertiary"
+        ],
+        "candidate_priority": 96,
+        "manual_targets": [
+          "check_intersection_geometry",
+          "check_lane_movements"
+        ],
+        "coordinate": {
+          "lng": 120.2996646,
+          "lat": 22.7009335
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/7299115821",
+          "google_maps": "https://www.google.com/maps/@22.7009335,120.2996646,20z"
+        },
+        "distance_m": 0
+      }
+    ]
+  },
+  "lane_nav_tags": {
+    "osm_review_tags": {
+      "osm_lane_status": "not_checked",
+      "osm_turn_lane_status": "not_checked",
+      "osm_motorcycle_status": "not_checked",
+      "osm_review_note": null
+    },
+    "taiwan_motorcycle_tags": {
+      "movement_rules": [
+        {
+          "movement_key": "way/23976946@node/7299115821/forward->way/781783342/left",
+          "from_context_key": "way/23976946@node/7299115821/forward",
+          "to_segment_key": "way/781783342",
+          "applies_to_intersection_key": "node/7299115821",
+          "approach_segment_key": "way/23976946",
+          "selected_road": "世運大道",
+          "approach_direction": "forward",
+          "movement": "left",
+          "target_road": "未命名道路 (way/781783342)",
+          "vehicle_rule": "normal",
+          "motorcycle_turn_rule": "two_stage_required",
+          "two_stage_sign_exists": "yes",
+          "waiting_zone_exists": "yes",
+          "waiting_zone_position": "front_right",
+          "data_origin": "context_v2"
+        }
+      ]
+    },
+    "offset_relations": [],
+    "lane_detail_tags": {
+      "lane_profiles": []
+    }
+  },
+  "geometry": {
+    "type": "LineString",
+    "coordinates": [
+      [
+        120.3024334,
+        22.7010041
+      ],
+      [
+        120.3022298,
+        22.7009989
+      ],
+      [
+        120.2998511,
+        22.7009383
+      ],
+      [
+        120.2996646,
+        22.7009335
+      ],
+      [
+        120.2994882,
+        22.700929
+      ],
+      [
+        120.2975854,
+        22.7008801
+      ],
+      [
+        120.2974495,
+        22.7008759
+      ],
+      [
+        120.2973574,
+        22.7008747
+      ],
+      [
+        120.2945497,
+        22.7008095
+      ],
+      [
+        120.2942333,
+        22.7008024
+      ],
+      [
+        120.2927604,
+        22.7007666
+      ],
+      [
+        120.292683,
+        22.7007657
+      ],
+      [
+        120.2925307,
+        22.700763
+      ]
+    ]
+  },
+  "annotation_metadata": {
+    "created_from": "manual_form",
+    "evidence_type": "streetview",
+    "manual_verified": "yes",
+    "verified_by": "anna",
+    "verified_at": "2026-07-16T10:00",
+    "verified_at_precision": "hour",
+    "verified_timezone": "Asia/Taipei",
+    "confidence": "medium",
+    "note": ""
+  }
+}
