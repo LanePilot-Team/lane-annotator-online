@@ -1,0 +1,142 @@
+{
+  "object_identity": {
+    "schema_version": 2,
+    "object_type": "nav_context_annotation",
+    "nav_context_key": "way/231996066/forward",
+    "nav_segment_key": "way/231996066",
+    "context_scope": "segment_direction",
+    "applies_to_intersection_key": null,
+    "approach_direction": "forward",
+    "source_osm": {
+      "osm_type": "way",
+      "osm_id": 231996066
+    },
+    "split_index": 0
+  },
+  "osm_reference": {
+    "osm_selected_tags": {
+      "highway": "tertiary",
+      "name": "興楠路",
+      "oneway": "yes"
+    },
+    "map_links": {
+      "openstreetmap": "https://www.openstreetmap.org/way/231996066",
+      "google_maps": "https://www.google.com/maps/@22.7316463,120.339433,19z"
+    },
+    "nearby_intersections": [
+      {
+        "nav_intersection_key": "node/2264426820",
+        "osm_id": 2264426820,
+        "intersection_name": "興楠路 / 興楠路15巷",
+        "connected_way_count": 4,
+        "connected_ways": [
+          {
+            "osm_way_id": 231996065,
+            "name": "興楠路15巷",
+            "highway": "residential"
+          },
+          {
+            "osm_way_id": 231996066,
+            "name": "興楠路",
+            "highway": "tertiary"
+          },
+          {
+            "osm_way_id": 231996067,
+            "name": null,
+            "highway": "service"
+          },
+          {
+            "osm_way_id": 286066505,
+            "name": "興楠路",
+            "highway": "tertiary"
+          }
+        ],
+        "road_classes": [
+          "residential",
+          "service",
+          "tertiary"
+        ],
+        "candidate_priority": 122,
+        "manual_targets": [
+          "check_intersection_geometry"
+        ],
+        "coordinate": {
+          "lng": 120.339433,
+          "lat": 22.7316463
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/2264426820",
+          "google_maps": "https://www.google.com/maps/@22.7316463,120.339433,20z"
+        },
+        "distance_m": 0
+      }
+    ]
+  },
+  "lane_nav_tags": {
+    "osm_review_tags": {
+      "osm_lane_status": "not_checked",
+      "osm_turn_lane_status": "not_checked",
+      "osm_motorcycle_status": "not_checked",
+      "osm_review_note": null
+    },
+    "taiwan_motorcycle_tags": {
+      "movement_rules": []
+    },
+    "offset_relations": [],
+    "lane_detail_tags": {
+      "lane_profiles": [
+        {
+          "direction": "forward",
+          "lane_count": 3,
+          "lane_movements": [
+            "through",
+            "through",
+            "right"
+          ],
+          "motorcycle_access_by_lane": [
+            "no",
+            "yes",
+            "yes"
+          ],
+          "source": "manual"
+        }
+      ]
+    }
+  },
+  "geometry": {
+    "type": "LineString",
+    "coordinates": [
+      [
+        120.339433,
+        22.7316463
+      ],
+      [
+        120.3402611,
+        22.7317833
+      ],
+      [
+        120.3403366,
+        22.7317958
+      ],
+      [
+        120.3403679,
+        22.731801
+      ],
+      [
+        120.3405296,
+        22.7319149
+      ]
+    ]
+  },
+  "annotation_metadata": {
+    "created_from": "manual_form",
+    "evidence_type": "streetview",
+    "manual_verified": "yes",
+    "verified_by": "unknown",
+    "verified_at": "2026-07-16T20:00",
+    "verified_at_precision": "hour",
+    "verified_timezone": "Asia/Taipei",
+    "confidence": "medium",
+    "note": ""
+  }
+}
