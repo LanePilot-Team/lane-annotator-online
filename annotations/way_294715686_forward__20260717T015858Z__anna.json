@@ -1,0 +1,345 @@
+{
+  "object_identity": {
+    "schema_version": 2,
+    "object_type": "nav_context_annotation",
+    "nav_context_key": "way/294715686/forward",
+    "nav_segment_key": "way/294715686",
+    "context_scope": "segment_direction",
+    "applies_to_intersection_key": null,
+    "approach_direction": "forward",
+    "source_osm": {
+      "osm_type": "way",
+      "osm_id": 294715686
+    },
+    "split_index": 0
+  },
+  "osm_reference": {
+    "osm_selected_tags": {
+      "highway": "motorway",
+      "name": "中山高速公路",
+      "ref": "1",
+      "oneway": "yes",
+      "lanes": "3",
+      "maxspeed": "110"
+    },
+    "map_links": {
+      "openstreetmap": "https://www.openstreetmap.org/way/294715686",
+      "google_maps": "https://www.google.com/maps/@22.7470293,120.3346466,19z"
+    },
+    "nearby_intersections": [
+      {
+        "nav_intersection_key": "node/493976625",
+        "osm_id": 493976625,
+        "intersection_name": "中山高速公路 / 楠梓交流道",
+        "connected_way_count": 3,
+        "connected_ways": [
+          {
+            "osm_way_id": 230335071,
+            "name": "中山高速公路",
+            "highway": "motorway"
+          },
+          {
+            "osm_way_id": 230335072,
+            "name": "楠梓交流道",
+            "highway": "motorway_link"
+          },
+          {
+            "osm_way_id": 1016155582,
+            "name": "中山高速公路",
+            "highway": "motorway"
+          }
+        ],
+        "road_classes": [
+          "motorway",
+          "motorway_link"
+        ],
+        "candidate_priority": 108,
+        "manual_targets": [
+          "check_intersection_geometry"
+        ],
+        "coordinate": {
+          "lng": 120.3347494,
+          "lat": 22.7428104
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/493976625",
+          "google_maps": "https://www.google.com/maps/@22.7428104,120.3347494,20z"
+        },
+        "distance_m": 21
+      },
+      {
+        "nav_intersection_key": "node/2264426992",
+        "osm_id": 2264426992,
+        "intersection_name": "土庫八街 / 土庫八街467巷",
+        "connected_way_count": 2,
+        "connected_ways": [
+          {
+            "osm_way_id": 217140186,
+            "name": "土庫八街467巷",
+            "highway": "service"
+          },
+          {
+            "osm_way_id": 230335067,
+            "name": "土庫八街",
+            "highway": "residential"
+          }
+        ],
+        "road_classes": [
+          "residential",
+          "service"
+        ],
+        "candidate_priority": 69,
+        "manual_targets": [
+          "check_intersection_geometry"
+        ],
+        "coordinate": {
+          "lng": 120.3343858,
+          "lat": 22.7444487
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/2264426992",
+          "google_maps": "https://www.google.com/maps/@22.7444487,120.3343858,20z"
+        },
+        "distance_m": 22
+      },
+      {
+        "nav_intersection_key": "node/2264426944",
+        "osm_id": 2264426944,
+        "intersection_name": "土庫八街 / 土庫八街385巷",
+        "connected_way_count": 2,
+        "connected_ways": [
+          {
+            "osm_way_id": 217140222,
+            "name": "土庫八街385巷",
+            "highway": "service"
+          },
+          {
+            "osm_way_id": 230335067,
+            "name": "土庫八街",
+            "highway": "residential"
+          }
+        ],
+        "road_classes": [
+          "residential",
+          "service"
+        ],
+        "candidate_priority": 69,
+        "manual_targets": [
+          "check_intersection_geometry"
+        ],
+        "coordinate": {
+          "lng": 120.3343402,
+          "lat": 22.7431438
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/2264426944",
+          "google_maps": "https://www.google.com/maps/@22.7431438,120.3343402,20z"
+        },
+        "distance_m": 22
+      },
+      {
+        "nav_intersection_key": "node/2264427005",
+        "osm_id": 2264427005,
+        "intersection_name": "土庫八街 / 土庫八街485巷",
+        "connected_way_count": 2,
+        "connected_ways": [
+          {
+            "osm_way_id": 217140194,
+            "name": "土庫八街485巷",
+            "highway": "service"
+          },
+          {
+            "osm_way_id": 230335067,
+            "name": "土庫八街",
+            "highway": "residential"
+          }
+        ],
+        "road_classes": [
+          "residential",
+          "service"
+        ],
+        "candidate_priority": 69,
+        "manual_targets": [
+          "check_intersection_geometry"
+        ],
+        "coordinate": {
+          "lng": 120.3343952,
+          "lat": 22.7449954
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/2264427005",
+          "google_maps": "https://www.google.com/maps/@22.7449954,120.3343952,20z"
+        },
+        "distance_m": 23
+      },
+      {
+        "nav_intersection_key": "node/2264427016",
+        "osm_id": 2264427016,
+        "intersection_name": "土庫八街 / 土庫八街507巷",
+        "connected_way_count": 2,
+        "connected_ways": [
+          {
+            "osm_way_id": 217140203,
+            "name": "土庫八街507巷",
+            "highway": "service"
+          },
+          {
+            "osm_way_id": 230335067,
+            "name": "土庫八街",
+            "highway": "residential"
+          }
+        ],
+        "road_classes": [
+          "residential",
+          "service"
+        ],
+        "candidate_priority": 69,
+        "manual_targets": [
+          "check_intersection_geometry"
+        ],
+        "coordinate": {
+          "lng": 120.3344113,
+          "lat": 22.7456125
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/2264427016",
+          "google_maps": "https://www.google.com/maps/@22.7456125,120.3344113,20z"
+        },
+        "distance_m": 23
+      },
+      {
+        "nav_intersection_key": "node/988779663",
+        "osm_id": 988779663,
+        "intersection_name": "土庫八街 / 寶溪南街",
+        "connected_way_count": 2,
+        "connected_ways": [
+          {
+            "osm_way_id": 217140240,
+            "name": "寶溪南街",
+            "highway": "residential"
+          },
+          {
+            "osm_way_id": 230335067,
+            "name": "土庫八街",
+            "highway": "residential"
+          }
+        ],
+        "road_classes": [
+          "residential"
+        ],
+        "candidate_priority": 69,
+        "manual_targets": [
+          "check_intersection_geometry"
+        ],
+        "coordinate": {
+          "lng": 120.3344043,
+          "lat": 22.7460549
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/988779663",
+          "google_maps": "https://www.google.com/maps/@22.7460549,120.3344043,20z"
+        },
+        "distance_m": 24
+      },
+      {
+        "nav_intersection_key": "node/2264426926",
+        "osm_id": 2264426926,
+        "intersection_name": "土庫七街 / 土庫八街",
+        "connected_way_count": 2,
+        "connected_ways": [
+          {
+            "osm_way_id": 217140233,
+            "name": "土庫七街",
+            "highway": "residential"
+          },
+          {
+            "osm_way_id": 217140234,
+            "name": "土庫八街",
+            "highway": "residential"
+          }
+        ],
+        "road_classes": [
+          "residential"
+        ],
+        "candidate_priority": 69,
+        "manual_targets": [
+          "check_intersection_geometry"
+        ],
+        "coordinate": {
+          "lng": 120.3342566,
+          "lat": 22.7424179
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/2264426926",
+          "google_maps": "https://www.google.com/maps/@22.7424179,120.3342566,20z"
+        },
+        "distance_m": 50
+      }
+    ]
+  },
+  "lane_nav_tags": {
+    "osm_review_tags": {
+      "osm_lane_status": "not_checked",
+      "osm_turn_lane_status": "not_checked",
+      "osm_motorcycle_status": "not_checked",
+      "osm_review_note": null
+    },
+    "taiwan_motorcycle_tags": {
+      "movement_rules": []
+    },
+    "offset_relations": [],
+    "lane_detail_tags": {
+      "lane_profiles": [
+        {
+          "direction": "forward",
+          "lane_count": 4,
+          "lane_movements": [
+            "through",
+            "through",
+            "through",
+            "through"
+          ],
+          "motorcycle_access_by_lane": [
+            "no",
+            "no",
+            "no",
+            "no"
+          ],
+          "source": "manual"
+        }
+      ]
+    }
+  },
+  "geometry": {
+    "type": "LineString",
+    "coordinates": [
+      [
+        120.3346466,
+        22.7470293
+      ],
+      [
+        120.3346399,
+        22.745602
+      ],
+      [
+        120.334589,
+        22.7439991
+      ],
+      [
+        120.334542,
+        22.742787
+      ]
+    ]
+  },
+  "annotation_metadata": {
+    "created_from": "manual_form",
+    "evidence_type": "streetview",
+    "manual_verified": "yes",
+    "verified_by": "anna",
+    "verified_at": "2026-07-17T09:00",
+    "verified_at_precision": "hour",
+    "verified_timezone": "Asia/Taipei",
+    "confidence": "medium",
+    "note": ""
+  }
+}
