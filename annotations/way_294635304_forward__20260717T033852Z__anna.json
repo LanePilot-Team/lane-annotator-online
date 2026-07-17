@@ -1,0 +1,163 @@
+{
+  "object_identity": {
+    "schema_version": 2,
+    "object_type": "nav_context_annotation",
+    "nav_context_key": "way/294635304/forward",
+    "nav_segment_key": "way/294635304",
+    "context_scope": "segment_direction",
+    "applies_to_intersection_key": null,
+    "approach_direction": "forward",
+    "source_osm": {
+      "osm_type": "way",
+      "osm_id": 294635304
+    },
+    "split_index": 0
+  },
+  "osm_reference": {
+    "osm_selected_tags": {
+      "highway": "primary",
+      "name": "高楠公路",
+      "ref": "1",
+      "oneway": "yes"
+    },
+    "map_links": {
+      "openstreetmap": "https://www.openstreetmap.org/way/294635304",
+      "google_maps": "https://www.google.com/maps/@22.7182863,120.3253588,19z"
+    },
+    "nearby_intersections": [
+      {
+        "nav_intersection_key": "node/2982282054",
+        "osm_id": 2982282054,
+        "intersection_name": "高楠公路",
+        "connected_way_count": 3,
+        "connected_ways": [
+          {
+            "osm_way_id": 294635303,
+            "name": null,
+            "highway": "service"
+          },
+          {
+            "osm_way_id": 294635304,
+            "name": "高楠公路",
+            "highway": "primary"
+          },
+          {
+            "osm_way_id": 294647555,
+            "name": "高楠公路",
+            "highway": "primary"
+          }
+        ],
+        "road_classes": [
+          "primary",
+          "service"
+        ],
+        "candidate_priority": 116,
+        "manual_targets": [
+          "check_intersection_geometry"
+        ],
+        "coordinate": {
+          "lng": 120.3253588,
+          "lat": 22.7182863
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/2982282054",
+          "google_maps": "https://www.google.com/maps/@22.7182863,120.3253588,20z"
+        },
+        "distance_m": 0
+      },
+      {
+        "nav_intersection_key": "node/5346067178",
+        "osm_id": 5346067178,
+        "intersection_name": "高楠公路",
+        "connected_way_count": 3,
+        "connected_ways": [
+          {
+            "osm_way_id": 294635304,
+            "name": "高楠公路",
+            "highway": "primary"
+          },
+          {
+            "osm_way_id": 553882498,
+            "name": "高楠公路",
+            "highway": "primary"
+          },
+          {
+            "osm_way_id": 1495039667,
+            "name": null,
+            "highway": "service"
+          }
+        ],
+        "road_classes": [
+          "primary",
+          "service"
+        ],
+        "candidate_priority": 116,
+        "manual_targets": [
+          "check_intersection_geometry"
+        ],
+        "coordinate": {
+          "lng": 120.325255,
+          "lat": 22.7188562
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/5346067178",
+          "google_maps": "https://www.google.com/maps/@22.7188562,120.325255,20z"
+        },
+        "distance_m": 0
+      }
+    ]
+  },
+  "lane_nav_tags": {
+    "osm_review_tags": {
+      "osm_lane_status": "not_checked",
+      "osm_turn_lane_status": "not_checked",
+      "osm_motorcycle_status": "not_checked",
+      "osm_review_note": null
+    },
+    "taiwan_motorcycle_tags": {
+      "movement_rules": []
+    },
+    "offset_relations": [],
+    "lane_detail_tags": {
+      "lane_profiles": [
+        {
+          "direction": "forward",
+          "lane_count": 2,
+          "lane_movements": [
+            "through",
+            "through;right"
+          ],
+          "motorcycle_access_by_lane": [
+            "yes",
+            "yes"
+          ],
+          "source": "manual"
+        }
+      ]
+    }
+  },
+  "geometry": {
+    "type": "LineString",
+    "coordinates": [
+      [
+        120.3253588,
+        22.7182863
+      ],
+      [
+        120.325255,
+        22.7188562
+      ]
+    ]
+  },
+  "annotation_metadata": {
+    "created_from": "manual_form",
+    "evidence_type": "streetview",
+    "manual_verified": "yes",
+    "verified_by": "anna",
+    "verified_at": "2026-07-17T11:00",
+    "verified_at_precision": "hour",
+    "verified_timezone": "Asia/Taipei",
+    "confidence": "medium",
+    "note": ""
+  }
+}
