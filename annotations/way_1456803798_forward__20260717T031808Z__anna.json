@@ -1,0 +1,218 @@
+{
+  "object_identity": {
+    "schema_version": 2,
+    "object_type": "nav_context_annotation",
+    "nav_context_key": "way/1456803798/forward",
+    "nav_segment_key": "way/1456803798",
+    "context_scope": "segment_direction",
+    "applies_to_intersection_key": null,
+    "approach_direction": "forward",
+    "source_osm": {
+      "osm_type": "way",
+      "osm_id": 1456803798
+    },
+    "split_index": 0
+  },
+  "osm_reference": {
+    "osm_selected_tags": {
+      "highway": "primary",
+      "name": "高楠公路",
+      "ref": "1",
+      "oneway": "yes",
+      "lanes": "2",
+      "maxspeed": "60",
+      "motorcycle": "no"
+    },
+    "map_links": {
+      "openstreetmap": "https://www.openstreetmap.org/way/1456803798",
+      "google_maps": "https://www.google.com/maps/@22.7012814,120.32347,19z"
+    },
+    "nearby_intersections": [
+      {
+        "nav_intersection_key": "node/5792509211",
+        "osm_id": 5792509211,
+        "intersection_name": "水管路 / 高楠公路",
+        "connected_way_count": 4,
+        "connected_ways": [
+          {
+            "osm_way_id": 277509898,
+            "name": "高楠公路",
+            "highway": "primary"
+          },
+          {
+            "osm_way_id": 566619277,
+            "name": "水管路",
+            "highway": "tertiary"
+          },
+          {
+            "osm_way_id": 1456803798,
+            "name": "高楠公路",
+            "highway": "primary"
+          },
+          {
+            "osm_way_id": 1456803799,
+            "name": "水管路",
+            "highway": "tertiary"
+          }
+        ],
+        "road_classes": [
+          "primary",
+          "tertiary"
+        ],
+        "candidate_priority": 185,
+        "manual_targets": [
+          "check_intersection_geometry",
+          "check_motorcycle_turn_rule",
+          "check_two_stage_turn_sign",
+          "check_waiting_zone",
+          "check_lane_movements"
+        ],
+        "coordinate": {
+          "lng": 120.3245191,
+          "lat": 22.7065833
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/5792509211",
+          "google_maps": "https://www.google.com/maps/@22.7065833,120.3245191,20z"
+        },
+        "distance_m": 0
+      },
+      {
+        "nav_intersection_key": "node/5792509210",
+        "osm_id": 5792509210,
+        "intersection_name": "水管路 / 高楠公路",
+        "connected_way_count": 2,
+        "connected_ways": [
+          {
+            "osm_way_id": 566619276,
+            "name": "水管路",
+            "highway": "unclassified"
+          },
+          {
+            "osm_way_id": 1456803798,
+            "name": "高楠公路",
+            "highway": "primary"
+          }
+        ],
+        "road_classes": [
+          "primary",
+          "unclassified"
+        ],
+        "candidate_priority": 169,
+        "manual_targets": [
+          "check_intersection_geometry",
+          "check_motorcycle_turn_rule",
+          "check_two_stage_turn_sign",
+          "check_waiting_zone",
+          "check_lane_movements"
+        ],
+        "coordinate": {
+          "lng": 120.3245021,
+          "lat": 22.7065011
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/5792509210",
+          "google_maps": "https://www.google.com/maps/@22.7065011,120.3245021,20z"
+        },
+        "distance_m": 0
+      }
+    ]
+  },
+  "lane_nav_tags": {
+    "osm_review_tags": {
+      "osm_lane_status": "not_checked",
+      "osm_turn_lane_status": "not_checked",
+      "osm_motorcycle_status": "not_checked",
+      "osm_review_note": null
+    },
+    "taiwan_motorcycle_tags": {
+      "movement_rules": []
+    },
+    "offset_relations": [],
+    "lane_detail_tags": {
+      "lane_profiles": [
+        {
+          "direction": "forward",
+          "lane_count": 2,
+          "lane_movements": [
+            "left;through",
+            "through"
+          ],
+          "motorcycle_access_by_lane": [
+            "no",
+            "no"
+          ],
+          "source": "manual"
+        }
+      ]
+    }
+  },
+  "geometry": {
+    "type": "LineString",
+    "coordinates": [
+      [
+        120.32347,
+        22.7012814
+      ],
+      [
+        120.3234858,
+        22.7013628
+      ],
+      [
+        120.3235167,
+        22.7015175
+      ],
+      [
+        120.3236935,
+        22.7023677
+      ],
+      [
+        120.3238159,
+        22.7029527
+      ],
+      [
+        120.3239512,
+        22.703708
+      ],
+      [
+        120.3239557,
+        22.7037332
+      ],
+      [
+        120.3239767,
+        22.7038503
+      ],
+      [
+        120.3239999,
+        22.7039686
+      ],
+      [
+        120.3244651,
+        22.7063288
+      ],
+      [
+        120.3244747,
+        22.7063685
+      ],
+      [
+        120.3245021,
+        22.7065011
+      ],
+      [
+        120.3245191,
+        22.7065833
+      ]
+    ]
+  },
+  "annotation_metadata": {
+    "created_from": "manual_form",
+    "evidence_type": "streetview",
+    "manual_verified": "yes",
+    "verified_by": "anna",
+    "verified_at": "2026-07-17T11:00",
+    "verified_at_precision": "hour",
+    "verified_timezone": "Asia/Taipei",
+    "confidence": "medium",
+    "note": ""
+  }
+}
