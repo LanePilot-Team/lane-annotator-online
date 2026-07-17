@@ -1,0 +1,133 @@
+{
+  "object_identity": {
+    "schema_version": 2,
+    "object_type": "nav_context_annotation",
+    "nav_context_key": "way/1013857469@node/1451069117/forward",
+    "nav_segment_key": "way/1013857469",
+    "context_scope": "intersection_approach",
+    "applies_to_intersection_key": "node/1451069117",
+    "approach_direction": "forward",
+    "source_osm": {
+      "osm_type": "way",
+      "osm_id": 1013857469
+    },
+    "split_index": 0
+  },
+  "osm_reference": {
+    "osm_selected_tags": {
+      "highway": "motorway",
+      "name": "中山高速公路",
+      "ref": "1",
+      "oneway": "yes",
+      "lanes": "3",
+      "maxspeed": "110"
+    },
+    "map_links": {
+      "openstreetmap": "https://www.openstreetmap.org/way/1013857469",
+      "google_maps": "https://www.google.com/maps/@22.7424704,120.3345285,19z"
+    },
+    "nearby_intersections": [
+      {
+        "nav_intersection_key": "node/1451069117",
+        "osm_id": 1451069117,
+        "intersection_name": "中山高速公路 / 楠梓交流道",
+        "connected_way_count": 3,
+        "connected_ways": [
+          {
+            "osm_way_id": 230290999,
+            "name": "楠梓交流道",
+            "highway": "motorway_link"
+          },
+          {
+            "osm_way_id": 230291001,
+            "name": "中山高速公路",
+            "highway": "motorway"
+          },
+          {
+            "osm_way_id": 1013857469,
+            "name": "中山高速公路",
+            "highway": "motorway"
+          }
+        ],
+        "road_classes": [
+          "motorway",
+          "motorway_link"
+        ],
+        "candidate_priority": 108,
+        "manual_targets": [
+          "check_intersection_geometry"
+        ],
+        "coordinate": {
+          "lng": 120.3344749,
+          "lat": 22.7413016
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/1451069117",
+          "google_maps": "https://www.google.com/maps/@22.7413016,120.3344749,20z"
+        },
+        "distance_m": 0
+      }
+    ]
+  },
+  "lane_nav_tags": {
+    "osm_review_tags": {
+      "osm_lane_status": "not_checked",
+      "osm_turn_lane_status": "not_checked",
+      "osm_motorcycle_status": "not_checked",
+      "osm_review_note": null
+    },
+    "taiwan_motorcycle_tags": {
+      "movement_rules": []
+    },
+    "offset_relations": [],
+    "lane_detail_tags": {
+      "lane_profiles": [
+        {
+          "direction": "forward",
+          "lane_count": 6,
+          "lane_movements": [
+            "through",
+            "through",
+            "through",
+            "through",
+            "through",
+            "through"
+          ],
+          "motorcycle_access_by_lane": [
+            "no",
+            "no",
+            "no",
+            "no",
+            "no",
+            "no"
+          ],
+          "source": "manual"
+        }
+      ]
+    }
+  },
+  "geometry": {
+    "type": "LineString",
+    "coordinates": [
+      [
+        120.3345285,
+        22.7424704
+      ],
+      [
+        120.3344749,
+        22.7413016
+      ]
+    ]
+  },
+  "annotation_metadata": {
+    "created_from": "manual_form",
+    "evidence_type": "streetview",
+    "manual_verified": "yes",
+    "verified_by": "anna",
+    "verified_at": "2026-07-17T10:00",
+    "verified_at_precision": "hour",
+    "verified_timezone": "Asia/Taipei",
+    "confidence": "medium",
+    "note": ""
+  }
+}
