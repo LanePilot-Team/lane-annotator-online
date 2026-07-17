@@ -1,0 +1,104 @@
+{
+  "object_identity": {
+    "schema_version": 2,
+    "object_type": "nav_context_annotation",
+    "nav_context_key": "way/294641776/forward",
+    "nav_segment_key": "way/294641776",
+    "context_scope": "segment_direction",
+    "applies_to_intersection_key": null,
+    "approach_direction": "forward",
+    "source_osm": {
+      "osm_type": "way",
+      "osm_id": 294641776
+    },
+    "split_index": 0
+  },
+  "osm_reference": {
+    "osm_selected_tags": {
+      "highway": "motorway",
+      "name": "中山高速公路",
+      "ref": "1",
+      "oneway": "yes",
+      "lanes": "4",
+      "maxspeed": "100"
+    },
+    "map_links": {
+      "openstreetmap": "https://www.openstreetmap.org/way/294641776",
+      "google_maps": "https://www.google.com/maps/@22.7053826,120.3284847,19z"
+    },
+    "nearby_intersections": []
+  },
+  "lane_nav_tags": {
+    "osm_review_tags": {
+      "osm_lane_status": "not_checked",
+      "osm_turn_lane_status": "not_checked",
+      "osm_motorcycle_status": "not_checked",
+      "osm_review_note": null
+    },
+    "taiwan_motorcycle_tags": {
+      "movement_rules": []
+    },
+    "offset_relations": [],
+    "lane_detail_tags": {
+      "lane_profiles": [
+        {
+          "direction": "forward",
+          "lane_count": 4,
+          "lane_movements": [
+            "through",
+            "through",
+            "through",
+            "through"
+          ],
+          "motorcycle_access_by_lane": [
+            "no",
+            "no",
+            "no",
+            "no"
+          ],
+          "source": "manual"
+        }
+      ]
+    }
+  },
+  "geometry": {
+    "type": "LineString",
+    "coordinates": [
+      [
+        120.3284847,
+        22.7053826
+      ],
+      [
+        120.3281172,
+        22.7038447
+      ],
+      [
+        120.3279309,
+        22.7029186
+      ],
+      [
+        120.3277912,
+        22.7020189
+      ],
+      [
+        120.3276175,
+        22.7009073
+      ],
+      [
+        120.3275085,
+        22.6998261
+      ]
+    ]
+  },
+  "annotation_metadata": {
+    "created_from": "manual_form",
+    "evidence_type": "streetview",
+    "manual_verified": "yes",
+    "verified_by": "anna",
+    "verified_at": "2026-07-17T09:00",
+    "verified_at_precision": "hour",
+    "verified_timezone": "Asia/Taipei",
+    "confidence": "medium",
+    "note": ""
+  }
+}
