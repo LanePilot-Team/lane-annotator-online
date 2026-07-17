@@ -1,0 +1,387 @@
+{
+  "object_identity": {
+    "schema_version": 2,
+    "object_type": "nav_context_annotation",
+    "nav_context_key": "way/286066490@node/1451068275/forward",
+    "nav_segment_key": "way/286066490",
+    "context_scope": "intersection_approach",
+    "applies_to_intersection_key": "node/1451068275",
+    "approach_direction": "forward",
+    "source_osm": {
+      "osm_type": "way",
+      "osm_id": 286066490
+    },
+    "split_index": 0
+  },
+  "osm_reference": {
+    "osm_selected_tags": {
+      "highway": "primary",
+      "name": "旗楠路",
+      "ref": "22",
+      "oneway": "yes",
+      "lanes": "2",
+      "maxspeed": "60"
+    },
+    "map_links": {
+      "openstreetmap": "https://www.openstreetmap.org/way/286066490",
+      "google_maps": "https://www.google.com/maps/@22.739811,120.3366776,19z"
+    },
+    "nearby_intersections": [
+      {
+        "nav_intersection_key": "node/280277330",
+        "osm_id": 280277330,
+        "intersection_name": "旗楠路 / 楠梓交流道 / 興西路",
+        "connected_way_count": 5,
+        "connected_ways": [
+          {
+            "osm_way_id": 25706464,
+            "name": "旗楠路",
+            "highway": "primary"
+          },
+          {
+            "osm_way_id": 25706466,
+            "name": "旗楠路",
+            "highway": "primary"
+          },
+          {
+            "osm_way_id": 230290999,
+            "name": "楠梓交流道",
+            "highway": "motorway_link"
+          },
+          {
+            "osm_way_id": 286066490,
+            "name": "旗楠路",
+            "highway": "primary"
+          },
+          {
+            "osm_way_id": 1013857470,
+            "name": "興西路",
+            "highway": "tertiary"
+          }
+        ],
+        "road_classes": [
+          "motorway_link",
+          "primary",
+          "tertiary"
+        ],
+        "candidate_priority": 193,
+        "manual_targets": [
+          "check_intersection_geometry",
+          "check_motorcycle_turn_rule",
+          "check_two_stage_turn_sign",
+          "check_waiting_zone",
+          "check_lane_movements"
+        ],
+        "coordinate": {
+          "lng": 120.3340505,
+          "lat": 22.7368619
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/280277330",
+          "google_maps": "https://www.google.com/maps/@22.7368619,120.3340505,20z"
+        },
+        "distance_m": 0
+      },
+      {
+        "nav_intersection_key": "node/280277328",
+        "osm_id": 280277328,
+        "intersection_name": "常德路 / 旗楠路 / 旗楠路837巷",
+        "connected_way_count": 4,
+        "connected_ways": [
+          {
+            "osm_way_id": 217140172,
+            "name": "旗楠路837巷",
+            "highway": "service"
+          },
+          {
+            "osm_way_id": 286066490,
+            "name": "旗楠路",
+            "highway": "primary"
+          },
+          {
+            "osm_way_id": 286066502,
+            "name": "常德路",
+            "highway": "residential"
+          },
+          {
+            "osm_way_id": 294896758,
+            "name": "旗楠路",
+            "highway": "primary"
+          }
+        ],
+        "road_classes": [
+          "primary",
+          "residential",
+          "service"
+        ],
+        "candidate_priority": 150,
+        "manual_targets": [
+          "check_intersection_geometry",
+          "check_lane_movements"
+        ],
+        "coordinate": {
+          "lng": 120.3366776,
+          "lat": 22.739811
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/280277328",
+          "google_maps": "https://www.google.com/maps/@22.739811,120.3366776,20z"
+        },
+        "distance_m": 0
+      },
+      {
+        "nav_intersection_key": "node/2264426896",
+        "osm_id": 2264426896,
+        "intersection_name": "旗楠路 / 旗楠路785巷 / 清安街",
+        "connected_way_count": 3,
+        "connected_ways": [
+          {
+            "osm_way_id": 230290181,
+            "name": "旗楠路785巷",
+            "highway": "service"
+          },
+          {
+            "osm_way_id": 230290185,
+            "name": "清安街",
+            "highway": "residential"
+          },
+          {
+            "osm_way_id": 286066490,
+            "name": "旗楠路",
+            "highway": "primary"
+          }
+        ],
+        "road_classes": [
+          "primary",
+          "residential",
+          "service"
+        ],
+        "candidate_priority": 142,
+        "manual_targets": [
+          "check_intersection_geometry",
+          "check_lane_movements"
+        ],
+        "coordinate": {
+          "lng": 120.3357739,
+          "lat": 22.7387467
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/2264426896",
+          "google_maps": "https://www.google.com/maps/@22.7387467,120.3357739,20z"
+        },
+        "distance_m": 0
+      },
+      {
+        "nav_intersection_key": "node/280277329",
+        "osm_id": 280277329,
+        "intersection_name": "旗楠路 / 楠梓交流道 / 楠興東路",
+        "connected_way_count": 3,
+        "connected_ways": [
+          {
+            "osm_way_id": 286066490,
+            "name": "旗楠路",
+            "highway": "primary"
+          },
+          {
+            "osm_way_id": 1016155585,
+            "name": "楠梓交流道",
+            "highway": "motorway_link"
+          },
+          {
+            "osm_way_id": 1356812167,
+            "name": "楠興東路",
+            "highway": "tertiary"
+          }
+        ],
+        "road_classes": [
+          "motorway_link",
+          "primary",
+          "tertiary"
+        ],
+        "candidate_priority": 142,
+        "manual_targets": [
+          "check_intersection_geometry",
+          "check_lane_movements"
+        ],
+        "coordinate": {
+          "lng": 120.3348447,
+          "lat": 22.7377416
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/280277329",
+          "google_maps": "https://www.google.com/maps/@22.7377416,120.3348447,20z"
+        },
+        "distance_m": 0
+      },
+      {
+        "nav_intersection_key": "node/1451068275",
+        "osm_id": 1451068275,
+        "intersection_name": "旗楠路 / 楠梓交流道",
+        "connected_way_count": 2,
+        "connected_ways": [
+          {
+            "osm_way_id": 131904685,
+            "name": "楠梓交流道",
+            "highway": "motorway_link"
+          },
+          {
+            "osm_way_id": 286066490,
+            "name": "旗楠路",
+            "highway": "primary"
+          }
+        ],
+        "road_classes": [
+          "motorway_link",
+          "primary"
+        ],
+        "candidate_priority": 134,
+        "manual_targets": [
+          "check_intersection_geometry",
+          "check_lane_movements"
+        ],
+        "coordinate": {
+          "lng": 120.3355161,
+          "lat": 22.738483
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/1451068275",
+          "google_maps": "https://www.google.com/maps/@22.738483,120.3355161,20z"
+        },
+        "distance_m": 0
+      },
+      {
+        "nav_intersection_key": "node/2264426897",
+        "osm_id": 2264426897,
+        "intersection_name": "旗楠路 / 旗楠路799巷",
+        "connected_way_count": 2,
+        "connected_ways": [
+          {
+            "osm_way_id": 217140202,
+            "name": "旗楠路799巷",
+            "highway": "service"
+          },
+          {
+            "osm_way_id": 286066490,
+            "name": "旗楠路",
+            "highway": "primary"
+          }
+        ],
+        "road_classes": [
+          "primary",
+          "service"
+        ],
+        "candidate_priority": 134,
+        "manual_targets": [
+          "check_intersection_geometry",
+          "check_lane_movements"
+        ],
+        "coordinate": {
+          "lng": 120.3360115,
+          "lat": 22.7390138
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/2264426897",
+          "google_maps": "https://www.google.com/maps/@22.7390138,120.3360115,20z"
+        },
+        "distance_m": 0
+      }
+    ]
+  },
+  "lane_nav_tags": {
+    "osm_review_tags": {
+      "osm_lane_status": "not_checked",
+      "osm_turn_lane_status": "not_checked",
+      "osm_motorcycle_status": "not_checked",
+      "osm_review_note": null
+    },
+    "taiwan_motorcycle_tags": {
+      "movement_rules": [
+        {
+          "movement_key": "way/286066490@node/1451068275/forward->way/131904685/right",
+          "from_context_key": "way/286066490@node/1451068275/forward",
+          "to_segment_key": "way/131904685",
+          "applies_to_intersection_key": "node/1451068275",
+          "approach_segment_key": "way/286066490",
+          "selected_road": "旗楠路",
+          "approach_direction": "forward",
+          "movement": "right",
+          "target_road": "楠梓交流道",
+          "vehicle_rule": "normal",
+          "motorcycle_turn_rule": "prohibited",
+          "two_stage_sign_exists": "unknown",
+          "waiting_zone_exists": "unknown",
+          "waiting_zone_position": "unknown",
+          "data_origin": "context_v2"
+        }
+      ]
+    },
+    "offset_relations": [],
+    "lane_detail_tags": {
+      "lane_profiles": [
+        {
+          "direction": "forward",
+          "lane_count": 3,
+          "lane_movements": [
+            "through",
+            "through",
+            "through;right"
+          ],
+          "motorcycle_access_by_lane": [
+            "no",
+            "yes",
+            "yes"
+          ],
+          "source": "manual"
+        }
+      ]
+    }
+  },
+  "geometry": {
+    "type": "LineString",
+    "coordinates": [
+      [
+        120.3366776,
+        22.739811
+      ],
+      [
+        120.3360115,
+        22.7390138
+      ],
+      [
+        120.3357739,
+        22.7387467
+      ],
+      [
+        120.3355161,
+        22.738483
+      ],
+      [
+        120.3348447,
+        22.7377416
+      ],
+      [
+        120.3347601,
+        22.7376732
+      ],
+      [
+        120.3343729,
+        22.737219
+      ],
+      [
+        120.3340505,
+        22.7368619
+      ]
+    ]
+  },
+  "annotation_metadata": {
+    "created_from": "manual_form",
+    "evidence_type": "streetview",
+    "manual_verified": "yes",
+    "verified_by": "anna",
+    "verified_at": "2026-07-17T11:00",
+    "verified_at_precision": "hour",
+    "verified_timezone": "Asia/Taipei",
+    "confidence": "medium",
+    "note": ""
+  }
+}
