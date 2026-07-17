@@ -1,0 +1,149 @@
+{
+  "object_identity": {
+    "schema_version": 2,
+    "object_type": "nav_context_annotation",
+    "nav_context_key": "way/1356812161/forward",
+    "nav_segment_key": "way/1356812161",
+    "context_scope": "segment_direction",
+    "applies_to_intersection_key": null,
+    "approach_direction": "forward",
+    "source_osm": {
+      "osm_type": "way",
+      "osm_id": 1356812161
+    },
+    "split_index": 0
+  },
+  "osm_reference": {
+    "osm_selected_tags": {
+      "highway": "service",
+      "oneway": "yes"
+    },
+    "map_links": {
+      "openstreetmap": "https://www.openstreetmap.org/way/1356812161",
+      "google_maps": "https://www.google.com/maps/@22.7184365,120.3321414,19z"
+    },
+    "nearby_intersections": [
+      {
+        "nav_intersection_key": "node/2261344224",
+        "osm_id": 2261344224,
+        "intersection_name": "楠梓交流道 / 鳳仁路",
+        "connected_way_count": 3,
+        "connected_ways": [
+          {
+            "osm_way_id": 131904766,
+            "name": "楠梓交流道",
+            "highway": "motorway_link"
+          },
+          {
+            "osm_way_id": 131904773,
+            "name": "鳳仁路",
+            "highway": "secondary"
+          },
+          {
+            "osm_way_id": 1356812161,
+            "name": null,
+            "highway": "service"
+          }
+        ],
+        "road_classes": [
+          "motorway_link",
+          "secondary",
+          "service"
+        ],
+        "candidate_priority": 132,
+        "manual_targets": [
+          "check_intersection_geometry",
+          "check_lane_movements"
+        ],
+        "coordinate": {
+          "lng": 120.3329592,
+          "lat": 22.7198743
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/2261344224",
+          "google_maps": "https://www.google.com/maps/@22.7198743,120.3329592,20z"
+        },
+        "distance_m": 0
+      }
+    ]
+  },
+  "lane_nav_tags": {
+    "osm_review_tags": {
+      "osm_lane_status": "not_checked",
+      "osm_turn_lane_status": "not_checked",
+      "osm_motorcycle_status": "not_checked",
+      "osm_review_note": null
+    },
+    "taiwan_motorcycle_tags": {
+      "movement_rules": []
+    },
+    "offset_relations": [],
+    "lane_detail_tags": {
+      "lane_profiles": [
+        {
+          "direction": "forward",
+          "lane_count": 1,
+          "lane_movements": [
+            "through"
+          ],
+          "motorcycle_access_by_lane": [
+            "yes"
+          ],
+          "source": "manual"
+        }
+      ]
+    }
+  },
+  "geometry": {
+    "type": "LineString",
+    "coordinates": [
+      [
+        120.3321414,
+        22.7184365
+      ],
+      [
+        120.3322122,
+        22.7184831
+      ],
+      [
+        120.3322605,
+        22.7185474
+      ],
+      [
+        120.3323061,
+        22.7186587
+      ],
+      [
+        120.3325395,
+        22.7196063
+      ],
+      [
+        120.3325969,
+        22.7197203
+      ],
+      [
+        120.3326812,
+        22.7198096
+      ],
+      [
+        120.3328217,
+        22.7198615
+      ],
+      [
+        120.3329592,
+        22.7198743
+      ]
+    ]
+  },
+  "annotation_metadata": {
+    "created_from": "manual_form",
+    "evidence_type": "streetview",
+    "manual_verified": "yes",
+    "verified_by": "anna",
+    "verified_at": "2026-07-17T10:00",
+    "verified_at_precision": "hour",
+    "verified_timezone": "Asia/Taipei",
+    "confidence": "medium",
+    "note": ""
+  }
+}
