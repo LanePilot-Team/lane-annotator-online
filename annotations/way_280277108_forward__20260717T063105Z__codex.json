@@ -1,0 +1,219 @@
+{
+  "object_identity": {
+    "schema_version": 2,
+    "object_type": "nav_context_annotation",
+    "nav_context_key": "way/280277108/forward",
+    "nav_segment_key": "way/280277108",
+    "context_scope": "segment_direction",
+    "applies_to_intersection_key": null,
+    "approach_direction": "forward",
+    "source_osm": {
+      "osm_type": "way",
+      "osm_id": 280277108
+    },
+    "split_index": 0
+  },
+  "osm_reference": {
+    "osm_selected_tags": {
+      "highway": "primary",
+      "name": "高楠公路",
+      "ref": "1",
+      "oneway": "yes",
+      "lanes": "5",
+      "turn:lanes": "left|through|through|through|right"
+    },
+    "map_links": {
+      "openstreetmap": "https://www.openstreetmap.org/way/280277108",
+      "google_maps": "https://www.google.com/maps/@22.727723,120.3215563,19z"
+    },
+    "nearby_intersections": [
+      {
+        "nav_intersection_key": "node/1196964796",
+        "osm_id": 1196964796,
+        "intersection_name": "高楠公路 / 高楠公路1742巷",
+        "connected_way_count": 3,
+        "connected_ways": [
+          {
+            "osm_way_id": 103679019,
+            "name": "高楠公路1742巷",
+            "highway": "service"
+          },
+          {
+            "osm_way_id": 280277105,
+            "name": "高楠公路",
+            "highway": "primary"
+          },
+          {
+            "osm_way_id": 280277108,
+            "name": "高楠公路",
+            "highway": "primary"
+          }
+        ],
+        "road_classes": [
+          "primary",
+          "service"
+        ],
+        "candidate_priority": 152,
+        "manual_targets": [
+          "check_intersection_geometry",
+          "check_two_stage_turn_sign",
+          "check_waiting_zone",
+          "check_lane_movements"
+        ],
+        "coordinate": {
+          "lng": 120.3215563,
+          "lat": 22.727723
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/1196964796",
+          "google_maps": "https://www.google.com/maps/@22.727723,120.3215563,20z"
+        },
+        "distance_m": 0
+      },
+      {
+        "nav_intersection_key": "node/302211637",
+        "osm_id": 302211637,
+        "intersection_name": "惠心街 / 高楠公路",
+        "connected_way_count": 3,
+        "connected_ways": [
+          {
+            "osm_way_id": 216735437,
+            "name": "惠心街",
+            "highway": "residential"
+          },
+          {
+            "osm_way_id": 280277108,
+            "name": "高楠公路",
+            "highway": "primary"
+          },
+          {
+            "osm_way_id": 765913729,
+            "name": "高楠公路",
+            "highway": "primary"
+          }
+        ],
+        "road_classes": [
+          "primary",
+          "residential"
+        ],
+        "candidate_priority": 152,
+        "manual_targets": [
+          "check_intersection_geometry",
+          "check_two_stage_turn_sign",
+          "check_waiting_zone",
+          "check_lane_movements"
+        ],
+        "coordinate": {
+          "lng": 120.321318,
+          "lat": 22.728529
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/302211637",
+          "google_maps": "https://www.google.com/maps/@22.728529,120.321318,20z"
+        },
+        "distance_m": 0
+      },
+      {
+        "nav_intersection_key": "node/1196964692",
+        "osm_id": 1196964692,
+        "intersection_name": "高楠公路 / 高楠公路1754巷",
+        "connected_way_count": 2,
+        "connected_ways": [
+          {
+            "osm_way_id": 103678952,
+            "name": "高楠公路1754巷",
+            "highway": "service"
+          },
+          {
+            "osm_way_id": 280277108,
+            "name": "高楠公路",
+            "highway": "primary"
+          }
+        ],
+        "road_classes": [
+          "primary",
+          "service"
+        ],
+        "candidate_priority": 144,
+        "manual_targets": [
+          "check_intersection_geometry",
+          "check_two_stage_turn_sign",
+          "check_waiting_zone",
+          "check_lane_movements"
+        ],
+        "coordinate": {
+          "lng": 120.3214578,
+          "lat": 22.7280549
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/1196964692",
+          "google_maps": "https://www.google.com/maps/@22.7280549,120.3214578,20z"
+        },
+        "distance_m": 0
+      }
+    ]
+  },
+  "lane_nav_tags": {
+    "osm_review_tags": {
+      "osm_lane_status": "needs_correction",
+      "osm_turn_lane_status": "needs_correction",
+      "osm_motorcycle_status": "missing",
+      "osm_review_note": "User verification corrected lane profile to 4 lanes: left, through, through, through."
+    },
+    "taiwan_motorcycle_tags": {
+      "movement_rules": []
+    },
+    "offset_relations": [],
+    "lane_detail_tags": {
+      "lane_profiles": [
+        {
+          "direction": "forward",
+          "lane_count": 5,
+          "lane_movements": [
+            "left",
+            "through",
+            "through",
+            "through",
+            "right"
+          ],
+          "motorcycle_access_by_lane": [
+            "no",
+            "no",
+            "no",
+            "yes",
+            "yes"
+          ],
+          "source": "manual"
+        }
+      ]
+    }
+  },
+  "geometry": {
+    "type": "LineString",
+    "coordinates": [
+      [
+        120.3215563,
+        22.727723
+      ],
+      [
+        120.3214578,
+        22.7280549
+      ],
+      [
+        120.321318,
+        22.728529
+      ]
+    ]
+  },
+  "annotation_metadata": {
+    "created_from": "manual_form",
+    "evidence_type": "streetview",
+    "manual_verified": "yes",
+    "verified_by": "codex",
+    "verified_at": "2026-07-17T14:00",
+    "verified_at_precision": "hour",
+    "verified_timezone": "Asia/Taipei",
+    "confidence": "high",
+    "note": "Evidence images: review_gaonan_way280277108_forward_signal_back.png, review_gaonan_way280277108_sign_crop.png, review_gaonan_way280277108_waiting_crop.png. Approach is before the intersection signal; sign and waiting box are visible."
+  }
+}
