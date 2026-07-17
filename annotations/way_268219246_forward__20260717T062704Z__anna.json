@@ -1,0 +1,178 @@
+{
+  "object_identity": {
+    "schema_version": 2,
+    "object_type": "nav_context_annotation",
+    "nav_context_key": "way/268219246/forward",
+    "nav_segment_key": "way/268219246",
+    "context_scope": "segment_direction",
+    "applies_to_intersection_key": null,
+    "approach_direction": "forward",
+    "source_osm": {
+      "osm_type": "way",
+      "osm_id": 268219246
+    },
+    "split_index": 0
+  },
+  "osm_reference": {
+    "osm_selected_tags": {
+      "highway": "primary",
+      "name": "高楠公路",
+      "ref": "1",
+      "oneway": "yes",
+      "lanes": "2",
+      "maxspeed": "60"
+    },
+    "map_links": {
+      "openstreetmap": "https://www.openstreetmap.org/way/268219246",
+      "google_maps": "https://www.google.com/maps/@22.7216943,120.3246997,19z"
+    },
+    "nearby_intersections": [
+      {
+        "nav_intersection_key": "node/1196964780",
+        "osm_id": 1196964780,
+        "intersection_name": "高楠公路",
+        "connected_way_count": 3,
+        "connected_ways": [
+          {
+            "osm_way_id": 103679005,
+            "name": null,
+            "highway": "primary_link"
+          },
+          {
+            "osm_way_id": 268219245,
+            "name": "高楠公路",
+            "highway": "primary"
+          },
+          {
+            "osm_way_id": 268219246,
+            "name": "高楠公路",
+            "highway": "primary"
+          }
+        ],
+        "road_classes": [
+          "primary",
+          "primary_link"
+        ],
+        "candidate_priority": 159,
+        "manual_targets": [
+          "check_intersection_geometry",
+          "check_motorcycle_turn_rule",
+          "check_two_stage_turn_sign",
+          "check_waiting_zone",
+          "check_lane_movements"
+        ],
+        "coordinate": {
+          "lng": 120.3246997,
+          "lat": 22.7216943
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/1196964780",
+          "google_maps": "https://www.google.com/maps/@22.7216943,120.3246997,20z"
+        },
+        "distance_m": 0
+      },
+      {
+        "nav_intersection_key": "node/1196964560",
+        "osm_id": 1196964560,
+        "intersection_name": "縱貫公路 / 高楠公路",
+        "connected_way_count": 2,
+        "connected_ways": [
+          {
+            "osm_way_id": 103679008,
+            "name": "縱貫公路",
+            "highway": "primary"
+          },
+          {
+            "osm_way_id": 268219246,
+            "name": "高楠公路",
+            "highway": "primary"
+          }
+        ],
+        "road_classes": [
+          "primary"
+        ],
+        "candidate_priority": 134,
+        "manual_targets": [
+          "check_intersection_geometry",
+          "check_lane_movements"
+        ],
+        "coordinate": {
+          "lng": 120.3240772,
+          "lat": 22.7232363
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/1196964560",
+          "google_maps": "https://www.google.com/maps/@22.7232363,120.3240772,20z"
+        },
+        "distance_m": 0
+      }
+    ]
+  },
+  "lane_nav_tags": {
+    "osm_review_tags": {
+      "osm_lane_status": "not_checked",
+      "osm_turn_lane_status": "not_checked",
+      "osm_motorcycle_status": "not_checked",
+      "osm_review_note": null
+    },
+    "taiwan_motorcycle_tags": {
+      "movement_rules": []
+    },
+    "offset_relations": [],
+    "lane_detail_tags": {
+      "lane_profiles": [
+        {
+          "direction": "forward",
+          "lane_count": 3,
+          "lane_movements": [
+            "through",
+            "through",
+            "through"
+          ],
+          "motorcycle_access_by_lane": [
+            "no",
+            "no",
+            "no"
+          ],
+          "source": "manual"
+        }
+      ]
+    }
+  },
+  "geometry": {
+    "type": "LineString",
+    "coordinates": [
+      [
+        120.3246997,
+        22.7216943
+      ],
+      [
+        120.3245881,
+        22.7222232
+      ],
+      [
+        120.3244889,
+        22.7224867
+      ],
+      [
+        120.3243413,
+        22.7228021
+      ],
+      [
+        120.3240772,
+        22.7232363
+      ]
+    ]
+  },
+  "annotation_metadata": {
+    "created_from": "manual_form",
+    "evidence_type": "streetview",
+    "manual_verified": "yes",
+    "verified_by": "anna",
+    "verified_at": "2026-07-17T14:00",
+    "verified_at_precision": "hour",
+    "verified_timezone": "Asia/Taipei",
+    "confidence": "medium",
+    "note": ""
+  }
+}
