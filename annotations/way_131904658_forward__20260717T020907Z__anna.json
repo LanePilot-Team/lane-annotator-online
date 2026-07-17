@@ -1,0 +1,124 @@
+{
+  "object_identity": {
+    "schema_version": 2,
+    "object_type": "nav_context_annotation",
+    "nav_context_key": "way/131904658/forward",
+    "nav_segment_key": "way/131904658",
+    "context_scope": "segment_direction",
+    "applies_to_intersection_key": null,
+    "approach_direction": "forward",
+    "source_osm": {
+      "osm_type": "way",
+      "osm_id": 131904658
+    },
+    "split_index": 0
+  },
+  "osm_reference": {
+    "osm_selected_tags": {
+      "highway": "motorway",
+      "name": "中山高速公路",
+      "ref": "1",
+      "oneway": "yes",
+      "maxspeed": "110",
+      "bridge": "yes",
+      "layer": "1"
+    },
+    "map_links": {
+      "openstreetmap": "https://www.openstreetmap.org/way/131904658",
+      "google_maps": "https://www.google.com/maps/@22.7359195,120.3343273,19z"
+    },
+    "nearby_intersections": [
+      {
+        "nav_intersection_key": "node/2264426844",
+        "osm_id": 2264426844,
+        "intersection_name": "興西路",
+        "connected_way_count": 2,
+        "connected_ways": [
+          {
+            "osm_way_id": 217140225,
+            "name": null,
+            "highway": "tertiary_link"
+          },
+          {
+            "osm_way_id": 1013857470,
+            "name": "興西路",
+            "highway": "tertiary"
+          }
+        ],
+        "road_classes": [
+          "tertiary",
+          "tertiary_link"
+        ],
+        "candidate_priority": 96,
+        "manual_targets": [
+          "check_intersection_geometry",
+          "check_lane_movements"
+        ],
+        "coordinate": {
+          "lng": 120.3340264,
+          "lat": 22.7353594
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/2264426844",
+          "google_maps": "https://www.google.com/maps/@22.7353594,120.3340264,20z"
+        },
+        "distance_m": 43
+      }
+    ]
+  },
+  "lane_nav_tags": {
+    "osm_review_tags": {
+      "osm_lane_status": "not_checked",
+      "osm_turn_lane_status": "not_checked",
+      "osm_motorcycle_status": "not_checked",
+      "osm_review_note": null
+    },
+    "taiwan_motorcycle_tags": {
+      "movement_rules": []
+    },
+    "offset_relations": [],
+    "lane_detail_tags": {
+      "lane_profiles": [
+        {
+          "direction": "forward",
+          "lane_count": 3,
+          "lane_movements": [
+            "through",
+            "through",
+            "through"
+          ],
+          "motorcycle_access_by_lane": [
+            "no",
+            "no",
+            "no"
+          ],
+          "source": "manual"
+        }
+      ]
+    }
+  },
+  "geometry": {
+    "type": "LineString",
+    "coordinates": [
+      [
+        120.3343273,
+        22.7359195
+      ],
+      [
+        120.3343248,
+        22.7356301
+      ]
+    ]
+  },
+  "annotation_metadata": {
+    "created_from": "manual_form",
+    "evidence_type": "streetview",
+    "manual_verified": "yes",
+    "verified_by": "anna",
+    "verified_at": "2026-07-17T10:00",
+    "verified_at_precision": "hour",
+    "verified_timezone": "Asia/Taipei",
+    "confidence": "medium",
+    "note": ""
+  }
+}
