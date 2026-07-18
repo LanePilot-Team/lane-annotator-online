@@ -425,6 +425,39 @@
     return out;
   }
 
+  function annotationsGroupedBySegment() {
+    const grouped = new Map();
+    for (const record of allLatestRecords().values()) {
+      const key = segmentKeyOf(record);
+      if (!key) continue;
+      if (!grouped.has(key)) grouped.set(key, []);
+      grouped.get(key).push(record);
+    }
+    return grouped;
+  }
+
+  function triageTagsForSegment({ segment, annotations, annotationStatuses, favouriteSegmentKeys }) {
+    const tags = new Set(annotationStatuses || []);
+    const laneTags = segment.lane_nav_tags || {};
+    if ((laneTags.manual_targets || []).length || (laneTags.candidate_priority ?? 0) >= 70) tags.add("priority");
+    if (favouriteSegmentKeys.has(segment.object_identity.nav_segment_key)) tags.add("favourite");
+    for (const annotation of annotations || []) {
+      const reviewNote = annotation.lane_nav_tags?.osm_review_tags?.osm_review_note;
+      if (String(annotation.annotation_metadata?.note || "").trim() || String(reviewNote || "").trim()) tags.add("has_notes");
+      const rules = annotation.lane_nav_tags?.taiwan_motorcycle_tags?.movement_rules || [];
+      const offsetRelations = annotation.lane_nav_tags?.offset_relations || [];
+      if (rules.some((rule) => rule.target_relation?.kind === "offset_intersection") || offsetRelations.some((relation) => relation?.kind === "offset_intersection")) tags.add("offset_intersection");
+    }
+    return tags;
+  }
+
+  function matchesTriageTags(tags, requestedTags, mode) {
+    if (!requestedTags.size) return true;
+    return mode === "or"
+      ? [...requestedTags].some((tag) => tags.has(tag))
+      : [...requestedTags].every((tag) => tags.has(tag));
+  }
+
   async function fetchPendingContent(storageKey) {
     if (store.pendingFetched.has(storageKey) || !store.pending.has(storageKey)) return;
     const info = store.pending.get(storageKey);
@@ -453,7 +486,7 @@
   }
 
   // ---------- server.py 查詢邏輯移植 ----------
-  function summarizeSegment(segment, annotation, annotationStatuses) {
+  function summarizeSegment(segment, annotation, annotationStatuses, triageTags = new Set()) {
     const identity = segment.object_identity;
     const tags = segment.lane_nav_tags || {};
     const osm = segment.osm_selected_tags || {};
@@ -478,6 +511,7 @@
       annotated: annotationStatuses.includes("annotated"),
       annotation_status: annotationStatus,
       annotation_statuses: annotationStatuses,
+      triage_tags: [...triageTags],
       verified: annotation ? annotation.annotation_metadata?.manual_verified : "no",
       first_coordinate: Array.isArray(first) && first.length >= 2 ? { lng: first[0], lat: first[1] } : null,
       center_coordinate: geometryCenter(geometry),
@@ -505,6 +539,10 @@
     const limit = parseInt(params.get("limit") || "80", 10) || 80;
     const bySegment = annotationsBySegment();
     const statusesBySegment = annotationStatusesBySegment();
+    const recordsBySegment = annotationsGroupedBySegment();
+    const requestedTags = new Set(String(params.get("triage_tags") || "").split(",").filter(Boolean));
+    const triageMode = params.get("triage_mode") === "or" ? "or" : "and";
+    const favouriteSegmentKeys = new Set(String(params.get("favourite_segment_keys") || "").split(",").filter(Boolean));
 
     const allScope = candidateScope === "" && !target;
     const rows = [];
@@ -522,14 +560,21 @@
 
       const key = segment.object_identity.nav_segment_key;
       const annotationStatuses = statusesBySegment.get(key) ?? [];
+      const triageTags = triageTagsForSegment({
+        segment,
+        annotations: recordsBySegment.get(key) ?? [],
+        annotationStatuses,
+        favouriteSegmentKeys,
+      });
       const isAnnotated = annotationStatuses.includes("annotated");
       if (status === "annotated" && !isAnnotated) continue;
       if (status === "unannotated" && isAnnotated) continue;
+      if (!matchesTriageTags(triageTags, requestedTags, triageMode)) continue;
 
       if (allScope) {
-        rows.push(summarizeSegment(segment, bySegment.get(key) ?? null, annotationStatuses));
+        rows.push(summarizeSegment(segment, bySegment.get(key) ?? null, annotationStatuses, triageTags));
       } else if (total >= offset && rows.length < limit) {
-        rows.push(summarizeSegment(segment, bySegment.get(key) ?? null, annotationStatuses));
+        rows.push(summarizeSegment(segment, bySegment.get(key) ?? null, annotationStatuses, triageTags));
       }
       total += 1;
     }

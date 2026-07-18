@@ -4,6 +4,11 @@ const require = createRequire(import.meta.url);
 const {
   connectedTargetWayForSegment,
   deriveIntersectionPresentation,
+  favouriteIntersectionKey,
+  matchesTagFilter,
+  normalizeTargetRelation,
+  resolveTargetWaySelection,
+  segmentTriageTags,
   targetRoadNameForWay,
 } = require("./annotation_model.js");
 
@@ -98,6 +103,39 @@ const assert = (cond, msg) => {
     clickedSegmentKey: "way/300",
   });
   assert(!notConnected.ok && notConnected.reason === "not_connected", "Ctrl+click rejects ways outside the selected intersection");
+}
+
+{
+  const selection = resolveTargetWaySelection({
+    intersection: { connected_ways: [{ osm_way_id: 200, name: "Connected Road" }] },
+    currentSegmentKey: "way/100",
+    clickedSegmentKey: "way/300#2",
+    clickedRoadName: "Offset Road",
+  });
+  assert(selection.ok && selection.kind === "offset_candidate", "non-connected map way becomes an offset candidate");
+  assert(selection.targetSegmentKey === "way/300" && selection.targetRoad === "Offset Road", "offset candidate normalizes key and preserves road name");
+  assert(normalizeTargetRelation({ kind: "offset_intersection", reason: "other", note: "separate OSM nodes" })?.note === "separate OSM nodes", "other offset relation preserves explanation");
+  assert(normalizeTargetRelation({ kind: "offset_intersection", reason: "other", note: "" }) === null, "other offset relation requires explanation");
+}
+
+{
+  const favourite = favouriteIntersectionKey("way/100", "node/200");
+  const tags = segmentTriageTags({
+    segmentKey: "way/100",
+    annotations: [{
+      annotation_metadata: { note: "needs revisit" },
+      lane_nav_tags: {
+        osm_review_tags: { osm_review_note: "geometry gap" },
+        offset_relations: [{ to_segment_key: "way/300", kind: "offset_intersection", reason: "staggered_cross_intersection", note: null }],
+        taiwan_motorcycle_tags: { movement_rules: [] },
+      },
+      object_identity: { nav_segment_key: "way/100", applies_to_intersection_key: "node/200" },
+    }],
+    favouriteIntersectionKeys: new Set([favourite]),
+  });
+  assert(tags.has("has_notes") && tags.has("offset_intersection") && tags.has("favourite"), "triage tags derive notes, offset relations, and favourites");
+  assert(!matchesTagFilter(tags, new Set(["has_notes", "priority"]), "and"), "AND tag filter requires every selected tag");
+  assert(matchesTagFilter(tags, new Set(["has_notes", "priority"]), "or"), "OR tag filter accepts any selected tag");
 }
 
 console.log("ALL PASS");

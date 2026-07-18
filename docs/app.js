@@ -8,6 +8,7 @@ const state = {
   selectedIntersectionKey: null,
   intersectionReviews: new Map(),
   movementRules: [],
+  offsetRelations: [],
   laneProfiles: [],
   areas: { cities: [], districts: [] },
   map: null,
@@ -27,7 +28,12 @@ const state = {
   formBaseline: null,
   dirty: false,
   applyingFormState: false,
+  pendingOffsetTarget: null,
+  pendingTargetRelation: null,
+  favouriteIntersectionKeys: new Set(),
 };
+
+const FAVOURITES_STORAGE_KEY = "lanepilot:favourite-intersections:v1";
 
 const $ = (id) => document.getElementById(id);
 const {
@@ -41,12 +47,42 @@ const {
   implicitContextScope,
   intersectionRuleOverview,
   intersectionReviewKey,
+  favouriteIntersectionKey,
   movementKey,
   movementIdentity,
+  normalizeTargetRelation,
+  resolveTargetWaySelection,
   resolveLaneProfile,
   stableStringify,
   targetRoadNameForWay,
 } = LaneAnnotationModel;
+
+function loadFavouriteIntersectionKeys() {
+  try {
+    const value = JSON.parse(localStorage.getItem(FAVOURITES_STORAGE_KEY) || "[]");
+    return new Set(Array.isArray(value) ? value.filter((item) => typeof item === "string" && item) : []);
+  } catch {
+    return new Set();
+  }
+}
+
+function persistFavouriteIntersectionKeys() {
+  localStorage.setItem(FAVOURITES_STORAGE_KEY, JSON.stringify([...state.favouriteIntersectionKeys]));
+}
+
+function selectedTagFilters() {
+  return [...document.querySelectorAll(".tag-filter-option:checked")].map((input) => input.value);
+}
+
+function favouriteSegmentKeys() {
+  return [...new Set([...state.favouriteIntersectionKeys].map((key) => key.split("@")[0]).filter(Boolean))];
+}
+
+function updateTagFilterLabel() {
+  const selected = selectedTagFilters();
+  $("tagFilterToggle").textContent = `標籤篩選（${selected.length}）`;
+  $("clearTagFilter").disabled = selected.length === 0;
+}
 
 function setDataWarning(key, message = "") {
   if (message) state.dataWarnings[key] = message;
@@ -502,17 +538,18 @@ function selectedIntersection() {
   ) || null;
 }
 
-function selectTargetSegmentFromMap(navSegmentKey) {
+function selectTargetSegmentFromMap(navSegmentKey, roadName = "") {
   const intersection = selectedIntersection();
   if (!intersection) {
     showToast("請先選擇路口，再用 Ctrl+點擊選擇目標道路。", { error: true });
     return false;
   }
 
-  const target = connectedTargetWayForSegment({
+  const target = resolveTargetWaySelection({
     intersection,
     currentSegmentKey: state.selectedKey,
     clickedSegmentKey: navSegmentKey,
+    clickedRoadName: roadName,
   });
   if (target.reason === "same_as_current") {
     showToast("目標道路不能是目前選定道路。", { error: true });
@@ -523,6 +560,14 @@ function selectTargetSegmentFromMap(navSegmentKey) {
     return false;
   }
 
+  if (target.ok && target.kind === "offset_candidate") {
+    state.pendingOffsetTarget = target;
+    $("offsetTargetSummary").textContent = `${target.targetRoad} (${target.targetSegmentKey})`;
+    $("offsetReasonNote").value = "";
+    $("offsetReasonNoteLabel").hidden = true;
+    $("offsetTargetDialog").showModal();
+    return true;
+  }
   const targetKey = target.targetSegmentKey;
   const targetSelect = $("targetSegmentKey");
   targetSelect.value = targetKey;
@@ -530,13 +575,61 @@ function selectTargetSegmentFromMap(navSegmentKey) {
     populateTargetSegmentOptions(intersection.connected_ways || [], targetKey);
     targetSelect.value = targetKey;
   }
-  $("targetRoad").value = targetRoadNameForWay(target.way);
+  state.pendingTargetRelation = null;
+  $("targetRoad").value = target.targetRoad || targetRoadNameForWay(target.way);
   $("targetRoadHint").textContent = "已用地圖 Ctrl+點擊選擇目標 OSM way；仍受目前路口 connected ways 限制。";
   targetSelect.hidden = false;
   $("targetSegmentAssist").hidden = false;
   refreshSegmentMapStyles();
   markFormDirty();
   return true;
+}
+
+function offsetReasonValue() {
+  return document.querySelector('input[name="offsetReason"]:checked')?.value || "";
+}
+
+function syncOffsetReasonNote() {
+  $("offsetReasonNoteLabel").hidden = offsetReasonValue() !== "other";
+}
+
+async function confirmOffsetTarget() {
+  const pending = state.pendingOffsetTarget;
+  const reason = offsetReasonValue();
+  const relation = normalizeTargetRelation({
+    kind: "offset_intersection",
+    reason,
+    note: $("offsetReasonNote").value,
+  });
+  if (!pending || !relation) {
+    showToast("請為「其他」填寫原因。", { error: true });
+    return;
+  }
+  state.pendingTargetRelation = relation;
+  const offsetRelation = { to_segment_key: pending.targetSegmentKey, target_road: pending.targetRoad, ...relation };
+  const existing = state.offsetRelations.findIndex((item) => item.to_segment_key === offsetRelation.to_segment_key);
+  if (existing >= 0) state.offsetRelations[existing] = offsetRelation;
+  else state.offsetRelations.push(offsetRelation);
+  $("targetSegmentKey").value = pending.targetSegmentKey;
+  if ($("targetSegmentKey").value !== pending.targetSegmentKey) {
+    const option = document.createElement("option");
+    option.value = pending.targetSegmentKey;
+    option.textContent = `${pending.targetRoad} · ${pending.targetSegmentKey}`;
+    $("targetSegmentKey").appendChild(option);
+    $("targetSegmentKey").value = pending.targetSegmentKey;
+  }
+  $("targetRoad").value = pending.targetRoad;
+  $("targetRoadHint").textContent = "已建立錯落路口關聯；儲存規則時會記錄原因。";
+  state.pendingOffsetTarget = null;
+  $("offsetTargetDialog").close();
+  refreshSegmentMapStyles();
+  markFormDirty();
+  try {
+    await persistAnnotation({ preserveTargetSelection: true });
+    showToast("錯落路口關聯已儲存，可稍後再新增規則。");
+  } catch (error) {
+    showToast(`錯落路口關聯儲存失敗：${error.message}`, { error: true });
+  }
 }
 
 async function fetchJson(url, options) {
@@ -748,6 +841,14 @@ function appendSegmentRows(items) {
       badges.append(document.createElement("br"), done);
     }
 
+    const triageLabels = { has_notes: "有備註", offset_intersection: "錯落路口", favourite: "我的最愛", priority: "高優先" };
+    for (const tag of item.triage_tags || []) {
+      if (!triageLabels[tag] || tag === "priority") continue;
+      const badge = document.createElement("span");
+      badge.className = `badge ${tag}`;
+      badge.textContent = triageLabels[tag];
+      badges.append(document.createElement("br"), badge);
+    }
     row.append(main, badges);
     row.addEventListener("click", () => requestSegmentChange(item.nav_segment_key, { focusMap: true }));
     list.appendChild(row);
@@ -786,6 +887,9 @@ async function loadSegments({ append = false } = {}) {
     target: $("targetFilter").value,
     status: $("statusFilter").value,
     candidate_scope: segmentScope,
+    triage_tags: selectedTagFilters().join(","),
+    triage_mode: $("tagFilterMode").value,
+    favourite_segment_keys: favouriteSegmentKeys().join(","),
     ...geoParams(),
   });
   try {
@@ -971,7 +1075,7 @@ function initMap() {
       layer.bindTooltip(feature.properties.label);
       layer.on("click", (event) => {
         if (event.originalEvent?.ctrlKey) {
-          selectTargetSegmentFromMap(feature.properties.nav_segment_key);
+          selectTargetSegmentFromMap(feature.properties.nav_segment_key, feature.properties.road_name);
           return;
         }
         requestSegmentChange(feature.properties.nav_segment_key, { focusMap: true });
@@ -1011,6 +1115,7 @@ function renderMapSegments(items) {
         nav_segment_key: item.nav_segment_key,
         annotated: item.annotated,
         suggested: Boolean(item.manual_targets?.length || item.candidate_priority >= 70),
+        road_name: item.road_name,
         label: `${item.road_name || `未命名道路 (${item.nav_segment_key})`} · ${item.nav_segment_key}`,
       },
       geometry: normalizeGeometry(item.geometry),
@@ -1170,6 +1275,10 @@ function renderNearbyIntersections(rows) {
   for (const item of rows) {
     const presentation = intersectionPresentation(item);
     const status = intersectionDisplayStatus(item.nav_intersection_key);
+    const hasOffsetRelation = state.contextAnnotations.some((row) =>
+      row.object_identity?.applies_to_intersection_key === item.nav_intersection_key &&
+      (row.lane_nav_tags?.offset_relations || []).length > 0
+    );
     const option = document.createElement("option");
     option.value = item.nav_intersection_key;
     option.textContent = `${presentation.displayName} (${item.nav_intersection_key}, ${item.distance_m}m)`;
@@ -1187,6 +1296,7 @@ function renderNearbyIntersections(rows) {
       <div class="intersection-heading">
         <strong>${presentation.displayName}</strong>
         ${statusControl}
+        ${hasOffsetRelation ? '<span class="intersection-status annotated">錯落路口</span>' : ''}
       </div>
       ${item.nav_intersection_key} · ${item.distance_m}m · ${targetText(item.manual_targets)}${link ? `<br><a href="${link}" target="_blank" rel="noreferrer">Open Map</a>` : ""}
     `;
@@ -1194,6 +1304,20 @@ function renderNearbyIntersections(rows) {
     if (reviewButton) {
       reviewButton.addEventListener("click", (event) => toggleIntersectionReview(event, item));
     }
+    const favouriteKey = favouriteIntersectionKey(state.selectedKey, item.nav_intersection_key);
+    const favouriteButton = document.createElement("button");
+    favouriteButton.type = "button";
+    favouriteButton.className = "review-toggle";
+    favouriteButton.textContent = state.favouriteIntersectionKeys.has(favouriteKey) ? "★ 已收藏" : "☆ 我的最愛";
+    favouriteButton.addEventListener("click", (event) => {
+      event.stopPropagation();
+      if (state.favouriteIntersectionKeys.has(favouriteKey)) state.favouriteIntersectionKeys.delete(favouriteKey);
+      else state.favouriteIntersectionKeys.add(favouriteKey);
+      persistFavouriteIntersectionKeys();
+      renderNearbyIntersections(state.selectedNearbyIntersections);
+      reloadAll();
+    });
+    div.querySelector(".intersection-heading")?.appendChild(favouriteButton);
     div.addEventListener("click", () => {
       selectNearbyIntersection(item);
     });
@@ -1251,13 +1375,14 @@ function renderIntersectionRuleOverview() {
       ? "OSM 正向"
       : rule.approach_direction === "backward" ? "OSM 反向" : "方向未指定";
     const origin = rule.data_origin === "legacy" ? "舊版資料" : "新版資料";
-    return `
-      <div class="rule-item overview-rule">
-        <span class="overview-direction">${direction}</span>
-        <span>${rule.movement || "轉向未指定"} · ${rule.target_road || rule.to_segment_key || "目標待確認"} · 機車 ${rule.motorcycle_turn_rule || "unknown"} · 待轉區 ${rule.waiting_zone_exists || "unknown"}</span>
-        <span class="overview-origin ${rule.data_origin}">${origin}</span>
-      </div>
-    `;
+    const rows = [
+      ["轉向", rule.movement || "unknown"], ["目標道路", rule.target_road || rule.to_segment_key || "unknown"],
+      ["目標 OSM way", rule.to_segment_key || "unknown"], ["汽車規則", rule.vehicle_rule || "unknown"],
+      ["機車規則", rule.motorcycle_turn_rule || "unknown"], ["待轉牌", rule.two_stage_sign_exists || "unknown"],
+      ["待轉區", rule.waiting_zone_exists || "unknown"], ["待轉區位置", rule.waiting_zone_position || "unknown"],
+    ];
+    if (rule.target_relation) rows.push(["錯落路口", rule.target_relation.reason + (rule.target_relation.note ? `：${rule.target_relation.note}` : "")]);
+    return `<div class="rule-item overview-rule overview-rule-card"><div><strong>${direction}</strong> <span class="overview-origin ${rule.data_origin}">${origin}</span></div><dl class="overview-fields">${rows.map(([label, value]) => `<div><dt>${label}</dt><dd>${value}</dd></div>`).join("")}</dl></div>`;
   }).join("");
 }
 
@@ -1310,6 +1435,7 @@ function contextLaneData(annotation) {
   const laneTags = latestLaneTags(annotation);
   return {
     movementRules: laneTags.taiwan_motorcycle_tags?.movement_rules || [],
+    offsetRelations: laneTags.offset_relations || [],
     laneProfiles: laneTags.lane_detail_tags?.lane_profiles || [],
   };
 }
@@ -1348,6 +1474,7 @@ function setFormFromSegment(segment, annotation, laneData = null) {
     laneProfiles: laneDetail.lane_profiles,
   };
   state.movementRules = Array.isArray(selectedData.movementRules) ? structuredClone(selectedData.movementRules) : [];
+  state.offsetRelations = Array.isArray(laneTags.offset_relations) ? structuredClone(laneTags.offset_relations) : [];
   state.laneProfiles = Array.isArray(selectedData.laneProfiles) ? structuredClone(selectedData.laneProfiles) : [];
   renderMovementRules();
   renderLaneProfiles();
@@ -1727,6 +1854,7 @@ async function addMovementRuleFromForm() {
     two_stage_sign_exists: $("twoStageSignExists").value,
     waiting_zone_exists: $("waitingZoneExists").value,
     waiting_zone_position: $("waitingZonePosition").value,
+    ...(state.pendingTargetRelation ? { target_relation: state.pendingTargetRelation } : {}),
     data_origin: "context_v2",
   };
   const existingIndex = state.movementRules.findIndex((item) => item.movement_key === key);
@@ -1794,6 +1922,7 @@ function buildAnnotationPayload() {
       taiwan_motorcycle_tags: {
         movement_rules: scope === "intersection_approach" ? state.movementRules : [],
       },
+      offset_relations: scope === "intersection_approach" ? state.offsetRelations : [],
       lane_detail_tags: {
         lane_profiles: state.laneProfiles,
       },
@@ -1888,6 +2017,14 @@ function bindEvents() {
   });
   $("approachDirection").addEventListener("change", handleContextSelectorChange);
   $("targetSegmentKey").addEventListener("change", handleTargetSegmentChange);
+  $("targetSegmentKey").addEventListener("change", () => { state.pendingTargetRelation = null; });
+  $("tagFilterToggle").addEventListener("click", () => { const panel = $("tagFilterPanel"); panel.hidden = !panel.hidden; $("tagFilterToggle").setAttribute("aria-expanded", String(!panel.hidden)); });
+  document.querySelectorAll(".tag-filter-option").forEach((input) => input.addEventListener("change", () => { updateTagFilterLabel(); reloadAll(); }));
+  $("tagFilterMode").addEventListener("change", reloadAll);
+  $("clearTagFilter").addEventListener("click", () => { document.querySelectorAll(".tag-filter-option").forEach((input) => { input.checked = false; }); updateTagFilterLabel(); reloadAll(); });
+  document.querySelectorAll('input[name="offsetReason"]').forEach((input) => input.addEventListener("change", syncOffsetReasonNote));
+  $("confirmOffsetTarget").addEventListener("click", (event) => { event.preventDefault(); confirmOffsetTarget(); });
+  $("cancelOffsetTarget").addEventListener("click", () => { state.pendingOffsetTarget = null; });
   $("twoStageSignExists").addEventListener("change", syncTwoStageDefaults);
   $("waitingZoneExists").addEventListener("change", syncTwoStageDefaults);
   $("motorcycleTurnRule").addEventListener("change", syncTwoStageDefaults);
@@ -1912,6 +2049,8 @@ function bindEvents() {
 }
 
 async function boot() {
+  state.favouriteIntersectionKeys = loadFavouriteIntersectionKeys();
+  updateTagFilterLabel();
   bindEvents();
   await loadAreas();
   initMap();

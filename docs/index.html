@@ -72,6 +72,21 @@
               <option value="annotated">已標註</option>
             </select>
           </label>
+          <div class="tag-filter">
+            <button id="tagFilterToggle" class="secondary-button" type="button" aria-expanded="false">標籤篩選（0）</button>
+            <div id="tagFilterPanel" class="tag-filter-panel" hidden>
+              <label>比對方式
+                <select id="tagFilterMode"><option value="and">符合全部（AND）</option><option value="or">符合任一（OR）</option></select>
+              </label>
+              <label><input type="checkbox" value="annotated" class="tag-filter-option" /> 已標註</label>
+              <label><input type="checkbox" value="empty" class="tag-filter-option" /> 已檢查但目前無規則</label>
+              <label><input type="checkbox" value="priority" class="tag-filter-option" /> 高優先</label>
+              <label><input type="checkbox" value="has_notes" class="tag-filter-option" /> 有備註</label>
+              <label><input type="checkbox" value="offset_intersection" class="tag-filter-option" /> 錯落路口</label>
+              <label><input type="checkbox" value="favourite" class="tag-filter-option" /> 我的最愛</label>
+              <button id="clearTagFilter" class="secondary-button" type="button">清除標籤</button>
+            </div>
+          </div>
           <p class="hint">請先從 combobox 選定縣市與行政區；工具只會載入該行政區完整資料。預設凸顯高優先候選，需要補漏時切到「所有可標註路段」。</p>
           <p class="hint">路名 / OSM ID 輸入後會自動搜尋，搜尋期間清單會顯示載入狀態。</p>
         </section>
@@ -361,6 +376,17 @@
       </section>
     </main>
 
+    <dialog id="offsetTargetDialog" class="offset-target-dialog">
+      <form method="dialog">
+        <h2>建立錯落路口關聯</h2>
+        <p id="offsetTargetSummary"></p>
+        <label class="offset-reason"><input type="radio" name="offsetReason" value="staggered_cross_intersection" checked /><span>錯落十字路口</span></label>
+        <label class="offset-reason"><input type="radio" name="offsetReason" value="osm_geometry_missing" /><span>OSM 幾何缺漏</span></label>
+        <label class="offset-reason"><input type="radio" name="offsetReason" value="other" /><span>其他</span></label>
+        <label id="offsetReasonNoteLabel" class="offset-reason-note" hidden>說明<textarea id="offsetReasonNote" rows="3"></textarea></label>
+        <div class="actions offset-dialog-actions"><button id="cancelOffsetTarget" class="secondary-button" value="cancel">取消</button><button id="confirmOffsetTarget" value="confirm">確認建立</button></div>
+      </form>
+    </dialog>
     <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>

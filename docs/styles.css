@@ -876,6 +876,26 @@ button:hover {
   background: var(--danger);
 }
 
+.secondary-button { background: #68736c; }
+.tag-filter { position: relative; margin-top: 12px; }
+.tag-filter-panel { position: absolute; z-index: 20; width: 260px; padding: 12px; border: 1px solid var(--line); border-radius: 8px; background: #fff; box-shadow: var(--shadow); }
+.tag-filter-panel label { flex-direction: row; align-items: center; margin-top: 8px; }
+.tag-filter-panel input { width: auto; }
+.overview-rule-card { display: block; color: var(--text); }
+.overview-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 12px; margin: 8px 0 0; }
+.overview-fields div { display: flex; gap: 5px; }
+.overview-fields dt { color: var(--muted); }
+.overview-fields dd { margin: 0; word-break: break-word; }
+.offset-target-dialog { width: min(420px, calc(100vw - 32px)); max-width: 460px; border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--shadow); }
+.offset-target-dialog form { display: grid; gap: 10px; }
+.offset-target-dialog h2, .offset-target-dialog p { margin: 0; }
+.offset-reason { display: flex !important; flex-direction: row !important; align-items: center; gap: 10px; margin: 0 !important; padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px; color: var(--text) !important; cursor: pointer; }
+.offset-reason:has(input:checked) { border-color: var(--accent); background: #eef5f0; }
+.offset-reason input { width: auto; margin: 0; }
+.offset-reason-note { margin: 0 !important; }
+.offset-dialog-actions { justify-content: flex-end; margin-top: 4px; }
+.offset-target-dialog::backdrop { background: rgba(0,0,0,.35); }
+
 @media (max-width: 980px) {
   .layout {
     grid-template-columns: 1fr;
