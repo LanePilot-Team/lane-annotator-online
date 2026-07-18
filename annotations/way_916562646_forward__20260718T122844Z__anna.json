@@ -1,0 +1,195 @@
+{
+  "object_identity": {
+    "schema_version": 2,
+    "object_type": "nav_context_annotation",
+    "nav_context_key": "way/916562646/forward",
+    "nav_segment_key": "way/916562646",
+    "context_scope": "segment_direction",
+    "applies_to_intersection_key": null,
+    "approach_direction": "forward",
+    "source_osm": {
+      "osm_type": "way",
+      "osm_id": 916562646
+    },
+    "split_index": 0
+  },
+  "osm_reference": {
+    "osm_selected_tags": {
+      "highway": "tertiary",
+      "name": "楠海路",
+      "oneway": "yes",
+      "lanes": "3",
+      "maxspeed": "40"
+    },
+    "map_links": {
+      "openstreetmap": "https://www.openstreetmap.org/way/916562646",
+      "google_maps": "https://www.google.com/maps/@22.7308201,120.2706075,19z"
+    },
+    "nearby_intersections": [
+      {
+        "nav_intersection_key": "node/9849594287",
+        "osm_id": 9849594287,
+        "intersection_name": "典昌路 / 楠海路",
+        "connected_way_count": 3,
+        "connected_ways": [
+          {
+            "osm_way_id": 294707498,
+            "name": "典昌路",
+            "highway": "primary"
+          },
+          {
+            "osm_way_id": 916562646,
+            "name": "楠海路",
+            "highway": "tertiary"
+          },
+          {
+            "osm_way_id": 1074006920,
+            "name": "楠海路",
+            "highway": "tertiary"
+          }
+        ],
+        "road_classes": [
+          "primary",
+          "tertiary"
+        ],
+        "candidate_priority": 142,
+        "manual_targets": [
+          "check_intersection_geometry",
+          "check_lane_movements"
+        ],
+        "coordinate": {
+          "lng": 120.270529,
+          "lat": 22.731661
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/9849594287",
+          "google_maps": "https://www.google.com/maps/@22.731661,120.270529,20z"
+        },
+        "distance_m": 0
+      },
+      {
+        "nav_intersection_key": "node/7390303848",
+        "osm_id": 7390303848,
+        "intersection_name": "楠海路",
+        "connected_way_count": 3,
+        "connected_ways": [
+          {
+            "osm_way_id": 916562646,
+            "name": "楠海路",
+            "highway": "tertiary"
+          },
+          {
+            "osm_way_id": 1074006921,
+            "name": "楠海路",
+            "highway": "unclassified"
+          },
+          {
+            "osm_way_id": 1168465206,
+            "name": "楠海路",
+            "highway": "tertiary"
+          }
+        ],
+        "road_classes": [
+          "tertiary",
+          "unclassified"
+        ],
+        "candidate_priority": 139,
+        "manual_targets": [
+          "check_intersection_geometry",
+          "check_motorcycle_turn_rule",
+          "check_two_stage_turn_sign",
+          "check_waiting_zone",
+          "check_lane_movements"
+        ],
+        "coordinate": {
+          "lng": 120.2706075,
+          "lat": 22.7308201
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/7390303848",
+          "google_maps": "https://www.google.com/maps/@22.7308201,120.2706075,20z"
+        },
+        "distance_m": 0
+      }
+    ]
+  },
+  "lane_nav_tags": {
+    "osm_review_tags": {
+      "osm_lane_status": "not_checked",
+      "osm_turn_lane_status": "not_checked",
+      "osm_motorcycle_status": "not_checked",
+      "osm_review_note": null
+    },
+    "taiwan_motorcycle_tags": {
+      "movement_rules": []
+    },
+    "offset_relations": [],
+    "lane_detail_tags": {
+      "lane_profiles": [
+        {
+          "direction": "forward",
+          "lane_count": 3,
+          "lane_movements": [
+            "left",
+            "left",
+            "right"
+          ],
+          "motorcycle_access_by_lane": [
+            "no",
+            "yes",
+            "yes"
+          ],
+          "source": "manual"
+        }
+      ]
+    }
+  },
+  "geometry": {
+    "type": "LineString",
+    "coordinates": [
+      [
+        120.2706075,
+        22.7308201
+      ],
+      [
+        120.2705355,
+        22.7309493
+      ],
+      [
+        120.2704795,
+        22.7310785
+      ],
+      [
+        120.2704371,
+        22.7312563
+      ],
+      [
+        120.2704392,
+        22.7313921
+      ],
+      [
+        120.2704531,
+        22.7315012
+      ],
+      [
+        120.270481,
+        22.7315822
+      ],
+      [
+        120.270529,
+        22.731661
+      ]
+    ]
+  },
+  "annotation_metadata": {
+    "created_from": "manual_form",
+    "evidence_type": "streetview",
+    "manual_verified": "yes",
+    "verified_by": "anna",
+    "verified_at": "2026-07-18T20:00",
+    "verified_at_precision": "hour",
+    "verified_timezone": "Asia/Taipei",
+    "confidence": "medium",
+    "note": ""
+  }
+}
