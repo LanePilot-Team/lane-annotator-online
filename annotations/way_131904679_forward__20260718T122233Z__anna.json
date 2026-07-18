@@ -1,0 +1,1108 @@
+{
+  "object_identity": {
+    "schema_version": 2,
+    "object_type": "nav_context_annotation",
+    "nav_context_key": "way/131904679/forward",
+    "nav_segment_key": "way/131904679",
+    "context_scope": "segment_direction",
+    "applies_to_intersection_key": null,
+    "approach_direction": "forward",
+    "source_osm": {
+      "osm_type": "way",
+      "osm_id": 131904679
+    },
+    "split_index": 0
+  },
+  "osm_reference": {
+    "osm_selected_tags": {
+      "highway": "secondary",
+      "name": "鳳仁路",
+      "ref": "183",
+      "oneway": "yes"
+    },
+    "map_links": {
+      "openstreetmap": "https://www.openstreetmap.org/way/131904679",
+      "google_maps": "https://www.google.com/maps/@22.6979553,120.347244,19z"
+    },
+    "nearby_intersections": [
+      {
+        "nav_intersection_key": "node/1451068688",
+        "osm_id": 1451068688,
+        "intersection_name": "楠興東路 / 鳳仁路 / 鳳楠路",
+        "connected_way_count": 4,
+        "connected_ways": [
+          {
+            "osm_way_id": 131904679,
+            "name": "鳳仁路",
+            "highway": "secondary"
+          },
+          {
+            "osm_way_id": 131904771,
+            "name": "鳳楠路",
+            "highway": "secondary"
+          },
+          {
+            "osm_way_id": 131904785,
+            "name": "楠興東路",
+            "highway": "tertiary"
+          },
+          {
+            "osm_way_id": 283793098,
+            "name": "鳳仁路",
+            "highway": "secondary"
+          }
+        ],
+        "road_classes": [
+          "secondary",
+          "tertiary"
+        ],
+        "candidate_priority": 175,
+        "manual_targets": [
+          "check_intersection_geometry",
+          "check_motorcycle_turn_rule",
+          "check_two_stage_turn_sign",
+          "check_waiting_zone",
+          "check_lane_movements"
+        ],
+        "coordinate": {
+          "lng": 120.3326967,
+          "lat": 22.7206691
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/1451068688",
+          "google_maps": "https://www.google.com/maps/@22.7206691,120.3326967,20z"
+        },
+        "distance_m": 0
+      },
+      {
+        "nav_intersection_key": "node/1451069457",
+        "osm_id": 1451069457,
+        "intersection_name": "鳳仁路",
+        "connected_way_count": 3,
+        "connected_ways": [
+          {
+            "osm_way_id": 27527293,
+            "name": "鳳仁路",
+            "highway": "secondary"
+          },
+          {
+            "osm_way_id": 131904679,
+            "name": "鳳仁路",
+            "highway": "secondary"
+          },
+          {
+            "osm_way_id": 277509903,
+            "name": "鳳仁路",
+            "highway": "secondary"
+          }
+        ],
+        "road_classes": [
+          "secondary"
+        ],
+        "candidate_priority": 141,
+        "manual_targets": [
+          "check_intersection_geometry",
+          "check_motorcycle_turn_rule",
+          "check_two_stage_turn_sign",
+          "check_waiting_zone"
+        ],
+        "coordinate": {
+          "lng": 120.347244,
+          "lat": 22.6979553
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/1451069457",
+          "google_maps": "https://www.google.com/maps/@22.6979553,120.347244,20z"
+        },
+        "distance_m": 0
+      },
+      {
+        "nav_intersection_key": "node/2210833538",
+        "osm_id": 2210833538,
+        "intersection_name": "水管路 / 鳳仁路",
+        "connected_way_count": 4,
+        "connected_ways": [
+          {
+            "osm_way_id": 131904679,
+            "name": "鳳仁路",
+            "highway": "secondary"
+          },
+          {
+            "osm_way_id": 1127666028,
+            "name": "水管路",
+            "highway": "tertiary"
+          },
+          {
+            "osm_way_id": 1132868556,
+            "name": "水管路",
+            "highway": "tertiary"
+          },
+          {
+            "osm_way_id": 1132868557,
+            "name": "水管路",
+            "highway": "unclassified"
+          }
+        ],
+        "road_classes": [
+          "secondary",
+          "tertiary",
+          "unclassified"
+        ],
+        "candidate_priority": 140,
+        "manual_targets": [
+          "check_intersection_geometry",
+          "check_lane_movements"
+        ],
+        "coordinate": {
+          "lng": 120.3425251,
+          "lat": 22.7058264
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/2210833538",
+          "google_maps": "https://www.google.com/maps/@22.7058264,120.3425251,20z"
+        },
+        "distance_m": 0
+      },
+      {
+        "nav_intersection_key": "node/12954233381",
+        "osm_id": 12954233381,
+        "intersection_name": "水管路 / 鳳仁路",
+        "connected_way_count": 4,
+        "connected_ways": [
+          {
+            "osm_way_id": 131904679,
+            "name": "鳳仁路",
+            "highway": "secondary"
+          },
+          {
+            "osm_way_id": 296952459,
+            "name": "水管路",
+            "highway": "tertiary"
+          },
+          {
+            "osm_way_id": 1132868554,
+            "name": "水管路",
+            "highway": "tertiary"
+          },
+          {
+            "osm_way_id": 1132868555,
+            "name": "水管路",
+            "highway": "unclassified"
+          }
+        ],
+        "road_classes": [
+          "secondary",
+          "tertiary",
+          "unclassified"
+        ],
+        "candidate_priority": 140,
+        "manual_targets": [
+          "check_intersection_geometry",
+          "check_lane_movements"
+        ],
+        "coordinate": {
+          "lng": 120.3424607,
+          "lat": 22.7059363
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/12954233381",
+          "google_maps": "https://www.google.com/maps/@22.7059363,120.3424607,20z"
+        },
+        "distance_m": 0
+      },
+      {
+        "nav_intersection_key": "node/12598764106",
+        "osm_id": 12598764106,
+        "intersection_name": "永宏巷 / 竹楠路 / 鳳仁路",
+        "connected_way_count": 4,
+        "connected_ways": [
+          {
+            "osm_way_id": 131904679,
+            "name": "鳳仁路",
+            "highway": "secondary"
+          },
+          {
+            "osm_way_id": 211065016,
+            "name": "竹楠路",
+            "highway": "residential"
+          },
+          {
+            "osm_way_id": 215378085,
+            "name": "永宏巷",
+            "highway": "tertiary"
+          },
+          {
+            "osm_way_id": 507743152,
+            "name": "竹楠路",
+            "highway": "residential"
+          }
+        ],
+        "road_classes": [
+          "residential",
+          "secondary",
+          "tertiary"
+        ],
+        "candidate_priority": 132,
+        "manual_targets": [
+          "check_intersection_geometry"
+        ],
+        "coordinate": {
+          "lng": 120.3380771,
+          "lat": 22.7130392
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/12598764106",
+          "google_maps": "https://www.google.com/maps/@22.7130392,120.3380771,20z"
+        },
+        "distance_m": 0
+      },
+      {
+        "nav_intersection_key": "node/2210900601",
+        "osm_id": 2210900601,
+        "intersection_name": "鳳仁路 / 鳳仁路238巷",
+        "connected_way_count": 3,
+        "connected_ways": [
+          {
+            "osm_way_id": 131904679,
+            "name": "鳳仁路",
+            "highway": "secondary"
+          },
+          {
+            "osm_way_id": 211080974,
+            "name": "鳳仁路238巷",
+            "highway": "service"
+          },
+          {
+            "osm_way_id": 1322490905,
+            "name": null,
+            "highway": "service"
+          }
+        ],
+        "road_classes": [
+          "secondary",
+          "service"
+        ],
+        "candidate_priority": 124,
+        "manual_targets": [
+          "check_intersection_geometry"
+        ],
+        "coordinate": {
+          "lng": 120.3460813,
+          "lat": 22.7000566
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/2210900601",
+          "google_maps": "https://www.google.com/maps/@22.7000566,120.3460813,20z"
+        },
+        "distance_m": 0
+      },
+      {
+        "nav_intersection_key": "node/4585563281",
+        "osm_id": 4585563281,
+        "intersection_name": "鳳仁路 / 鳳仁路仁平巷",
+        "connected_way_count": 2,
+        "connected_ways": [
+          {
+            "osm_way_id": 131904679,
+            "name": "鳳仁路",
+            "highway": "secondary"
+          },
+          {
+            "osm_way_id": 463272257,
+            "name": "鳳仁路仁平巷",
+            "highway": "service"
+          }
+        ],
+        "road_classes": [
+          "secondary",
+          "service"
+        ],
+        "candidate_priority": 116,
+        "manual_targets": [
+          "check_intersection_geometry"
+        ],
+        "coordinate": {
+          "lng": 120.3471183,
+          "lat": 22.6983012
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/4585563281",
+          "google_maps": "https://www.google.com/maps/@22.6983012,120.3471183,20z"
+        },
+        "distance_m": 0
+      },
+      {
+        "nav_intersection_key": "node/4585563280",
+        "osm_id": 4585563280,
+        "intersection_name": "鳳仁路 / 鳳仁路218巷",
+        "connected_way_count": 2,
+        "connected_ways": [
+          {
+            "osm_way_id": 131904679,
+            "name": "鳳仁路",
+            "highway": "secondary"
+          },
+          {
+            "osm_way_id": 463272256,
+            "name": "鳳仁路218巷",
+            "highway": "service"
+          }
+        ],
+        "road_classes": [
+          "secondary",
+          "service"
+        ],
+        "candidate_priority": 116,
+        "manual_targets": [
+          "check_intersection_geometry"
+        ],
+        "coordinate": {
+          "lng": 120.3467502,
+          "lat": 22.6990194
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/4585563280",
+          "google_maps": "https://www.google.com/maps/@22.6990194,120.3467502,20z"
+        },
+        "distance_m": 0
+      },
+      {
+        "nav_intersection_key": "node/2210900630",
+        "osm_id": 2210900630,
+        "intersection_name": "鳳仁路 / 鳳仁路260巷",
+        "connected_way_count": 2,
+        "connected_ways": [
+          {
+            "osm_way_id": 131904679,
+            "name": "鳳仁路",
+            "highway": "secondary"
+          },
+          {
+            "osm_way_id": 1245197423,
+            "name": "鳳仁路260巷",
+            "highway": "service"
+          }
+        ],
+        "road_classes": [
+          "secondary",
+          "service"
+        ],
+        "candidate_priority": 116,
+        "manual_targets": [
+          "check_intersection_geometry"
+        ],
+        "coordinate": {
+          "lng": 120.3458317,
+          "lat": 22.7004619
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/2210900630",
+          "google_maps": "https://www.google.com/maps/@22.7004619,120.3458317,20z"
+        },
+        "distance_m": 0
+      },
+      {
+        "nav_intersection_key": "node/12969294989",
+        "osm_id": 12969294989,
+        "intersection_name": "中正路 / 鳳仁路",
+        "connected_way_count": 2,
+        "connected_ways": [
+          {
+            "osm_way_id": 131904679,
+            "name": "鳳仁路",
+            "highway": "secondary"
+          },
+          {
+            "osm_way_id": 283793087,
+            "name": "中正路",
+            "highway": "tertiary"
+          }
+        ],
+        "road_classes": [
+          "secondary",
+          "tertiary"
+        ],
+        "candidate_priority": 116,
+        "manual_targets": [
+          "check_intersection_geometry"
+        ],
+        "coordinate": {
+          "lng": 120.3454428,
+          "lat": 22.7010709
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/12969294989",
+          "google_maps": "https://www.google.com/maps/@22.7010709,120.3454428,20z"
+        },
+        "distance_m": 0
+      },
+      {
+        "nav_intersection_key": "node/11929087518",
+        "osm_id": 11929087518,
+        "intersection_name": "工業一路 / 鳳仁路",
+        "connected_way_count": 2,
+        "connected_ways": [
+          {
+            "osm_way_id": 131904679,
+            "name": "鳳仁路",
+            "highway": "secondary"
+          },
+          {
+            "osm_way_id": 1286053258,
+            "name": "工業一路",
+            "highway": "service"
+          }
+        ],
+        "road_classes": [
+          "secondary",
+          "service"
+        ],
+        "candidate_priority": 116,
+        "manual_targets": [
+          "check_intersection_geometry"
+        ],
+        "coordinate": {
+          "lng": 120.3448,
+          "lat": 22.7021564
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/11929087518",
+          "google_maps": "https://www.google.com/maps/@22.7021564,120.3448,20z"
+        },
+        "distance_m": 0
+      },
+      {
+        "nav_intersection_key": "node/12969294981",
+        "osm_id": 12969294981,
+        "intersection_name": "仁樂街 / 鳳仁路",
+        "connected_way_count": 2,
+        "connected_ways": [
+          {
+            "osm_way_id": 131904679,
+            "name": "鳳仁路",
+            "highway": "secondary"
+          },
+          {
+            "osm_way_id": 211075353,
+            "name": "仁樂街",
+            "highway": "residential"
+          }
+        ],
+        "road_classes": [
+          "residential",
+          "secondary"
+        ],
+        "candidate_priority": 116,
+        "manual_targets": [
+          "check_intersection_geometry"
+        ],
+        "coordinate": {
+          "lng": 120.3441736,
+          "lat": 22.7032141
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/12969294981",
+          "google_maps": "https://www.google.com/maps/@22.7032141,120.3441736,20z"
+        },
+        "distance_m": 0
+      },
+      {
+        "nav_intersection_key": "node/7287812089",
+        "osm_id": 7287812089,
+        "intersection_name": "竹門巷 / 鳳仁路",
+        "connected_way_count": 2,
+        "connected_ways": [
+          {
+            "osm_way_id": 131904679,
+            "name": "鳳仁路",
+            "highway": "secondary"
+          },
+          {
+            "osm_way_id": 131904774,
+            "name": "竹門巷",
+            "highway": "residential"
+          }
+        ],
+        "road_classes": [
+          "residential",
+          "secondary"
+        ],
+        "candidate_priority": 116,
+        "manual_targets": [
+          "check_intersection_geometry"
+        ],
+        "coordinate": {
+          "lng": 120.3408834,
+          "lat": 22.7084983
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/7287812089",
+          "google_maps": "https://www.google.com/maps/@22.7084983,120.3408834,20z"
+        },
+        "distance_m": 0
+      },
+      {
+        "nav_intersection_key": "node/1451069145",
+        "osm_id": 1451069145,
+        "intersection_name": "後庄巷 / 鳳仁路",
+        "connected_way_count": 2,
+        "connected_ways": [
+          {
+            "osm_way_id": 131904679,
+            "name": "鳳仁路",
+            "highway": "secondary"
+          },
+          {
+            "osm_way_id": 131904708,
+            "name": "後庄巷",
+            "highway": "residential"
+          }
+        ],
+        "road_classes": [
+          "residential",
+          "secondary"
+        ],
+        "candidate_priority": 116,
+        "manual_targets": [
+          "check_intersection_geometry"
+        ],
+        "coordinate": {
+          "lng": 120.3402013,
+          "lat": 22.7096021
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/1451069145",
+          "google_maps": "https://www.google.com/maps/@22.7096021,120.3402013,20z"
+        },
+        "distance_m": 0
+      },
+      {
+        "nav_intersection_key": "node/1451069627",
+        "osm_id": 1451069627,
+        "intersection_name": "興昌巷 / 鳳仁路",
+        "connected_way_count": 2,
+        "connected_ways": [
+          {
+            "osm_way_id": 131904679,
+            "name": "鳳仁路",
+            "highway": "secondary"
+          },
+          {
+            "osm_way_id": 131904796,
+            "name": "興昌巷",
+            "highway": "tertiary"
+          }
+        ],
+        "road_classes": [
+          "secondary",
+          "tertiary"
+        ],
+        "candidate_priority": 116,
+        "manual_targets": [
+          "check_intersection_geometry"
+        ],
+        "coordinate": {
+          "lng": 120.3382709,
+          "lat": 22.7127257
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/1451069627",
+          "google_maps": "https://www.google.com/maps/@22.7127257,120.3382709,20z"
+        },
+        "distance_m": 0
+      },
+      {
+        "nav_intersection_key": "node/12599114554",
+        "osm_id": 12599114554,
+        "intersection_name": "鳳仁路 / 鳳仁路369巷",
+        "connected_way_count": 2,
+        "connected_ways": [
+          {
+            "osm_way_id": 131904679,
+            "name": "鳳仁路",
+            "highway": "secondary"
+          },
+          {
+            "osm_way_id": 131904732,
+            "name": "鳳仁路369巷",
+            "highway": "residential"
+          }
+        ],
+        "road_classes": [
+          "residential",
+          "secondary"
+        ],
+        "candidate_priority": 116,
+        "manual_targets": [
+          "check_intersection_geometry"
+        ],
+        "coordinate": {
+          "lng": 120.3365104,
+          "lat": 22.715335
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/12599114554",
+          "google_maps": "https://www.google.com/maps/@22.715335,120.3365104,20z"
+        },
+        "distance_m": 0
+      },
+      {
+        "nav_intersection_key": "node/1451069031",
+        "osm_id": 1451069031,
+        "intersection_name": "鳳仁路",
+        "connected_way_count": 3,
+        "connected_ways": [
+          {
+            "osm_way_id": 131904679,
+            "name": "鳳仁路",
+            "highway": "secondary"
+          },
+          {
+            "osm_way_id": 296952457,
+            "name": null,
+            "highway": "service"
+          },
+          {
+            "osm_way_id": 296952458,
+            "name": null,
+            "highway": "service"
+          }
+        ],
+        "road_classes": [
+          "secondary",
+          "service"
+        ],
+        "candidate_priority": 106,
+        "manual_targets": [
+          "check_intersection_geometry"
+        ],
+        "coordinate": {
+          "lng": 120.3330659,
+          "lat": 22.7203823
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/1451069031",
+          "google_maps": "https://www.google.com/maps/@22.7203823,120.3330659,20z"
+        },
+        "distance_m": 0
+      },
+      {
+        "nav_intersection_key": "node/1451068958",
+        "osm_id": 1451068958,
+        "intersection_name": "鳳仁路",
+        "connected_way_count": 2,
+        "connected_ways": [
+          {
+            "osm_way_id": 131904657,
+            "name": null,
+            "highway": "service"
+          },
+          {
+            "osm_way_id": 131904679,
+            "name": "鳳仁路",
+            "highway": "secondary"
+          }
+        ],
+        "road_classes": [
+          "secondary",
+          "service"
+        ],
+        "candidate_priority": 98,
+        "manual_targets": [
+          "check_intersection_geometry"
+        ],
+        "coordinate": {
+          "lng": 120.3356828,
+          "lat": 22.7165477
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/1451068958",
+          "google_maps": "https://www.google.com/maps/@22.7165477,120.3356828,20z"
+        },
+        "distance_m": 0
+      },
+      {
+        "nav_intersection_key": "node/12240697302",
+        "osm_id": 12240697302,
+        "intersection_name": "鳳仁路",
+        "connected_way_count": 2,
+        "connected_ways": [
+          {
+            "osm_way_id": 131904679,
+            "name": "鳳仁路",
+            "highway": "secondary"
+          },
+          {
+            "osm_way_id": 1322823762,
+            "name": null,
+            "highway": "secondary_link"
+          }
+        ],
+        "road_classes": [
+          "secondary",
+          "secondary_link"
+        ],
+        "candidate_priority": 98,
+        "manual_targets": [
+          "check_intersection_geometry"
+        ],
+        "coordinate": {
+          "lng": 120.3468582,
+          "lat": 22.698823
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/12240697302",
+          "google_maps": "https://www.google.com/maps/@22.698823,120.3468582,20z"
+        },
+        "distance_m": 0
+      },
+      {
+        "nav_intersection_key": "node/9913704597",
+        "osm_id": 9913704597,
+        "intersection_name": "鳳仁路",
+        "connected_way_count": 2,
+        "connected_ways": [
+          {
+            "osm_way_id": 131904679,
+            "name": "鳳仁路",
+            "highway": "secondary"
+          },
+          {
+            "osm_way_id": 1184411055,
+            "name": null,
+            "highway": "residential"
+          }
+        ],
+        "road_classes": [
+          "residential",
+          "secondary"
+        ],
+        "candidate_priority": 98,
+        "manual_targets": [
+          "check_intersection_geometry"
+        ],
+        "coordinate": {
+          "lng": 120.3421025,
+          "lat": 22.7065257
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/9913704597",
+          "google_maps": "https://www.google.com/maps/@22.7065257,120.3421025,20z"
+        },
+        "distance_m": 0
+      },
+      {
+        "nav_intersection_key": "node/1451068159",
+        "osm_id": 1451068159,
+        "intersection_name": "鳳仁路",
+        "connected_way_count": 2,
+        "connected_ways": [
+          {
+            "osm_way_id": 131904679,
+            "name": "鳳仁路",
+            "highway": "secondary"
+          },
+          {
+            "osm_way_id": 131904736,
+            "name": null,
+            "highway": "residential"
+          }
+        ],
+        "road_classes": [
+          "residential",
+          "secondary"
+        ],
+        "candidate_priority": 98,
+        "manual_targets": [
+          "check_intersection_geometry"
+        ],
+        "coordinate": {
+          "lng": 120.3386838,
+          "lat": 22.7120574
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/1451068159",
+          "google_maps": "https://www.google.com/maps/@22.7120574,120.3386838,20z"
+        },
+        "distance_m": 0
+      },
+      {
+        "nav_intersection_key": "node/1451069194",
+        "osm_id": 1451069194,
+        "intersection_name": "鳳仁路",
+        "connected_way_count": 2,
+        "connected_ways": [
+          {
+            "osm_way_id": 131904679,
+            "name": "鳳仁路",
+            "highway": "secondary"
+          },
+          {
+            "osm_way_id": 1143171823,
+            "name": null,
+            "highway": "residential"
+          }
+        ],
+        "road_classes": [
+          "residential",
+          "secondary"
+        ],
+        "candidate_priority": 98,
+        "manual_targets": [
+          "check_intersection_geometry"
+        ],
+        "coordinate": {
+          "lng": 120.3373227,
+          "lat": 22.7141447
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/1451069194",
+          "google_maps": "https://www.google.com/maps/@22.7141447,120.3373227,20z"
+        },
+        "distance_m": 0
+      },
+      {
+        "nav_intersection_key": "node/12599114559",
+        "osm_id": 12599114559,
+        "intersection_name": "鳳仁路",
+        "connected_way_count": 2,
+        "connected_ways": [
+          {
+            "osm_way_id": 131904679,
+            "name": "鳳仁路",
+            "highway": "secondary"
+          },
+          {
+            "osm_way_id": 131904712,
+            "name": null,
+            "highway": "residential"
+          }
+        ],
+        "road_classes": [
+          "residential",
+          "secondary"
+        ],
+        "candidate_priority": 98,
+        "manual_targets": [
+          "check_intersection_geometry"
+        ],
+        "coordinate": {
+          "lng": 120.3350609,
+          "lat": 22.717459
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/12599114559",
+          "google_maps": "https://www.google.com/maps/@22.717459,120.3350609,20z"
+        },
+        "distance_m": 0
+      }
+    ]
+  },
+  "lane_nav_tags": {
+    "osm_review_tags": {
+      "osm_lane_status": "not_checked",
+      "osm_turn_lane_status": "not_checked",
+      "osm_motorcycle_status": "not_checked",
+      "osm_review_note": null
+    },
+    "taiwan_motorcycle_tags": {
+      "movement_rules": []
+    },
+    "offset_relations": [],
+    "lane_detail_tags": {
+      "lane_profiles": [
+        {
+          "direction": "forward",
+          "lane_count": 1,
+          "lane_movements": [
+            "through;right"
+          ],
+          "motorcycle_access_by_lane": [
+            "yes"
+          ],
+          "source": "manual"
+        }
+      ]
+    }
+  },
+  "geometry": {
+    "type": "LineString",
+    "coordinates": [
+      [
+        120.347244,
+        22.6979553
+      ],
+      [
+        120.3471183,
+        22.6983012
+      ],
+      [
+        120.3470785,
+        22.698399
+      ],
+      [
+        120.347019,
+        22.6985308
+      ],
+      [
+        120.3468582,
+        22.698823
+      ],
+      [
+        120.3467502,
+        22.6990194
+      ],
+      [
+        120.3460813,
+        22.7000566
+      ],
+      [
+        120.3458317,
+        22.7004619
+      ],
+      [
+        120.3455615,
+        22.7008851
+      ],
+      [
+        120.345529,
+        22.7009359
+      ],
+      [
+        120.3454428,
+        22.7010709
+      ],
+      [
+        120.3453148,
+        22.701287
+      ],
+      [
+        120.3448,
+        22.7021564
+      ],
+      [
+        120.3442668,
+        22.7030568
+      ],
+      [
+        120.3442458,
+        22.7030923
+      ],
+      [
+        120.3441736,
+        22.7032141
+      ],
+      [
+        120.3437828,
+        22.7038419
+      ],
+      [
+        120.3427288,
+        22.7055341
+      ],
+      [
+        120.3426471,
+        22.7056647
+      ],
+      [
+        120.3425251,
+        22.7058264
+      ],
+      [
+        120.3424607,
+        22.7059363
+      ],
+      [
+        120.3423875,
+        22.7060629
+      ],
+      [
+        120.3421025,
+        22.7065257
+      ],
+      [
+        120.3409209,
+        22.7084376
+      ],
+      [
+        120.3408834,
+        22.7084983
+      ],
+      [
+        120.3402928,
+        22.709454
+      ],
+      [
+        120.3402487,
+        22.7095255
+      ],
+      [
+        120.3402013,
+        22.7096021
+      ],
+      [
+        120.3386838,
+        22.7120574
+      ],
+      [
+        120.3383412,
+        22.7126119
+      ],
+      [
+        120.3382709,
+        22.7127257
+      ],
+      [
+        120.3380771,
+        22.7130392
+      ],
+      [
+        120.3380168,
+        22.7131276
+      ],
+      [
+        120.3373227,
+        22.7141447
+      ],
+      [
+        120.336565,
+        22.7152549
+      ],
+      [
+        120.3365104,
+        22.715335
+      ],
+      [
+        120.3356828,
+        22.7165477
+      ],
+      [
+        120.3351573,
+        22.7173177
+      ],
+      [
+        120.3350609,
+        22.717459
+      ],
+      [
+        120.3330659,
+        22.7203823
+      ],
+      [
+        120.3326967,
+        22.7206691
+      ]
+    ]
+  },
+  "annotation_metadata": {
+    "created_from": "manual_form",
+    "evidence_type": "streetview",
+    "manual_verified": "yes",
+    "verified_by": "anna",
+    "verified_at": "2026-07-18T20:00",
+    "verified_at_precision": "hour",
+    "verified_timezone": "Asia/Taipei",
+    "confidence": "medium",
+    "note": ""
+  }
+}
