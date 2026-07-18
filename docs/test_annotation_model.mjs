@@ -138,4 +138,27 @@ const assert = (cond, msg) => {
   assert(matchesTagFilter(tags, new Set(["has_notes", "priority"]), "or"), "OR tag filter accepts any selected tag");
 }
 
+{
+  const tags = segmentTriageTags({
+    segmentKey: "way/900",
+    annotations: [{
+      object_identity: { nav_segment_key: "way/900", applies_to_intersection_key: "node/901" },
+      lane_nav_tags: {
+        taiwan_motorcycle_tags: {
+          movement_rules: [
+            { movement: "left", vehicle_rule: "prohibited", motorcycle_turn_rule: "two_stage_required", two_stage_sign_exists: "unknown", waiting_zone_exists: "yes" },
+            { movement: "right", vehicle_rule: "conditional", motorcycle_turn_rule: "unknown", two_stage_sign_exists: "no", waiting_zone_exists: "yes" },
+          ],
+        },
+      },
+    }],
+  });
+  assert(tags.has("vehicle_prohibited_left"), "vehicle prohibition is aggregated as a segment tag");
+  assert(tags.has("motorcycle_two_stage_required"), "two-stage requirement is aggregated as a segment tag");
+  assert(tags.has("vehicle_conditional"), "conditional vehicle rule is a review tag");
+  assert(tags.has("motorcycle_rule_unknown"), "unknown motorcycle rule is a review tag");
+  assert(tags.has("two_stage_required_without_confirmed_sign"), "required two-stage turn without a confirmed sign is a review tag");
+  assert(tags.has("waiting_zone_without_two_stage"), "waiting zone without two-stage rule is a review tag");
+}
+
 console.log("ALL PASS");

@@ -77,6 +77,7 @@
     manifest: undefined, // undefined=未載入, null=載入失敗
     areaId: null,
     segments: [],
+    mapSegments: [],
     segmentsByKey: new Map(),
     intersectionGrid: new Map(),
     intersectionWayIndex: new Map(),
@@ -216,15 +217,20 @@
     const intPath = region.files?.["intersections.jsonl"]?.path;
     if (!segPath || !intPath) { const err = new Error(`manifest 缺 ${areaId} 的檔案路徑`); err.httpStatus = 409; throw err; }
 
-    const [segText, intText] = await Promise.all([
-      fetchStatic(`${CONFIG.dataBase}/${segPath}`).then((r) => r.text()),
-      fetchStatic(`${CONFIG.dataBase}/${intPath}`).then((r) => r.text()),
-    ]);
     const parseJsonl = (text) => text.split("\n").filter((l) => l.trim()).map((l) => JSON.parse(l));
-
-    const segments = parseJsonl(segText);
+    const contextRegions = [region, ...(region.context_area_ids || []).map((id) => (manifest.regions || []).find((item) => item.area_id === id))];
+    if (contextRegions.some((item) => !item)) { const err = new Error(`找不到 ${areaId} 的相鄰區資料`); err.httpStatus = 409; throw err; }
+    const loaded = await Promise.all(contextRegions.map(async (item) => {
+      const [segText, intText] = await Promise.all([
+        fetchStatic(`${CONFIG.dataBase}/${item.files["segments.jsonl"].path}`).then((r) => r.text()),
+        fetchStatic(`${CONFIG.dataBase}/${item.files["intersections.jsonl"].path}`).then((r) => r.text()),
+      ]);
+      return { segments: parseJsonl(segText), intersections: parseJsonl(intText) };
+    }));
+    const segments = loaded[0].segments;
     segments.sort((a, b) => (b.lane_nav_tags?.candidate_priority ?? 0) - (a.lane_nav_tags?.candidate_priority ?? 0));
-    const intersections = parseJsonl(intText);
+    const mapSegments = [...new Map(loaded.flatMap((item) => item.segments).map((item) => [item.object_identity.nav_segment_key, item])).values()];
+    const intersections = [...new Map(loaded.flatMap((item) => item.intersections).map((item) => [item.object_identity.nav_intersection_key, item])).values()];
     intersections.sort((a, b) => (b.lane_nav_tags?.candidate_priority ?? 0) - (a.lane_nav_tags?.candidate_priority ?? 0));
 
     const grid = new Map();
@@ -246,7 +252,8 @@
 
     store.areaId = areaId;
     store.segments = segments;
-    store.segmentsByKey = new Map(segments.map((s) => [s.object_identity.nav_segment_key, s]));
+    store.mapSegments = mapSegments;
+    store.segmentsByKey = new Map(mapSegments.map((s) => [s.object_identity.nav_segment_key, s]));
     store.intersectionGrid = grid;
     store.intersectionWayIndex = wayIndex;
   }
@@ -500,7 +507,7 @@
     return {
       nav_segment_key: identity.nav_segment_key,
       osm_id: identity.source_osm.osm_id,
-      road_name: tags.road_name || osm.name || "(unnamed)",
+      road_name: tags.road_name || osm.name || "未命名道路",
       road_class: tags.road_class || osm.highway,
       oneway: tags.oneway,
       lane_count_total: tags.lane_count_total,
@@ -523,7 +530,8 @@
     if (!q) return true;
     const identity = segment.object_identity || {};
     const tags = segment.lane_nav_tags || {};
-    const haystack = [identity.nav_segment_key, tags.road_name, tags.road_class]
+    const roadName = tags.road_name || segment.osm_selected_tags?.name || "未命名道路";
+    const haystack = [identity.nav_segment_key, roadName, tags.road_class]
       .map((v) => String(v ?? ""))
       .join(" ")
       .toLowerCase();
@@ -823,7 +831,7 @@
         await ensureAnnotations().catch(() => {});
         const bySegment = annotationsBySegment();
         const statusesBySegment = annotationStatusesBySegment();
-        const items = store.segments.map((segment) => {
+        const items = store.mapSegments.map((segment) => {
           const key = segment.object_identity.nav_segment_key;
           return summarizeSegment(segment, bySegment.get(key) ?? null, statusesBySegment.get(key) ?? []);
         });

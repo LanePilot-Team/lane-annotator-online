@@ -106,6 +106,23 @@
       const reviewNote = annotation?.lane_nav_tags?.osm_review_tags?.osm_review_note;
       if (String(annotation?.annotation_metadata?.note || "").trim() || String(reviewNote || "").trim()) tags.add("has_notes");
       if (rules.some((rule) => normalizeTargetRelation(rule.target_relation)) || offsetRelations.some(normalizeTargetRelation)) tags.add("offset_intersection");
+      for (const rule of rules) {
+        const movement = rule?.movement;
+        if (rule?.vehicle_rule === "prohibited" && ["left", "right", "through"].includes(movement)) tags.add(`vehicle_prohibited_${movement}`);
+        if (rule?.vehicle_rule === "conditional") tags.add("vehicle_conditional");
+        if (rule?.motorcycle_turn_rule === "prohibited" && ["left", "right", "through"].includes(movement)) tags.add(`motorcycle_prohibited_${movement}`);
+        if (rule?.motorcycle_turn_rule === "two_stage_required") {
+          tags.add("motorcycle_two_stage_required");
+          if (rule?.two_stage_sign_exists !== "yes") tags.add("two_stage_required_without_confirmed_sign");
+        }
+        if (rule?.motorcycle_turn_rule === "two_stage_optional") tags.add("motorcycle_two_stage_optional");
+        if (rule?.motorcycle_turn_rule === "unknown") tags.add("motorcycle_rule_unknown");
+        if (rule?.two_stage_sign_exists === "yes") tags.add("two_stage_sign_exists");
+        if (rule?.waiting_zone_exists === "yes") {
+          tags.add("waiting_zone_exists");
+          if (!new Set(["two_stage_required", "two_stage_optional"]).has(rule?.motorcycle_turn_rule)) tags.add("waiting_zone_without_two_stage");
+        }
+      }
       const identity = annotation?.object_identity || {};
       if (favouriteIntersectionKeys.has(favouriteIntersectionKey(segmentKey || identity.nav_segment_key, identity.applies_to_intersection_key))) tags.add("favourite");
     }
