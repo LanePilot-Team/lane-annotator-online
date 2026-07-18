@@ -878,7 +878,7 @@ button:hover {
 
 .secondary-button { background: #68736c; }
 .tag-filter { position: relative; margin-top: 12px; }
-.tag-filter-panel { position: absolute; z-index: 20; width: 260px; padding: 12px; border: 1px solid var(--line); border-radius: 8px; background: #fff; box-shadow: var(--shadow); }
+.tag-filter-panel { position: absolute; z-index: 20; width: 260px; max-height: min(70vh, 520px); overflow-y: auto; padding: 12px; border: 1px solid var(--line); border-radius: 8px; background: #fff; box-shadow: var(--shadow); }
 .tag-filter-panel label { flex-direction: row; align-items: center; margin-top: 8px; }
 .tag-filter-panel input { width: auto; }
 .overview-rule-card { display: block; color: var(--text); }
