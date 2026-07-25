@@ -1,0 +1,171 @@
+{
+  "object_identity": {
+    "schema_version": 2,
+    "object_type": "nav_context_annotation",
+    "nav_context_key": "way/184597699/forward",
+    "nav_segment_key": "way/184597699",
+    "context_scope": "segment_direction",
+    "applies_to_intersection_key": null,
+    "approach_direction": "forward",
+    "source_osm": {
+      "osm_type": "way",
+      "osm_id": 184597699
+    },
+    "split_index": 0
+  },
+  "osm_reference": {
+    "osm_selected_tags": {
+      "highway": "tertiary",
+      "name": "左營大路",
+      "oneway": "yes"
+    },
+    "map_links": {
+      "openstreetmap": "https://www.openstreetmap.org/way/184597699",
+      "google_maps": "https://www.google.com/maps/@22.6982613,120.3023682,19z"
+    },
+    "nearby_intersections": [
+      {
+        "nav_intersection_key": "node/295692602",
+        "osm_id": 295692602,
+        "intersection_name": "左營大路 / 翠華路",
+        "connected_way_count": 2,
+        "connected_ways": [
+          {
+            "osm_way_id": 28526260,
+            "name": "翠華路",
+            "highway": "primary"
+          },
+          {
+            "osm_way_id": 184597699,
+            "name": "左營大路",
+            "highway": "tertiary"
+          }
+        ],
+        "road_classes": [
+          "primary",
+          "tertiary"
+        ],
+        "candidate_priority": 169,
+        "manual_targets": [
+          "check_intersection_geometry",
+          "check_motorcycle_turn_rule",
+          "check_two_stage_turn_sign",
+          "check_waiting_zone",
+          "check_lane_movements"
+        ],
+        "coordinate": {
+          "lng": 120.3027249,
+          "lat": 22.6988685
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/295692602",
+          "google_maps": "https://www.google.com/maps/@22.6988685,120.3027249,20z"
+        },
+        "distance_m": 0
+      },
+      {
+        "nav_intersection_key": "node/295692660",
+        "osm_id": 295692660,
+        "intersection_name": "左營大路",
+        "connected_way_count": 4,
+        "connected_ways": [
+          {
+            "osm_way_id": 26978275,
+            "name": null,
+            "highway": "primary_link"
+          },
+          {
+            "osm_way_id": 184597699,
+            "name": "左營大路",
+            "highway": "tertiary"
+          },
+          {
+            "osm_way_id": 207433310,
+            "name": null,
+            "highway": "service"
+          },
+          {
+            "osm_way_id": 246576623,
+            "name": "左營大路",
+            "highway": "tertiary"
+          }
+        ],
+        "road_classes": [
+          "primary_link",
+          "service",
+          "tertiary"
+        ],
+        "candidate_priority": 120,
+        "manual_targets": [
+          "check_intersection_geometry"
+        ],
+        "coordinate": {
+          "lng": 120.3023682,
+          "lat": 22.6982613
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/295692660",
+          "google_maps": "https://www.google.com/maps/@22.6982613,120.3023682,20z"
+        },
+        "distance_m": 0
+      }
+    ]
+  },
+  "lane_nav_tags": {
+    "osm_review_tags": {
+      "osm_lane_status": "not_checked",
+      "osm_turn_lane_status": "not_checked",
+      "osm_motorcycle_status": "not_checked",
+      "osm_review_note": null
+    },
+    "taiwan_motorcycle_tags": {
+      "movement_rules": []
+    },
+    "offset_relations": [],
+    "lane_detail_tags": {
+      "lane_profiles": [
+        {
+          "direction": "forward",
+          "lane_count": 2,
+          "lane_movements": [
+            "left",
+            "left"
+          ],
+          "motorcycle_access_by_lane": [
+            "yes",
+            "yes"
+          ],
+          "source": "manual"
+        }
+      ]
+    }
+  },
+  "geometry": {
+    "type": "LineString",
+    "coordinates": [
+      [
+        120.3023682,
+        22.6982613
+      ],
+      [
+        120.3027249,
+        22.6988685
+      ],
+      [
+        120.3027913,
+        22.6990249
+      ]
+    ]
+  },
+  "annotation_metadata": {
+    "created_from": "manual_form",
+    "evidence_type": "streetview",
+    "manual_verified": "yes",
+    "verified_by": "anna",
+    "verified_at": "2026-07-25T17:00",
+    "verified_at_precision": "hour",
+    "verified_timezone": "Asia/Taipei",
+    "confidence": "medium",
+    "note": ""
+  }
+}
