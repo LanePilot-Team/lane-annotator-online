@@ -66,7 +66,7 @@ const NANZI = "area/4212599";
 // /api/meta
 {
   const { data } = await api("/api/meta");
-  assert(data.segment_count === 4488 && data.intersection_count === 3643, `meta 筆數正確（楠梓+橋頭 ${data.segment_count}/${data.intersection_count}）`);
+  assert(data.region_count === 6 && data.segment_count === 12329 && data.intersection_count === 8458, `meta 含楠梓與五個相鄰區 ${data.segment_count}/${data.intersection_count}`);
   assert(data.missing_required_files.length === 0, "meta 無缺檔");
 }
 // /api/segments：未選行政區
@@ -94,10 +94,14 @@ let firstKey;
   const { data } = await api(`/api/segments?district_area_id=${encodeURIComponent(NANZI)}&limit=120&offset=0&candidate_scope=&q=${encodeURIComponent("大學南路")}&target=&status=`);
   assert(data.total > 0 && data.items.every((i) => i.road_name.includes("大學南路")), `搜尋大學南路 ${data.total} 筆`);
 }
+{
+  const { data } = await api(`/api/segments?district_area_id=${encodeURIComponent(NANZI)}&limit=120&offset=0&candidate_scope=&q=${encodeURIComponent("未命名道路")}&target=&status=`);
+  assert(data.total > 0 && data.items.every((i) => i.road_name === "未命名道路"), "未命名道路是可搜尋的路段名稱");
+}
 // /api/map-segments
 {
   const { data } = await api(`/api/map-segments?district_area_id=${encodeURIComponent(NANZI)}`);
-  assert(data.total === 3184, "map-segments 全區 3184 筆");
+  assert(data.total > 3184, "map-segments 載入楠梓與相鄰區作為完整道路上下文");
   assert(data.items[0].geometry?.type === "LineString", "map-segments 含幾何");
 }
 // /api/segment 細節（v2 回傳形狀）+ 附近路口含 connected_ways
@@ -105,7 +109,7 @@ let firstKey;
   const { data } = await api(`/api/segment?key=${encodeURIComponent(firstKey)}&district_area_id=${encodeURIComponent(NANZI)}`);
   assert(data.segment.object_identity.nav_segment_key === firstKey, "segment 細節 key 相符");
   assert("legacy_annotation" in data && Array.isArray(data.context_annotations), "v2 回傳含 legacy_annotation + context_annotations");
-  assert(Array.isArray(data.segment.node_refs) && data.segment.node_refs.length === data.segment.geometry.coordinates.length, "segment 含 node_refs 且長度==座標數");
+  assert(data.segment.geometry?.type === "LineString" && data.segment.geometry.coordinates.length >= 2, "segment 含可供地圖點擊的道路幾何");
   assert(Array.isArray(data.nearby_intersections), `附近路口 ${data.nearby_intersections.length} 筆`);
   for (const row of data.nearby_intersections) {
     assert(row.distance_m <= 60 && Array.isArray(row.connected_ways), "附近路口 ≤60m 且含 connected_ways");

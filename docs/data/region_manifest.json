@@ -1,7 +1,7 @@
 {
   "format": "lane_nav_district_shards_v1",
-  "dataset_version": "taiwan-260531-lane-nav-v3-noderefs",
-  "region_count": 2,
+  "dataset_version": "taiwan-260531-lane-nav-v2",
+  "region_count": 6,
   "regions": [
     {
       "area_id": "area/4212599",
@@ -19,14 +19,48 @@
         "segments.jsonl": {
           "path": "regions/area_4212599/segments.jsonl",
           "count": 3184,
-          "size_bytes": 3782731,
-          "sha256": "7d9b595fe9158071d131fd9ced8abdeb72a95bc2c8c4194178758b90d61a868a"
+          "size_bytes": 3536596,
+          "sha256": "20c04377909d88ccf01a78fe4a1da2a72c8fa6d992295a2e6bff551a8d2b9d3c"
         },
         "intersections.jsonl": {
           "path": "regions/area_4212599/intersections.jsonl",
           "count": 2687,
           "size_bytes": 2495687,
           "sha256": "f86d511fa1e3d7f3d24a54219d6a8f3dc367cb11def73aed7b5dc7157c6ad85a"
+        }
+      },
+      "context_area_ids": [
+        "area/4212533",
+        "area/4212683",
+        "area/4213913",
+        "area/4213947",
+        "area/4217243"
+      ]
+    },
+    {
+      "area_id": "area/4212533",
+      "shard_id": "area_4212533",
+      "name": "左營區",
+      "name_en": "Zuoying District",
+      "admin_level": "7",
+      "bbox": {
+        "min_lng": 120.2513247,
+        "min_lat": 22.654671,
+        "max_lng": 120.3266028,
+        "max_lat": 22.7095501
+      },
+      "files": {
+        "segments.jsonl": {
+          "path": "regions/area_4212533/segments.jsonl",
+          "count": 2351,
+          "size_bytes": 2633831,
+          "sha256": "a6a17a8685223b4e373b0a7f8ebf22ae99262fbd12d3a4eef1f2722049ce1a45"
+        },
+        "intersections.jsonl": {
+          "path": "regions/area_4212533/intersections.jsonl",
+          "count": 1519,
+          "size_bytes": 1412104,
+          "sha256": "b96934601b4ff487533814dd0bee2d8cb7765305936ace062bdb77f09f119ea5"
         }
       }
     },
@@ -46,8 +80,8 @@
         "segments.jsonl": {
           "path": "regions/area_4212683/segments.jsonl",
           "count": 1304,
-          "size_bytes": 1606632,
-          "sha256": "69cc9399bf916e74cc8f9f91dce24113444c6325c071377da72179db1febfbc7"
+          "size_bytes": 1482648,
+          "sha256": "9879b18c3182a82f8ca2136274366436ad3b1c39c9b92bf40a368bd5c62a84e6"
         },
         "intersections.jsonl": {
           "path": "regions/area_4212683/intersections.jsonl",
@@ -56,11 +90,91 @@
           "sha256": "846c94e1a24bfc8a3084ffaee52077a297009a0b87e4b22c5ce0a05a8dc197b2"
         }
       }
+    },
+    {
+      "area_id": "area/4213913",
+      "shard_id": "area_4213913",
+      "name": "仁武區",
+      "name_en": "Renwu District",
+      "admin_level": "7",
+      "bbox": {
+        "min_lng": 120.3148745,
+        "min_lat": 22.6688759,
+        "max_lng": 120.4032832,
+        "max_lat": 22.7420746
+      },
+      "files": {
+        "segments.jsonl": {
+          "path": "regions/area_4213913/segments.jsonl",
+          "count": 2491,
+          "size_bytes": 2807024,
+          "sha256": "7d614606fa2896d19775349e43d53b71406338357b678c37ba0e39bd1f6b74e5"
+        },
+        "intersections.jsonl": {
+          "path": "regions/area_4213913/intersections.jsonl",
+          "count": 1857,
+          "size_bytes": 1703521,
+          "sha256": "e6b023932da1aca0724288e9243aff80e81f120f6450d590e403a16f6476d6a8"
+        }
+      }
+    },
+    {
+      "area_id": "area/4213947",
+      "shard_id": "area_4213947",
+      "name": "大社區",
+      "name_en": "Dashe District",
+      "admin_level": "7",
+      "bbox": {
+        "min_lng": 120.3341239,
+        "min_lat": 22.7090951,
+        "max_lng": 120.4118994,
+        "max_lat": 22.7664516
+      },
+      "files": {
+        "segments.jsonl": {
+          "path": "regions/area_4213947/segments.jsonl",
+          "count": 1096,
+          "size_bytes": 1244880,
+          "sha256": "c5cd56cf3ad97001259e7894d94dd19c2ced4cc73beed3412f421812eb435813"
+        },
+        "intersections.jsonl": {
+          "path": "regions/area_4213947/intersections.jsonl",
+          "count": 639,
+          "size_bytes": 582063,
+          "sha256": "fea09181e573c619924d98a96d5ae6d2c0ea2667d281b5dc1d5626b1c3835061"
+        }
+      }
+    },
+    {
+      "area_id": "area/4217243",
+      "shard_id": "area_4217243",
+      "name": "燕巢區",
+      "name_en": "Yanchao District",
+      "admin_level": "7",
+      "bbox": {
+        "min_lng": 120.3135092,
+        "min_lat": 22.7474284,
+        "max_lng": 120.4318417,
+        "max_lat": 22.8311594
+      },
+      "files": {
+        "segments.jsonl": {
+          "path": "regions/area_4217243/segments.jsonl",
+          "count": 1903,
+          "size_bytes": 2240130,
+          "sha256": "0df5bf29686091d1e6a7bd6988936beaab81978e26b3be8ac564127c46428ed2"
+        },
+        "intersections.jsonl": {
+          "path": "regions/area_4217243/intersections.jsonl",
+          "count": 800,
+          "size_bytes": 733114,
+          "sha256": "497d95cead0facea24e35d926fa8f5ba167ab49e4b87042871489f70268d38bc"
+        }
+      }
     }
   ],
   "unassigned": {
     "segments.jsonl": 642,
     "intersections.jsonl": 299
-  },
-  "note": "docs/ 網頁版子集 manifest：只包含目前開放線上標註的行政區。新增行政區時，把該區 shard 放進 docs/data/regions/ 並把完整 manifest 的對應 region 條目加進 regions 陣列。"
+  }
 }
