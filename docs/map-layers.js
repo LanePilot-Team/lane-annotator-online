@@ -65,5 +65,13 @@
     };
   }
 
-  window.LanePilotMapLayers = { buildFeatures, styleFor };
+  function contextDistrictOptions(districts, primaryAreaId) {
+    return districts.filter((district) => district.area_id !== primaryAreaId);
+  }
+
+  window.LanePilotMapLayers = {
+    buildFeatures,
+    contextDistrictOptions,
+    styleFor,
+  };
 })();

@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 globalThis.window = {};
 await import("./map-layers.js");
 
-const { buildFeatures, styleFor } = window.LanePilotMapLayers;
+const { buildFeatures, contextDistrictOptions, styleFor } = window.LanePilotMapLayers;
 const geometry = {
   type: "LineString",
   coordinates: [[120.28, 22.68], [120.29, 22.69]],
@@ -35,5 +35,16 @@ assert.equal(styleFor({ annotated: true }, { context: true }).color, "#0b6e69");
 assert.equal(styleFor({ annotated: true }, { context: true }).opacity, 0.35);
 assert.equal(styleFor({ suggested: true }, { context: true }).color, "#9a5b16");
 assert.equal(styleFor({}, { context: true }).color, "#8a928c");
+assert.deepEqual(
+  contextDistrictOptions(
+    [
+      { area_id: "area/primary", name: "主區" },
+      { area_id: "area/a", name: "背景甲" },
+      { area_id: "area/b", name: "背景乙" },
+    ],
+    "area/primary",
+  ).map((district) => district.area_id),
+  ["area/a", "area/b"],
+);
 
 console.log("ALL PASS");

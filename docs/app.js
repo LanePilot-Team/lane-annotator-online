@@ -12,10 +12,14 @@ const state = {
   laneProfiles: [],
   areas: { cities: [], districts: [] },
   map: null,
-  segmentLayer: null,
+  primarySegmentLayer: null,
+  backgroundSegmentLayer: null,
   intersectionLayer: null,
   directionLayer: null,
   selectedIntersectionLayer: null,
+  primaryMapItems: [],
+  backgroundAreaIds: new Set(),
+  mapItemsByArea: new Map(),
   offset: 0,
   limit: 120,
   dataWarnings: {},
@@ -515,20 +519,24 @@ function geoParams() {
 }
 
 function mapSegmentColor(properties) {
-  if (properties.nav_segment_key === state.selectedKey) return "#a13a3a";
   const targetSegmentKey = $("targetSegmentKey")?.value || null;
-  if (targetSegmentKey && properties.nav_segment_key === targetSegmentKey) return "#2563a8";
-  if (properties.annotated) return "#0b6e69";
-  return properties.suggested ? "#9a5b16" : "#8a928c";
+  return window.LanePilotMapLayers.styleFor(properties, {
+    selectedKey: state.selectedKey,
+    targetKey: targetSegmentKey,
+  }).color;
 }
 
 function refreshSegmentMapStyles() {
-  if (!state.segmentLayer) return;
-  state.segmentLayer.setStyle((feature) => ({
-    color: mapSegmentColor(feature.properties),
-    weight: feature.properties.nav_segment_key === state.selectedKey ? 8 : 5,
-    opacity: 0.9,
-  }));
+  const targetKey = $("targetSegmentKey")?.value || null;
+  state.primarySegmentLayer?.setStyle((feature) =>
+    window.LanePilotMapLayers.styleFor(feature.properties, {
+      selectedKey: state.selectedKey,
+      targetKey,
+    })
+  );
+  state.backgroundSegmentLayer?.setStyle((feature) =>
+    window.LanePilotMapLayers.styleFor(feature.properties, { context: true })
+  );
 }
 
 function selectedIntersection() {
@@ -673,7 +681,8 @@ async function loadAreas() {
       state.segmentLoading = false;
       showSegmentListMessage("請選擇行政區後載入資料。", "0");
       state.mapRequestId += 1;
-      renderMapSegments([]);
+      clearMapContextState();
+      renderMapLayers();
     },
   });
   setupCombo({
@@ -683,6 +692,73 @@ async function loadAreas() {
     getOptions: visibleDistrictsForSelectedCity,
     onSelect: loadSelectedDistrict,
   });
+  renderMapContextOptions();
+}
+
+function renderMapContextOptions() {
+  const container = $("mapContextDistricts");
+  const hint = $("mapContextHint");
+  const primaryAreaId = $("districtFilter").value;
+  container.innerHTML = "";
+  if (!primaryAreaId) {
+    hint.hidden = false;
+    return;
+  }
+
+  const districts = window.LanePilotMapLayers.contextDistrictOptions(
+    state.areas.districts,
+    primaryAreaId,
+  );
+  hint.hidden = Boolean(districts.length);
+  hint.textContent = districts.length ? "" : "目前沒有其他已同步的行政區。";
+  for (const district of districts) {
+    const label = document.createElement("label");
+    const input = document.createElement("input");
+    input.type = "checkbox";
+    input.value = district.area_id;
+    input.checked = state.backgroundAreaIds.has(district.area_id);
+    input.addEventListener("change", () => toggleBackgroundDistrict(district.area_id, input.checked));
+    label.append(input, document.createTextNode(district.name));
+    container.append(label);
+  }
+}
+
+function clearMapContextState() {
+  state.primaryMapItems = [];
+  state.backgroundAreaIds.clear();
+  state.mapItemsByArea.clear();
+  renderMapContextOptions();
+}
+
+async function toggleBackgroundDistrict(areaId, checked) {
+  if (!checked) {
+    state.backgroundAreaIds.delete(areaId);
+    renderMapLayers();
+    return;
+  }
+
+  state.backgroundAreaIds.add(areaId);
+  if (state.mapItemsByArea.has(areaId)) {
+    renderMapLayers();
+    return;
+  }
+
+  const requestId = state.mapRequestId;
+  const params = new URLSearchParams({ district_area_id: areaId, map_scope: "primary" });
+  try {
+    const data = await fetchJson(`/api/map-segments?${params.toString()}`);
+    if (requestId !== state.mapRequestId || !state.backgroundAreaIds.has(areaId)) return;
+    state.mapItemsByArea.set(areaId, data.items);
+    setDataWarning(`map_context_${areaId}`);
+    renderMapLayers();
+  } catch (error) {
+    if (requestId !== state.mapRequestId) return;
+    state.backgroundAreaIds.delete(areaId);
+    const checkbox = [...$("mapContextDistricts").querySelectorAll('input[type="checkbox"]')]
+      .find((input) => input.value === areaId);
+    if (checkbox) checkbox.checked = false;
+    setDataWarning(`map_context_${areaId}`, `背景行政區載入失敗：${error.message}`);
+  }
 }
 
 function visibleDistrictsForSelectedCity() {
@@ -928,16 +1004,18 @@ async function reloadAll() {
 async function loadDistrictMap() {
   const districtAreaId = $("districtFilter").value;
   const requestId = ++state.mapRequestId;
-  renderMapSegments([]);
+  state.primaryMapItems = [];
+  renderMapLayers();
   if (!districtAreaId) return;
   focusMapOnSelectedDistrict();
 
-  const params = new URLSearchParams({ district_area_id: districtAreaId });
+  const params = new URLSearchParams({ district_area_id: districtAreaId, map_scope: "primary" });
   try {
     const data = await fetchJson(`/api/map-segments?${params.toString()}`);
     if (requestId !== state.mapRequestId) return;
     setDataWarning("map_segments");
-    renderMapSegments(data.items);
+    state.primaryMapItems = data.items;
+    renderMapLayers();
   } catch (error) {
     if (requestId !== state.mapRequestId) return;
     setDataWarning("map_segments", `行政區地圖載入失敗：${error.message}`);
@@ -962,6 +1040,8 @@ function focusMapOnSelectedDistrict() {
 
 async function loadSelectedDistrict() {
   state.selectedKey = null;
+  clearMapContextState();
+  renderMapContextOptions();
   await Promise.all([reloadAll(), loadDistrictMap()]);
 }
 
@@ -1065,12 +1145,19 @@ function initMap() {
     maxZoom: 20,
     attribution: "&copy; OpenStreetMap contributors",
   }).addTo(state.map);
-  state.segmentLayer = L.geoJSON([], {
-    style: (feature) => ({
-      color: mapSegmentColor(feature.properties),
-      weight: feature.properties.nav_segment_key === state.selectedKey ? 8 : 5,
-      opacity: 0.9,
-    }),
+  state.backgroundSegmentLayer = L.geoJSON([], {
+    style: (feature) =>
+      window.LanePilotMapLayers.styleFor(feature.properties, { context: true }),
+    onEachFeature: (feature, layer) => {
+      layer.bindTooltip(`${feature.properties.label} · 背景區`);
+    },
+  }).addTo(state.map);
+  state.primarySegmentLayer = L.geoJSON([], {
+    style: (feature) =>
+      window.LanePilotMapLayers.styleFor(feature.properties, {
+        selectedKey: state.selectedKey,
+        targetKey: $("targetSegmentKey")?.value || null,
+      }),
     onEachFeature: (feature, layer) => {
       layer.bindTooltip(feature.properties.label);
       layer.on("click", (event) => {
@@ -1104,26 +1191,28 @@ function initMap() {
   setTimeout(() => state.map.invalidateSize(), 0);
 }
 
-function renderMapSegments(items) {
+function normalizedMapItems(items) {
+  return items.map((item) => ({ ...item, geometry: normalizeGeometry(item.geometry) }));
+}
+
+function renderMapLayers() {
   initMap();
-  if (!state.map || !state.segmentLayer) return;
-  const features = items
-    .filter((item) => item.geometry)
-    .map((item) => ({
-      type: "Feature",
-      properties: {
-        nav_segment_key: item.nav_segment_key,
-        annotated: item.annotated,
-        suggested: Boolean(item.manual_targets?.length || item.candidate_priority >= 70),
-        road_name: item.road_name,
-        label: `${item.road_name || `未命名道路 (${item.nav_segment_key})`} · ${item.nav_segment_key}`,
-      },
-      geometry: normalizeGeometry(item.geometry),
-    }));
-  state.segmentLayer.clearLayers();
-  state.segmentLayer.addData({ type: "FeatureCollection", features });
-  if (features.length) {
-    const bounds = state.segmentLayer.getBounds();
+  if (!state.map || !state.primarySegmentLayer || !state.backgroundSegmentLayer) return;
+  const backgroundItemsByArea = new Map();
+  for (const areaId of state.backgroundAreaIds) {
+    const items = state.mapItemsByArea.get(areaId);
+    if (items) backgroundItemsByArea.set(areaId, normalizedMapItems(items));
+  }
+  const collections = window.LanePilotMapLayers.buildFeatures({
+    primaryItems: normalizedMapItems(state.primaryMapItems),
+    backgroundItemsByArea,
+  });
+  state.backgroundSegmentLayer.clearLayers();
+  state.backgroundSegmentLayer.addData(collections.background);
+  state.primarySegmentLayer.clearLayers();
+  state.primarySegmentLayer.addData(collections.primary);
+  if (collections.primary.features.length) {
+    const bounds = state.primarySegmentLayer.getBounds();
     if (bounds.isValid() && !state.selectedKey) state.map.fitBounds(bounds.pad(0.15));
   }
   setTimeout(() => state.map.invalidateSize(), 0);
