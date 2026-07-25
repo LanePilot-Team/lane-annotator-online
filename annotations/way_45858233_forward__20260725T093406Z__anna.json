@@ -1,0 +1,179 @@
+{
+  "object_identity": {
+    "schema_version": 2,
+    "object_type": "nav_context_annotation",
+    "nav_context_key": "way/45858233/forward",
+    "nav_segment_key": "way/45858233",
+    "context_scope": "segment_direction",
+    "applies_to_intersection_key": null,
+    "approach_direction": "forward",
+    "source_osm": {
+      "osm_type": "way",
+      "osm_id": 45858233
+    },
+    "split_index": 0
+  },
+  "osm_reference": {
+    "osm_selected_tags": {
+      "highway": "tertiary",
+      "name": "海功東路",
+      "oneway": "yes"
+    },
+    "map_links": {
+      "openstreetmap": "https://www.openstreetmap.org/way/45858233",
+      "google_maps": "https://www.google.com/maps/@22.6935474,120.2991478,19z"
+    },
+    "nearby_intersections": [
+      {
+        "nav_intersection_key": "node/259974866",
+        "osm_id": 259974866,
+        "intersection_name": "左營大路 / 海功東路 / 海功路",
+        "connected_way_count": 4,
+        "connected_ways": [
+          {
+            "osm_way_id": 45858233,
+            "name": "海功東路",
+            "highway": "tertiary"
+          },
+          {
+            "osm_way_id": 184597701,
+            "name": "海功路",
+            "highway": "tertiary"
+          },
+          {
+            "osm_way_id": 247974703,
+            "name": "左營大路",
+            "highway": "tertiary"
+          },
+          {
+            "osm_way_id": 272200698,
+            "name": "左營大路",
+            "highway": "tertiary"
+          }
+        ],
+        "road_classes": [
+          "tertiary"
+        ],
+        "candidate_priority": 122,
+        "manual_targets": [
+          "check_intersection_geometry"
+        ],
+        "coordinate": {
+          "lng": 120.2991478,
+          "lat": 22.6935474
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/259974866",
+          "google_maps": "https://www.google.com/maps/@22.6935474,120.2991478,20z"
+        },
+        "distance_m": 0
+      },
+      {
+        "nav_intersection_key": "node/259974867",
+        "osm_id": 259974867,
+        "intersection_name": "海功東路 / 翠明路",
+        "connected_way_count": 4,
+        "connected_ways": [
+          {
+            "osm_way_id": 45858233,
+            "name": "海功東路",
+            "highway": "tertiary"
+          },
+          {
+            "osm_way_id": 267727280,
+            "name": "翠明路",
+            "highway": "residential"
+          },
+          {
+            "osm_way_id": 267727282,
+            "name": "翠明路",
+            "highway": "residential"
+          },
+          {
+            "osm_way_id": 267727286,
+            "name": "海功東路",
+            "highway": "tertiary"
+          }
+        ],
+        "road_classes": [
+          "residential",
+          "tertiary"
+        ],
+        "candidate_priority": 122,
+        "manual_targets": [
+          "check_intersection_geometry"
+        ],
+        "coordinate": {
+          "lng": 120.3000725,
+          "lat": 22.6935442
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/259974867",
+          "google_maps": "https://www.google.com/maps/@22.6935442,120.3000725,20z"
+        },
+        "distance_m": 0
+      }
+    ]
+  },
+  "lane_nav_tags": {
+    "osm_review_tags": {
+      "osm_lane_status": "not_checked",
+      "osm_turn_lane_status": "not_checked",
+      "osm_motorcycle_status": "not_checked",
+      "osm_review_note": null
+    },
+    "taiwan_motorcycle_tags": {
+      "movement_rules": []
+    },
+    "offset_relations": [],
+    "lane_detail_tags": {
+      "lane_profiles": [
+        {
+          "direction": "forward",
+          "lane_count": 2,
+          "lane_movements": [
+            "through",
+            "through;right"
+          ],
+          "motorcycle_access_by_lane": [
+            "no",
+            "yes"
+          ],
+          "source": "manual"
+        }
+      ]
+    }
+  },
+  "geometry": {
+    "type": "LineString",
+    "coordinates": [
+      [
+        120.2991478,
+        22.6935474
+      ],
+      [
+        120.2992583,
+        22.693547
+      ],
+      [
+        120.2999124,
+        22.6935447
+      ],
+      [
+        120.3000725,
+        22.6935442
+      ]
+    ]
+  },
+  "annotation_metadata": {
+    "created_from": "manual_form",
+    "evidence_type": "streetview",
+    "manual_verified": "yes",
+    "verified_by": "anna",
+    "verified_at": "2026-07-25T17:00",
+    "verified_at_precision": "hour",
+    "verified_timezone": "Asia/Taipei",
+    "confidence": "medium",
+    "note": ""
+  }
+}
