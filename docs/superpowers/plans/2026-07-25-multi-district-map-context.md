@@ -171,7 +171,7 @@ renderMapLayers();
 
 On unchecking, delete only that id from `backgroundAreaIds` and call `renderMapLayers()`. On primary district change, clear `backgroundAreaIds`, `mapItemsByArea`, checkbox markup, and both layers before the new primary request completes. Maintain a monotonically increasing map request id and discard stale responses.
 
-In `initMap`, create `state.primarySegmentLayer` and `state.backgroundSegmentLayer`. `renderMapLayers()` calls `buildFeatures`, sends primary and background collections to their respective layers, and applies `styleFor(..., { context: false })` and `styleFor(..., { context: true })`. Preserve the current map click callback for both layers.
+In `initMap`, create `state.primarySegmentLayer` and `state.backgroundSegmentLayer`. `renderMapLayers()` calls `buildFeatures`, sends primary and background collections to their respective layers, and applies `styleFor(..., { context: false })` and `styleFor(..., { context: true })`. Preserve the current map click callback only for the primary layer; background roads expose a tooltip but cannot open the editor.
 
 - [ ] **Step 4: Run focused and regression tests**
 
