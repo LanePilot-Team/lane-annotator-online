@@ -848,7 +848,9 @@
         await ensureAnnotations().catch(() => {});
         const bySegment = annotationsBySegment();
         const statusesBySegment = annotationStatusesBySegment();
-        const items = store.mapSegments.map((segment) => {
+        const mapScope = (params.get("map_scope") || "context").trim();
+        const sourceSegments = mapScope === "primary" ? store.segments : store.mapSegments;
+        const items = sourceSegments.map((segment) => {
           const key = segment.object_identity.nav_segment_key;
           return summarizeSegment(segment, bySegment.get(key) ?? null, statusesBySegment.get(key) ?? []);
         });

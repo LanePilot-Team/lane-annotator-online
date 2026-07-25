@@ -55,6 +55,7 @@ const api = async (url, options) => {
 };
 
 const NANZI = "area/4212599";
+const ZUOYING = "area/4212533";
 
 // /api/areas
 {
@@ -103,6 +104,15 @@ let firstKey;
   const { data } = await api(`/api/map-segments?district_area_id=${encodeURIComponent(NANZI)}`);
   assert(data.total > 3184, "map-segments 載入楠梓與相鄰區作為完整道路上下文");
   assert(data.items[0].geometry?.type === "LineString", "map-segments 含幾何");
+}
+{
+  const { data } = await api(`/api/map-segments?district_area_id=${encodeURIComponent(ZUOYING)}&map_scope=primary`);
+  assert(data.total === 2351, "左營 primary map 正好包含該區 2351 個路段");
+  assert(data.items.every((item) => item.geometry?.type === "LineString"), "左營 primary map 路段皆含 LineString");
+}
+{
+  const { data } = await api(`/api/map-segments?district_area_id=${encodeURIComponent(NANZI)}&map_scope=primary`);
+  assert(data.total === 3184, "楠梓 primary map 不自動混入相鄰區");
 }
 // /api/segment 細節（v2 回傳形狀）+ 附近路口含 connected_ways
 {
