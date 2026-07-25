@@ -1,0 +1,367 @@
+{
+  "object_identity": {
+    "schema_version": 2,
+    "object_type": "nav_context_annotation",
+    "nav_context_key": "way/184597701/forward",
+    "nav_segment_key": "way/184597701",
+    "context_scope": "segment_direction",
+    "applies_to_intersection_key": null,
+    "approach_direction": "forward",
+    "source_osm": {
+      "osm_type": "way",
+      "osm_id": 184597701
+    },
+    "split_index": 0
+  },
+  "osm_reference": {
+    "osm_selected_tags": {
+      "highway": "tertiary",
+      "name": "海功路",
+      "oneway": "yes"
+    },
+    "map_links": {
+      "openstreetmap": "https://www.openstreetmap.org/way/184597701",
+      "google_maps": "https://www.google.com/maps/@22.6936277,120.2924106,19z"
+    },
+    "nearby_intersections": [
+      {
+        "nav_intersection_key": "node/259974865",
+        "osm_id": 259974865,
+        "intersection_name": "海功路 / 軍校路",
+        "connected_way_count": 4,
+        "connected_ways": [
+          {
+            "osm_way_id": 125061999,
+            "name": "海功路",
+            "highway": "tertiary"
+          },
+          {
+            "osm_way_id": 184597701,
+            "name": "海功路",
+            "highway": "tertiary"
+          },
+          {
+            "osm_way_id": 184597703,
+            "name": "軍校路",
+            "highway": "tertiary"
+          },
+          {
+            "osm_way_id": 184597704,
+            "name": "軍校路",
+            "highway": "tertiary"
+          }
+        ],
+        "road_classes": [
+          "tertiary"
+        ],
+        "candidate_priority": 130,
+        "manual_targets": [
+          "check_intersection_geometry",
+          "check_lane_movements"
+        ],
+        "coordinate": {
+          "lng": 120.2924106,
+          "lat": 22.6936277
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/259974865",
+          "google_maps": "https://www.google.com/maps/@22.6936277,120.2924106,20z"
+        },
+        "distance_m": 0
+      },
+      {
+        "nav_intersection_key": "node/259974866",
+        "osm_id": 259974866,
+        "intersection_name": "左營大路 / 海功東路 / 海功路",
+        "connected_way_count": 4,
+        "connected_ways": [
+          {
+            "osm_way_id": 45858233,
+            "name": "海功東路",
+            "highway": "tertiary"
+          },
+          {
+            "osm_way_id": 184597701,
+            "name": "海功路",
+            "highway": "tertiary"
+          },
+          {
+            "osm_way_id": 247974703,
+            "name": "左營大路",
+            "highway": "tertiary"
+          },
+          {
+            "osm_way_id": 272200698,
+            "name": "左營大路",
+            "highway": "tertiary"
+          }
+        ],
+        "road_classes": [
+          "tertiary"
+        ],
+        "candidate_priority": 122,
+        "manual_targets": [
+          "check_intersection_geometry"
+        ],
+        "coordinate": {
+          "lng": 120.2991478,
+          "lat": 22.6935474
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/259974866",
+          "google_maps": "https://www.google.com/maps/@22.6935474,120.2991478,20z"
+        },
+        "distance_m": 0
+      },
+      {
+        "nav_intersection_key": "node/262995709",
+        "osm_id": 262995709,
+        "intersection_name": "海功路 / 進學路",
+        "connected_way_count": 2,
+        "connected_ways": [
+          {
+            "osm_way_id": 24288220,
+            "name": "進學路",
+            "highway": "residential"
+          },
+          {
+            "osm_way_id": 184597701,
+            "name": "海功路",
+            "highway": "tertiary"
+          }
+        ],
+        "road_classes": [
+          "residential",
+          "tertiary"
+        ],
+        "candidate_priority": 106,
+        "manual_targets": [
+          "check_intersection_geometry"
+        ],
+        "coordinate": {
+          "lng": 120.2952341,
+          "lat": 22.6936062
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/262995709",
+          "google_maps": "https://www.google.com/maps/@22.6936062,120.2952341,20z"
+        },
+        "distance_m": 0
+      },
+      {
+        "nav_intersection_key": "node/2225667823",
+        "osm_id": 2225667823,
+        "intersection_name": "海功路",
+        "connected_way_count": 2,
+        "connected_ways": [
+          {
+            "osm_way_id": 184597701,
+            "name": "海功路",
+            "highway": "tertiary"
+          },
+          {
+            "osm_way_id": 212753201,
+            "name": null,
+            "highway": "residential"
+          }
+        ],
+        "road_classes": [
+          "residential",
+          "tertiary"
+        ],
+        "candidate_priority": 88,
+        "manual_targets": [
+          "check_intersection_geometry"
+        ],
+        "coordinate": {
+          "lng": 120.2969356,
+          "lat": 22.6935806
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/2225667823",
+          "google_maps": "https://www.google.com/maps/@22.6935806,120.2969356,20z"
+        },
+        "distance_m": 0
+      },
+      {
+        "nav_intersection_key": "node/4643446855",
+        "osm_id": 4643446855,
+        "intersection_name": "海功路",
+        "connected_way_count": 2,
+        "connected_ways": [
+          {
+            "osm_way_id": 184597701,
+            "name": "海功路",
+            "highway": "tertiary"
+          },
+          {
+            "osm_way_id": 470107687,
+            "name": null,
+            "highway": "service"
+          }
+        ],
+        "road_classes": [
+          "service",
+          "tertiary"
+        ],
+        "candidate_priority": 88,
+        "manual_targets": [
+          "check_intersection_geometry"
+        ],
+        "coordinate": {
+          "lng": 120.297985,
+          "lat": 22.6935659
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/4643446855",
+          "google_maps": "https://www.google.com/maps/@22.6935659,120.297985,20z"
+        },
+        "distance_m": 0
+      },
+      {
+        "nav_intersection_key": "node/2176877801",
+        "osm_id": 2176877801,
+        "intersection_name": "海功路",
+        "connected_way_count": 2,
+        "connected_ways": [
+          {
+            "osm_way_id": 184597701,
+            "name": "海功路",
+            "highway": "tertiary"
+          },
+          {
+            "osm_way_id": 207433316,
+            "name": null,
+            "highway": "service"
+          }
+        ],
+        "road_classes": [
+          "service",
+          "tertiary"
+        ],
+        "candidate_priority": 88,
+        "manual_targets": [
+          "check_intersection_geometry"
+        ],
+        "coordinate": {
+          "lng": 120.2981342,
+          "lat": 22.6935633
+        },
+        "map_links": {
+          "openstreetmap": "https://www.openstreetmap.org/node/2176877801",
+          "google_maps": "https://www.google.com/maps/@22.6935633,120.2981342,20z"
+        },
+        "distance_m": 0
+      }
+    ]
+  },
+  "lane_nav_tags": {
+    "osm_review_tags": {
+      "osm_lane_status": "not_checked",
+      "osm_turn_lane_status": "not_checked",
+      "osm_motorcycle_status": "not_checked",
+      "osm_review_note": null
+    },
+    "taiwan_motorcycle_tags": {
+      "movement_rules": []
+    },
+    "offset_relations": [],
+    "lane_detail_tags": {
+      "lane_profiles": [
+        {
+          "direction": "forward",
+          "lane_count": 2,
+          "lane_movements": [
+            "through",
+            "through;right"
+          ],
+          "motorcycle_access_by_lane": [
+            "no",
+            "yes"
+          ],
+          "source": "manual"
+        }
+      ]
+    }
+  },
+  "geometry": {
+    "type": "LineString",
+    "coordinates": [
+      [
+        120.2924106,
+        22.6936277
+      ],
+      [
+        120.2925594,
+        22.6936275
+      ],
+      [
+        120.2936553,
+        22.6936188
+      ],
+      [
+        120.2941443,
+        22.6936149
+      ],
+      [
+        120.2951456,
+        22.6936069
+      ],
+      [
+        120.2952341,
+        22.6936062
+      ],
+      [
+        120.2953473,
+        22.6936048
+      ],
+      [
+        120.2959904,
+        22.6935964
+      ],
+      [
+        120.2961951,
+        22.6935938
+      ],
+      [
+        120.2968724,
+        22.6935817
+      ],
+      [
+        120.2969356,
+        22.6935806
+      ],
+      [
+        120.296992,
+        22.6935798
+      ],
+      [
+        120.297985,
+        22.6935659
+      ],
+      [
+        120.2981342,
+        22.6935633
+      ],
+      [
+        120.2990046,
+        22.6935496
+      ],
+      [
+        120.2991478,
+        22.6935474
+      ]
+    ]
+  },
+  "annotation_metadata": {
+    "created_from": "manual_form",
+    "evidence_type": "streetview",
+    "manual_verified": "yes",
+    "verified_by": "anna",
+    "verified_at": "2026-07-25T16:00",
+    "verified_at_precision": "hour",
+    "verified_timezone": "Asia/Taipei",
+    "confidence": "medium",
+    "note": ""
+  }
+}
